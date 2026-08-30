@@ -9,25 +9,23 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --accent:#FF5900;--hdr:#411517;--bg:#F4EDE3;--surf:#fff;
-  --bdr:#e8ddd3;--bdr2:#d4c4b4;--text:#1a0f0a;--text2:#5a3f35;
-  --muted:#9a8a82;--sh:0 2px 8px rgba(65,21,23,.1);--radius:10px;
-  --success-bg:#edf7ed;--success-text:#2d7a2d;
-  --warn-bg:#fff8e6;   --warn-text:#b07800;
-  --danger-bg:#fef0f0; --danger-text:#c0392b;
+  --bdr:#e8ddd3;--text:#1a0f0a;--text2:#5a3f35;--muted:#9a8a82;
+  --sh:0 2px 8px rgba(65,21,23,.1);--radius:10px;
+  --ok-bg:#edf7ed;--ok-tx:#2d7a2d;
+  --wn-bg:#fff8e6;--wn-tx:#b07800;
+  --er-bg:#fef0f0;--er-tx:#c0392b;
 }
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:60px}
 
-/* ── Header ── */
+/* Header */
 .hdr{background:var(--hdr);padding:12px 20px;display:flex;align-items:center;gap:10px}
-.logo{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F4EDE3;font-size:14px;transform:rotate(-4deg);flex-shrink:0;font-family:'Poppins',sans-serif}
-.hdr-wrap{display:flex;flex-direction:column}
+.logo{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#F4EDE3;font-size:14px;transform:rotate(-4deg);flex-shrink:0}
 .hdr-t{color:#fff;font-size:14px;font-weight:700}
 .hdr-s{font-size:10px;color:rgba(244,237,227,.5);margin-top:1px}
 .acc{height:3px;background:linear-gradient(90deg,var(--accent),#ff8c42,transparent)}
-
 .wrap{max-width:720px;margin:0 auto;padding:16px}
 
-/* ── Login Card ── */
+/* Login */
 .lcard{background:var(--surf);border-radius:12px;border:1px solid var(--bdr);box-shadow:var(--sh);padding:28px 24px;max-width:400px;margin:28px auto}
 .lci{font-size:36px;text-align:center;margin-bottom:10px}
 .lct{font-size:17px;font-weight:700;text-align:center;margin-bottom:3px}
@@ -42,31 +40,35 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .chgbtn:hover{color:var(--accent)}
 .pinp{width:100%;padding:10px 14px;border:2px solid var(--bdr);border-radius:8px;font-size:18px;font-family:'Poppins',sans-serif;text-align:center;background:var(--bg);color:var(--text);outline:none;letter-spacing:4px;margin-bottom:12px}
 .pinp:focus{border-color:var(--accent)}
-.lbtn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s;letter-spacing:.01em}
+.lbtn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s}
 .lbtn:hover{opacity:.88}
 .lbtn:disabled{opacity:.5;cursor:not-allowed}
-.errmsg{color:var(--danger-text);font-size:12px;margin-top:8px;text-align:center;min-height:16px}
+.errmsg{color:var(--er-tx);font-size:12px;margin-top:8px;text-align:center;min-height:16px}
 
-/* ── App ── */
+/* App shell */
 #app{display:none}
-.ohdr{background:var(--hdr);border-radius:var(--radius);padding:14px 16px;color:#fff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ohdr{background:var(--hdr);border-radius:var(--radius);padding:14px 16px;color:#fff;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .oname{font-size:16px;font-weight:700}
 .oupd{font-size:11px;opacity:.65;margin-top:2px}
 .ohdr-btns{display:flex;gap:8px;align-items:center}
-.logbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:7px;padding:5px 14px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer;transition:opacity .15s}
+.logbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:7px;padding:5px 14px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer}
 .logbtn:hover{opacity:.8}
 .reloadbtn{background:rgba(255,89,0,.25);border:1px solid rgba(255,89,0,.5);color:#ffb090;border-radius:7px;padding:5px 12px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer;transition:all .15s}
 .reloadbtn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 
-/* Summary grid */
+/* App Tabs */
+.app-tabs{display:flex;gap:0;margin-bottom:14px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--radius);padding:4px;box-shadow:var(--sh)}
+.atab{flex:1;padding:9px 10px;border:none;border-radius:7px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:var(--text2);transition:all .15s}
+.atab:hover{background:var(--bg)}
+.atab.act{background:var(--accent);color:#fff}
+
+/* ── Assign panel ── */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:16px}
 .scard{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;padding:12px;text-align:center;box-shadow:var(--sh)}
 .szone{font-size:10px;font-weight:600;color:var(--text2);margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .snum{font-size:18px;font-weight:700;margin-bottom:3px}
 .spct{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600}
-
-/* Riders table */
-.stit{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.stit{font-size:13px;font-weight:700;margin-bottom:8px}
 .frow{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .fbtn{padding:4px 14px;border:1px solid var(--bdr);border-radius:20px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;background:var(--surf);color:var(--text);cursor:pointer;transition:all .15s}
 .fbtn:hover{border-color:var(--accent);color:var(--accent)}
@@ -75,36 +77,57 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .sinp:focus{border-color:var(--accent)}
 .cnt{font-size:11px;color:var(--muted);margin-bottom:6px}
 .rtbl{width:100%;border-collapse:collapse;background:var(--surf);border-radius:var(--radius);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--bdr)}
-.rtbl th{padding:8px 12px;font-size:10px;font-weight:600;color:var(--muted);background:var(--bg);border-bottom:1px solid var(--bdr);text-align:right;letter-spacing:.04em;text-transform:uppercase}
+.rtbl th{padding:8px 12px;font-size:10px;font-weight:600;color:var(--muted);background:var(--bg);border-bottom:1px solid var(--bdr);text-align:right;text-transform:uppercase;letter-spacing:.04em}
 .rtbl td{padding:8px 12px;font-size:12px;border-top:1px solid var(--bdr);text-align:right}
 .rtbl tr:hover td{background:rgba(255,89,0,.03)}
 .bdg{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600}
-.by{background:var(--success-bg);color:var(--success-text)}
-.bn{background:var(--danger-bg);color:var(--danger-text)}
+.by{background:var(--ok-bg);color:var(--ok-tx)}
+.bn{background:var(--er-bg);color:var(--er-tx)}
 .nor{text-align:center;padding:20px;color:var(--muted);font-size:12px}
 .ldg{text-align:center;padding:24px;color:var(--muted);font-size:12px}
-
-/* Config warning */
-.cfg-warn{background:#fff8e6;border:1px solid #f0c060;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:12px;color:#7a5800;line-height:1.6}
-.cfg-warn code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:11px}
-
-/* Phone copy */
-.ph-copy{color:var(--accent);cursor:pointer;font-size:12px;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.ph-copy:active{opacity:.6}
-
-/* Toast */
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:8px 20px;border-radius:24px;font-size:13px;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
-#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* Mobile card view */
+.ph-copy{color:var(--accent);cursor:pointer;font-size:12px}
 .rider-cards{display:none;flex-direction:column;gap:8px}
 .rcard{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;box-shadow:var(--sh)}
 .rcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
 .rcard-name{font-size:13px;font-weight:600;line-height:1.3;flex:1}
 .rcard-id{font-size:10px;color:var(--muted);margin-top:2px}
 .rcard-meta{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--text2)}
-.rcard-meta span{display:flex;align-items:center;gap:3px}
 
+/* ── Form panel ── */
+.f-subtabs{display:flex;gap:6px;margin-bottom:14px}
+.f-stab{padding:7px 18px;border:2px solid var(--bdr);border-radius:20px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:var(--surf);color:var(--text2);transition:all .15s}
+.f-stab:hover{border-color:var(--accent);color:var(--accent)}
+.f-stab.act{background:var(--accent);color:#fff;border-color:var(--accent)}
+.f-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--radius);box-shadow:var(--sh);padding:18px;margin-bottom:12px}
+.f-label{font-size:11px;font-weight:600;color:var(--text2);display:block;margin-bottom:5px}
+.f-inp{width:100%;padding:9px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;background:var(--bg);color:var(--text);outline:none;transition:border-color .15s;margin-bottom:12px}
+.f-inp:focus{border-color:var(--accent)}
+.f-sel{width:100%;padding:9px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;background:var(--bg);color:var(--text);outline:none;cursor:pointer;margin-bottom:12px}
+.f-ta{width:100%;padding:9px 12px;border:1.5px solid var(--bdr);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;background:var(--bg);color:var(--text);outline:none;resize:vertical;min-height:110px;line-height:1.7;margin-bottom:12px}
+.f-ta:focus{border-color:var(--accent)}
+.f-type-row{display:flex;gap:8px;margin-bottom:12px}
+.f-type-btn{flex:1;padding:10px;border:2px solid var(--bdr);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:var(--bg);color:var(--text2);transition:all .15s}
+.f-type-btn.act{background:var(--accent);color:#fff;border-color:var(--accent)}
+.f-submit{width:100%;padding:12px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.f-submit:hover{opacity:.88}
+.f-submit:disabled{opacity:.5;cursor:not-allowed}
+.f-msg{text-align:center;font-size:13px;min-height:20px;margin-top:10px;font-weight:600}
+.f-ok{color:var(--ok-tx)} .f-err{color:var(--er-tx)}
+.f-gas-warn{background:var(--wn-bg);border:1px solid #f0c060;border-radius:8px;padding:14px 16px;color:var(--wn-tx);font-size:12px;line-height:1.7;margin-bottom:12px}
+.f-gas-warn code{background:rgba(0,0,0,.07);padding:1px 5px;border-radius:4px;font-size:11px}
+/* Records */
+.mart-group{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--sh)}
+.mart-name{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:8px}
+.id-chips{display:flex;flex-wrap:wrap;gap:5px}
+.id-chip{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.chip-in{background:#e3f2fd;color:#1565c0}
+.chip-out{background:#fce4ec;color:#c62828}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:8px 20px;border-radius:24px;font-size:13px;opacity:0;transition:all .25s;z-index:999;pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Mobile */
 @media(max-width:600px){
   .wrap{padding:10px}
   .rtbl{display:none}
@@ -122,7 +145,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 
 <div class="hdr">
   <div class="logo">t</div>
-  <div class="hdr-wrap">
+  <div>
     <div class="hdr-t">Mohandiseen 3PLs-Dashboard</div>
     <div class="hdr-s">Rider Coverage Tracker</div>
   </div>
@@ -130,9 +153,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 <div class="acc"></div>
 <div class="wrap">
 
-<!-- Login -->
+<!-- LOGIN -->
 <div id="login">
-  <div id="cfg-warn-box"></div>
   <div class="lcard">
     <div class="lci">🏢</div>
     <div class="lct">تسجيل الدخول</div>
@@ -155,57 +177,111 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
-<!-- App -->
+<!-- APP -->
 <div id="app">
   <div class="ohdr">
     <div>
       <div class="oname" id="aoff"></div>
-      <div class="oupd" id="aupd"></div>
+      <div class="oupd"  id="aupd"></div>
     </div>
     <div class="ohdr-btns">
       <button class="reloadbtn" onclick="reloadData()">🔄 تحديث</button>
-      <button class="logbtn" onclick="doLogout()">← خروج</button>
+      <button class="logbtn"    onclick="doLogout()">← خروج</button>
     </div>
   </div>
-  <div class="sgrid" id="sgrid"></div>
-  <div class="stit">👥 قائمة الطيارين</div>
-  <input class="sinp" type="text" id="srch" placeholder="🔍 ابحث بالاسم أو الـ ID أو المنطقة..." oninput="renderTbl()">
-  <div class="frow" id="zone-frow" style="margin-bottom:6px"></div>
-  <div class="frow">
-    <button class="fbtn act" data-f="all" onclick="setF('all',this)">الكل</button>
-    <button class="fbtn"     data-f="yes" onclick="setF('yes',this)">✅ مجدول</button>
-    <button class="fbtn"     data-f="no"  onclick="setF('no',this)">❌ غير مجدول</button>
-  </div>
-  <div class="cnt" id="cnt"></div>
-  <table class="rtbl">
-    <thead><tr><th>ID</th><th>الاسم</th><th>المنطقة</th><th>آخر شيفت</th><th>الهاتف</th><th>الحالة</th></tr></thead>
-    <tbody id="tbody"></tbody>
-  </table>
-  <div class="rider-cards" id="rcards"></div>
-</div>
-<div id="toast">✅ تم النسخ</div>
 
+  <!-- Tabs -->
+  <div class="app-tabs">
+    <button id="tab-assign" class="atab act" onclick="switchTab('assign')">📊 Assign</button>
+    <button id="tab-form"   class="atab"     onclick="switchTab('form')">📋 تسجيل IDs</button>
+  </div>
+
+  <!-- ══ ASSIGN PANEL ══ -->
+  <div id="panel-assign">
+    <div class="sgrid" id="sgrid"></div>
+    <div class="stit">👥 قائمة الطيارين</div>
+    <input class="sinp" type="text" id="srch" placeholder="🔍 ابحث بالاسم أو الـ ID أو المنطقة..." oninput="renderTbl()">
+    <div class="frow" id="zone-frow" style="margin-bottom:6px"></div>
+    <div class="frow">
+      <button class="fbtn act" data-f="all" onclick="setF('all',this)">الكل</button>
+      <button class="fbtn"     data-f="yes" onclick="setF('yes',this)">✅ مجدول</button>
+      <button class="fbtn"     data-f="no"  onclick="setF('no',this)">❌ غير مجدول</button>
+    </div>
+    <div class="cnt" id="cnt"></div>
+    <table class="rtbl">
+      <thead><tr><th>ID</th><th>الاسم</th><th>المنطقة</th><th>آخر شيفت</th><th>الهاتف</th><th>الحالة</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="rider-cards" id="rcards"></div>
+  </div>
+
+  <!-- ══ FORM PANEL ══ -->
+  <div id="panel-form" style="display:none">
+
+    <!-- Warning if GAS URL not set -->
+    <div id="f-warn" class="f-gas-warn" style="display:none">
+      ⚠️ عشان تشتغل الفورم، حط الـ GAS URL في<br>
+      <code>CONFIG.formGasUrl</code> في أول السكريبت
+    </div>
+
+    <!-- Sub-tabs -->
+    <div class="f-subtabs">
+      <button class="f-stab act" onclick="showFSub('reg',this)">📝 تسجيل جديد</button>
+      <button class="f-stab"     onclick="showFSub('rec',this)">📋 سجلاتي</button>
+    </div>
+
+    <!-- Register sub-panel -->
+    <div id="f-reg">
+      <div class="f-card">
+        <label class="f-label">الأسبوع</label>
+        <select class="f-sel" id="f-week" onchange="onWeekChange()">
+          <option value="">⏳ جاري التحميل...</option>
+        </select>
+        <input class="f-inp" id="f-week-new" placeholder="أو اكتب أسبوع جديد (مثلاً: أسبوع 35)" style="display:none">
+
+        <label class="f-label">المارت</label>
+        <input class="f-inp" id="f-mart" placeholder="مثلاً: Spar Mohandiseen">
+
+        <div class="f-type-row">
+          <button class="f-type-btn act" onclick="setFType('IN',this)">📥 داخل — IN</button>
+          <button class="f-type-btn"     onclick="setFType('OUT',this)">📤 خارج — OUT</button>
+        </div>
+
+        <label class="f-label">الـ IDs (كل ID في سطر)</label>
+        <textarea class="f-ta" id="f-ids" placeholder="12345&#10;67890&#10;11223"></textarea>
+
+        <button class="f-submit" id="f-sub-btn" onclick="submitForm()">✅ تسجيل</button>
+        <div class="f-msg" id="f-msg"></div>
+      </div>
+    </div>
+
+    <!-- Records sub-panel -->
+    <div id="f-rec" style="display:none">
+      <div class="f-card">
+        <label class="f-label">اختار الأسبوع</label>
+        <select class="f-sel" id="f-rec-week" onchange="loadRecords()">
+          <option value="">⏳ جاري التحميل...</option>
+        </select>
+        <div id="f-records"><div class="ldg">اختار أسبوع</div></div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /app -->
+
+<div id="toast">✅ تم النسخ</div>
 </div><!-- /wrap -->
 
 <script>
-// ╔══════════════════════════════════════════════════════════════╗
-// ║  ⚙️  CONFIG — Ahmed only needs to edit this section         ║
-// ╠══════════════════════════════════════════════════════════════╣
-// ║  riderDataUrl:                                               ║
-// ║    1. Open the Google Sheet                                  ║
-// ║    2. File → Share → Publish to web                         ║
-// ║    3. Change "Entire Document" to "Rider Data" tab           ║
-// ║    4. Change "Web page" to "Comma-separated values (.csv)"   ║
-// ║    5. Click Publish → copy the URL → paste below             ║
-// ║                                                              ║
-// ║  offices:                                                    ║
-// ║    Key   = office name EXACTLY as in HeadCount sheet         ║
-// ║    Value = password for that office                          ║
-// ╚══════════════════════════════════════════════════════════════╝
-
+// ══════════════════════════════════════════════════════
+// CONFIG — عدّل هنا بس
+// ══════════════════════════════════════════════════════
 const CONFIG = {
   riderDataUrl:   'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data.csv',
   targetsDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/targets-data.json',
+
+  // ↓ حط هنا Apps Script URL بتاع Assign 2026 (نفس الـ Webhook في إعدادات الإكستنشن)
+  formGasUrl: '',
 
   offices: {
     'Al Alamia':             'ala815',
@@ -233,37 +309,24 @@ const CONFIG = {
   }
 };
 
-// ═══════════════════════════════════════════════════════════════
-// App logic — no need to edit below this line
-// ═══════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
+// State
+// ══════════════════════════════════════════════════════
+var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '';
+var _fType = 'IN', _fInit = false;
 
-let _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = ''; // _zone: zone filter
-
+// ══════════════════════════════════════════════════════
+// Login
+// ══════════════════════════════════════════════════════
 window.onload = function () {
-  // Show config warning if not set up
-  if (CONFIG.riderDataUrl === 'PASTE_CSV_URL_HERE') {
-    document.getElementById('cfg-warn-box').innerHTML =
-      '<div class="cfg-warn">⚠️ <b>لازم تحط الـ CSV URL في CONFIG</b><br>' +
-      'افتح الملف ده في text editor وحط الـ URL في <code>riderDataUrl</code></div>';
-  }
+  var names = Object.keys(CONFIG.offices);
+  document.getElementById('olist').innerHTML = names.map(function(n){
+    return '<button class="oopt" onclick="selOff(\'' + n.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">' + n + '</button>';
+  }).join('');
 
-  const names = Object.keys(CONFIG.offices);
-  const el = document.getElementById('olist');
-  if (!names.length) {
-    el.innerHTML = '<div style="color:var(--danger-text);font-size:12px;text-align:center;padding:10px">⚠️ مفيش مكاتب في CONFIG</div>';
-    return;
-  }
-  el.innerHTML = names.map(n =>
-    '<button class="oopt" onclick="selOff(\'' + n.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">' + n + '</button>'
-  ).join('');
-
-  // Auto-login if office was saved before
   try {
     var saved = localStorage.getItem('dash_office');
-    if (saved && CONFIG.offices[saved]) {
-      _off = saved;
-      loadAndShowApp();
-    }
+    if (saved && CONFIG.offices[saved]) { _off = saved; loadAndShowApp(); }
   } catch(e) {}
 };
 
@@ -272,7 +335,7 @@ function selOff(n) {
   document.getElementById('selname').textContent = '🏢 ' + n;
   document.getElementById('office-step').style.display = 'none';
   document.getElementById('pass-step').style.display   = 'block';
-  document.getElementById('pinp').value  = '';
+  document.getElementById('pinp').value = '';
   document.getElementById('errmsg').textContent = '';
   setTimeout(function(){ document.getElementById('pinp').focus(); }, 80);
 }
@@ -281,103 +344,22 @@ function resetOff() {
   _off = '';
   document.getElementById('office-step').style.display = 'block';
   document.getElementById('pass-step').style.display   = 'none';
-  document.getElementById('pinp').value  = '';
+  document.getElementById('pinp').value = '';
   document.getElementById('errmsg').textContent = '';
 }
 
 function doLogin() {
-  var p   = document.getElementById('pinp').value.trim();
+  var p = document.getElementById('pinp').value.trim();
   var err = document.getElementById('errmsg');
   err.textContent = '';
   if (!p) { err.textContent = 'أدخل الباسورد'; return; }
-
   if (CONFIG.offices[_off] !== p) {
     err.textContent = '❌ باسورد غلط';
     document.getElementById('pinp').value = '';
     document.getElementById('pinp').focus();
     return;
   }
-
-  // Save to localStorage so next visit auto-logs in
   try { localStorage.setItem('dash_office', _off); } catch(e) {}
-  loadAndShowApp();
-}
-
-function loadAndShowApp() {
-  document.getElementById('login').style.display = 'none';
-  document.getElementById('app').style.display   = 'block';
-  document.getElementById('aoff').textContent = _off;
-  document.getElementById('aupd').textContent = '';
-  document.getElementById('sgrid').innerHTML  = '';
-  document.getElementById('tbody').innerHTML  =
-    '<tr><td colspan="6" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
-
-  if (CONFIG.riderDataUrl === 'PASTE_CSV_URL_HERE') {
-    document.getElementById('aupd').textContent = '⚠️ riderDataUrl مش محدود في CONFIG';
-    document.getElementById('tbody').innerHTML =
-      '<tr><td colspan="6" class="nor">حط الـ CSV URL الأول</td></tr>';
-    return;
-  }
-
-  var t = '?_t=' + Date.now();
-
-  // Fetch riders + targets in parallel
-  Promise.all([
-    fetch(CONFIG.riderDataUrl + t).then(function(r){ return r.text(); }),
-    fetch(CONFIG.targetsDataUrl + t).then(function(r){ return r.json(); }).catch(function(){ return null; })
-  ])
-    .then(function(results){
-      var csv = results[0], tData = results[1];
-
-      // Build targets map from JSON: {zone|||office → {target, scheduled}}
-      _targets = {};
-      if (tData && tData.targets) {
-        tData.targets.forEach(function(t){
-          _targets[(t.zone||'') + '|||' + (t.office||'')] = { target: t.target||0, scheduled: t.scheduled||0 };
-        });
-      }
-
-      var rows = parseCSV(csv);
-      var offLower = _off.toLowerCase();
-      _riders = rows
-        .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
-        .map(function(r){ return {
-          id:        (r['Rider ID']   || '').trim(),
-          name:      (r['Name']       || '').trim(),
-          zone:      (r['Zone']       || '').trim(),
-          phone:     (r['Phone']      || '').trim(),
-          lastShift: (r['Last Shift'] || '').trim(),
-          scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
-          ts:        (r['Timestamp']  || '').trim()
-        }; });
-
-      var lastTs = '';
-      _riders.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
-      document.getElementById('aupd').textContent = lastTs ? 'آخر تحديث: ' + lastTs : '';
-
-      // Build zone filter buttons
-      var zones = [];
-      _riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone) === -1) zones.push(r.zone); });
-      zones.sort();
-      _zone = '';
-      var zf = document.getElementById('zone-frow');
-      zf.innerHTML = '<button class="fbtn act" data-z="" onclick="setZ(\'\',this)">كل الزونات</button>' +
-        zones.map(function(z){
-          return '<button class="fbtn" data-z="' + z + '" onclick="setZ(\'' + z.replace(/'/g,"\\'") + '\',this)">' + z + '</button>';
-        }).join('');
-
-      renderSum();
-      renderTbl();
-    })
-    .catch(function(e){
-      document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
-      document.getElementById('tbody').innerHTML =
-        '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
-    });
-}
-
-function reloadData() {
-  if (!_off) return;
   loadAndShowApp();
 }
 
@@ -385,14 +367,77 @@ function doLogout() {
   try { localStorage.removeItem('dash_office'); } catch(e) {}
   document.getElementById('login').style.display = 'block';
   document.getElementById('app').style.display   = 'none';
-  _riders = []; _flt = 'all'; resetOff();
-  document.querySelectorAll('.fbtn').forEach(function(b){
-    b.classList.toggle('act', b.dataset.f === 'all');
+  _riders = []; _flt = 'all'; _fInit = false;
+  resetOff();
+  switchTab('assign');
+}
+
+// ══════════════════════════════════════════════════════
+// Tab switcher
+// ══════════════════════════════════════════════════════
+function switchTab(tab) {
+  document.getElementById('panel-assign').style.display = tab === 'assign' ? 'block' : 'none';
+  document.getElementById('panel-form').style.display   = tab === 'form'   ? 'block' : 'none';
+  document.getElementById('tab-assign').classList.toggle('act', tab === 'assign');
+  document.getElementById('tab-form').classList.toggle('act',   tab === 'form');
+  if (tab === 'form') initForm();
+}
+
+// ══════════════════════════════════════════════════════
+// Assign Tab
+// ══════════════════════════════════════════════════════
+function loadAndShowApp() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display   = 'block';
+  document.getElementById('aoff').textContent    = _off;
+  document.getElementById('aupd').textContent    = '';
+  document.getElementById('sgrid').innerHTML     = '';
+  document.getElementById('tbody').innerHTML     = '<tr><td colspan="6" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
+
+  var t = '?_t=' + Date.now();
+  Promise.all([
+    fetch(CONFIG.riderDataUrl   + t).then(function(r){ return r.text(); }),
+    fetch(CONFIG.targetsDataUrl + t).then(function(r){ return r.json(); }).catch(function(){ return null; })
+  ]).then(function(res){
+    var csv = res[0], tData = res[1];
+    _targets = {};
+    if (tData && tData.targets) {
+      tData.targets.forEach(function(t){
+        _targets[(t.zone||'') + '|||' + (t.office||'')] = { target: t.target||0, scheduled: t.scheduled||0 };
+      });
+    }
+    var rows = parseCSV(csv);
+    var offL = _off.toLowerCase();
+    _riders = rows.filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offL; })
+      .map(function(r){ return {
+        id: (r['Rider ID']||'').trim(), name: (r['Name']||'').trim(),
+        zone: (r['Zone']||'').trim(), phone: (r['Phone']||'').trim(),
+        lastShift: (r['Last Shift']||'').trim(),
+        scheduled: (r['Scheduled']||'').trim().toLowerCase() === 'yes',
+        ts: (r['Timestamp']||'').trim()
+      }; });
+
+    var lastTs = '';
+    _riders.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
+    document.getElementById('aupd').textContent = lastTs ? 'آخر تحديث: ' + lastTs : '';
+
+    var zones = [];
+    _riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone) === -1) zones.push(r.zone); });
+    zones.sort(); _zone = '';
+    document.getElementById('zone-frow').innerHTML =
+      '<button class="fbtn act" onclick="setZ(\'\',this)">كل الزونات</button>' +
+      zones.map(function(z){ return '<button class="fbtn" onclick="setZ(\'' + z.replace(/'/g,"\\'") + '\',this)">' + z + '</button>'; }).join('');
+
+    renderSum(); renderTbl();
+  }).catch(function(e){
+    document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
+    document.getElementById('tbody').innerHTML = '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
   });
 }
 
+function reloadData() { if (_off) loadAndShowApp(); }
+
 function renderSum() {
-  // Count from rider list (always available)
   var zones = {};
   _riders.forEach(function(r){
     if (!r.zone) return;
@@ -400,43 +445,36 @@ function renderSum() {
     zones[r.zone].t++;
     if (r.scheduled) zones[r.zone].s++;
   });
-
-  var hasTargets = Object.keys(_targets).length > 0;
-  var totalSched = 0, totalTarget = 0;
-  var h = '';
+  var hasT = Object.keys(_targets).length > 0;
+  var ts = 0, tt = 0, h = '';
   Object.keys(zones).sort().forEach(function(z){
-    var key    = z + '|||' + _off;
-    var tData  = _targets[key];
-    var sched  = hasTargets && tData ? tData.scheduled : zones[z].s;
-    var target = hasTargets && tData ? tData.target    : zones[z].t;
-    totalSched  += sched;
-    totalTarget += target;
-    h += sc(z, sched, target, target > 0 ? sched/target : null);
+    var td = _targets[z + '|||' + _off];
+    var s = hasT && td ? td.scheduled : zones[z].s;
+    var t = hasT && td ? td.target    : zones[z].t;
+    ts += s; tt += t;
+    h += sc(z, s, t, t > 0 ? s/t : null);
   });
-  var totalCard = sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null);
-  document.getElementById('sgrid').innerHTML = totalCard + h;
+  document.getElementById('sgrid').innerHTML = sc('الإجمالي', ts, tt, tt > 0 ? ts/tt : null) + h;
 }
 
 function sc(l, s, t, p) {
   var ps = '', pt = '—';
   if (p !== null) {
-    pt = Math.round(p * 100) + '%';
-    if      (p >= .85) ps = 'background:var(--success-bg);color:var(--success-text)';
-    else if (p >= .65) ps = 'background:var(--warn-bg);color:var(--warn-text)';
-    else               ps = 'background:var(--danger-bg);color:var(--danger-text)';
+    pt = Math.round(p*100) + '%';
+    ps = p >= .85 ? 'background:var(--ok-bg);color:var(--ok-tx)' :
+         p >= .65 ? 'background:var(--wn-bg);color:var(--wn-tx)' :
+                    'background:var(--er-bg);color:var(--er-tx)';
   }
-  return '<div class="scard">' +
-    '<div class="szone">' + l + '</div>' +
+  return '<div class="scard"><div class="szone">' + l + '</div>' +
     '<div class="snum">' + s + ' / ' + t + '</div>' +
     '<span class="spct" style="' + ps + '">' + pt + '</span></div>';
 }
 
 function setF(f, b) {
   _flt = f;
-  document.querySelectorAll('#app .frow:last-of-type .fbtn').forEach(function(x){ x.classList.toggle('act', x === b); });
+  document.querySelectorAll('#panel-assign .frow:last-of-type .fbtn').forEach(function(x){ x.classList.toggle('act', x === b); });
   renderTbl();
 }
-
 function setZ(z, b) {
   _zone = z;
   document.querySelectorAll('#zone-frow .fbtn').forEach(function(x){ x.classList.toggle('act', x === b); });
@@ -444,101 +482,202 @@ function setZ(z, b) {
 }
 
 function renderTbl() {
-  var q    = (document.getElementById('srch').value || '').toLowerCase();
+  var q = (document.getElementById('srch').value || '').toLowerCase();
   var rows = _riders;
   if (_zone)          rows = rows.filter(function(r){ return r.zone === _zone; });
   if (_flt === 'yes') rows = rows.filter(function(r){ return  r.scheduled; });
   if (_flt === 'no')  rows = rows.filter(function(r){ return !r.scheduled; });
   if (q) rows = rows.filter(function(r){
-    return (r.name||'').toLowerCase().includes(q) ||
-           (r.id||'').includes(q) ||
-           (r.zone||'').toLowerCase().includes(q);
+    return (r.name||'').toLowerCase().includes(q) || (r.id||'').includes(q) || (r.zone||'').toLowerCase().includes(q);
   });
   document.getElementById('cnt').textContent = rows.length + ' طيار';
   var tb = document.getElementById('tbody');
-  if (!rows.length) {
-    tb.innerHTML = '<tr><td colspan="6" class="nor">📭 مفيش نتايج</td></tr>';
-    return;
-  }
-  // Sort: by zone ASC, then lastShift DESC (most recent first)
+  if (!rows.length) { tb.innerHTML = '<tr><td colspan="6" class="nor">📭 مفيش نتايج</td></tr>'; return; }
   rows = rows.slice().sort(function(a,b){
-    var zc = (a.zone||'').localeCompare(b.zone||'');
-    if (zc !== 0) return zc;
+    var z = (a.zone||'').localeCompare(b.zone||'');
+    if (z) return z;
     if (b.lastShift && a.lastShift) return b.lastShift.localeCompare(a.lastShift);
-    if (b.lastShift) return 1;
-    if (a.lastShift) return -1;
-    return 0;
+    return b.lastShift ? 1 : a.lastShift ? -1 : 0;
   });
-  // Desktop table
   tb.innerHTML = rows.map(function(r){
-    var badge = r.scheduled
-      ? '<span class="bdg by">✅ مجدول</span>'
-      : '<span class="bdg bn">❌ غير مجدول</span>';
-    var ph = r.phone
-      ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>'
-      : '—';
-    var ls = r.lastShift || '—';
-    return '<tr>' +
-      '<td>' + (r.id||'—') + '</td>' +
-      '<td style="font-weight:500">' + (r.name||'—') + '</td>' +
-      '<td>' + (r.zone||'—') + '</td>' +
-      '<td style="font-size:11px;color:var(--muted)">' + ls + '</td>' +
-      '<td>' + ph + '</td>' +
-      '<td>' + badge + '</td>' +
-      '</tr>';
+    var ph = r.phone ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>' : '—';
+    var bdg = r.scheduled ? '<span class="bdg by">✅ مجدول</span>' : '<span class="bdg bn">❌ غير مجدول</span>';
+    return '<tr><td>' + (r.id||'—') + '</td><td style="font-weight:500">' + (r.name||'—') + '</td>' +
+      '<td>' + (r.zone||'—') + '</td><td style="font-size:11px;color:var(--muted)">' + (r.lastShift||'—') + '</td>' +
+      '<td>' + ph + '</td><td>' + bdg + '</td></tr>';
   }).join('');
-
-  // Mobile cards
   document.getElementById('rcards').innerHTML = rows.map(function(r){
-    var badge = r.scheduled
-      ? '<span class="bdg by">✅ مجدول</span>'
-      : '<span class="bdg bn">❌ غير مجدول</span>';
-    var ph = r.phone
-      ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>'
-      : '';
-    return '<div class="rcard">' +
-      '<div class="rcard-top">' +
-        '<div><div class="rcard-name">' + (r.name||'—') + '</div>' +
-        '<div class="rcard-id">' + (r.id||'') + '</div></div>' +
-        badge +
-      '</div>' +
+    var ph = r.phone ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>' : '';
+    var bdg = r.scheduled ? '<span class="bdg by">✅ مجدول</span>' : '<span class="bdg bn">❌ غير مجدول</span>';
+    return '<div class="rcard"><div class="rcard-top"><div>' +
+      '<div class="rcard-name">' + (r.name||'—') + '</div>' +
+      '<div class="rcard-id">' + (r.id||'') + '</div></div>' + bdg + '</div>' +
       '<div class="rcard-meta">' +
-        (r.zone   ? '<span>📍 ' + r.zone + '</span>' : '') +
+        (r.zone ? '<span>📍 ' + r.zone + '</span>' : '') +
         (r.lastShift ? '<span>🗓 ' + r.lastShift + '</span>' : '') +
         (ph ? '<span>' + ph + '</span>' : '') +
-      '</div>' +
-    '</div>';
+      '</div></div>';
   }).join('');
 }
 
 function copyPhone(phone) {
   navigator.clipboard.writeText(phone).then(function(){
-    var t = document.getElementById('toast');
-    t.classList.add('show');
+    var t = document.getElementById('toast'); t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 1800);
   }).catch(function(){});
 }
 
-// ── CSV Parser ──────────────────────────────────────────────────
 function parseCSV(text) {
   if (!text || !text.trim()) return [];
   var lines = text.split(/\r?\n/).filter(function(l){ return l.trim(); });
   if (lines.length < 2) return [];
   function pl(line) {
     var res=[], cur='', inQ=false;
-    for (var i=0;i<line.length;i++) {
-      var c=line[i];
+    for (var i=0; i<line.length; i++) {
+      var c = line[i];
       if (c==='"') { if (inQ && line[i+1]==='"') { cur+='"'; i++; } else inQ=!inQ; }
       else if (c===',' && !inQ) { res.push(cur.trim()); cur=''; }
-      else cur+=c;
+      else cur += c;
     }
     res.push(cur.trim()); return res;
   }
-  var headers = pl(lines[0]).map(function(h){ return h.replace(/^"|"$/g,''); });
+  var hdrs = pl(lines[0]).map(function(h){ return h.replace(/^"|"$/g,''); });
   return lines.slice(1).map(function(line){
     var vals=pl(line), row={};
-    headers.forEach(function(h,i){ row[h]=(vals[i]||'').replace(/^"|"$/g,''); });
+    hdrs.forEach(function(h,i){ row[h]=(vals[i]||'').replace(/^"|"$/g,''); });
     return row;
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// Form Tab
+// ══════════════════════════════════════════════════════
+function gasPost(fn, args) {
+  // No Content-Type header → simple request → no CORS preflight with GAS
+  return fetch(CONFIG.formGasUrl, {
+    method: 'POST',
+    body: JSON.stringify({ fn: fn, args: args || [] })
+  }).then(function(r){ return r.json(); });
+}
+
+function initForm() {
+  if (!CONFIG.formGasUrl) {
+    document.getElementById('f-warn').style.display = 'block';
+    return;
+  }
+  if (_fInit) return;
+  _fInit = true;
+
+  gasPost('getFormWeeks').then(function(res){
+    var weeks = res && res.weeks ? res.weeks : [];
+    var opts = '<option value="__new__">➕ أسبوع جديد</option>' +
+      weeks.map(function(w){ return '<option value="' + w + '">' + w + '</option>'; }).join('');
+    document.getElementById('f-week').innerHTML = opts;
+    document.getElementById('f-rec-week').innerHTML = opts;
+    onWeekChange();
+  }).catch(function(){
+    document.getElementById('f-week').innerHTML = '<option value="__new__">➕ أسبوع جديد</option>';
+    document.getElementById('f-rec-week').innerHTML = '<option value="">اختار أسبوع</option>';
+  });
+}
+
+function showFSub(tab, b) {
+  document.getElementById('f-reg').style.display = tab === 'reg' ? 'block' : 'none';
+  document.getElementById('f-rec').style.display = tab === 'rec' ? 'block' : 'none';
+  document.querySelectorAll('.f-stab').forEach(function(x){ x.classList.toggle('act', x === b); });
+  if (tab === 'rec') loadRecords();
+}
+
+function setFType(t, b) {
+  _fType = t;
+  document.querySelectorAll('.f-type-btn').forEach(function(x){ x.classList.toggle('act', x === b); });
+}
+
+function onWeekChange() {
+  var v = document.getElementById('f-week').value;
+  var ni = document.getElementById('f-week-new');
+  ni.style.display = v === '__new__' ? 'block' : 'none';
+  if (v === '__new__') ni.focus();
+}
+
+function getWeek() {
+  var v = document.getElementById('f-week').value;
+  return v === '__new__' ? document.getElementById('f-week-new').value.trim() : v;
+}
+
+function submitForm() {
+  var week = getWeek();
+  var mart = document.getElementById('f-mart').value.trim();
+  var raw  = document.getElementById('f-ids').value;
+  var ids  = raw.split(/[\n,،]+/).map(function(s){ return s.trim(); }).filter(Boolean);
+  var msg  = document.getElementById('f-msg');
+
+  if (!week) { msg.className='f-msg f-err'; msg.textContent='❌ حدد الأسبوع'; return; }
+  if (!mart) { msg.className='f-msg f-err'; msg.textContent='❌ أدخل اسم المارت'; return; }
+  if (!ids.length) { msg.className='f-msg f-err'; msg.textContent='❌ أدخل IDs'; return; }
+
+  var btn = document.getElementById('f-sub-btn');
+  btn.disabled = true; btn.textContent = '⏳ جاري التسجيل...';
+  msg.textContent = '';
+
+  gasPost('registerFormIds', [week, mart, _off, ids, _fType])
+    .then(function(res){
+      btn.disabled = false; btn.textContent = '✅ تسجيل';
+      if (res && res.success) {
+        msg.className = 'f-msg f-ok';
+        msg.textContent = '✅ تم تسجيل ' + res.added + ' ID بنجاح';
+        document.getElementById('f-ids').value = '';
+        // Add new week to dropdowns if it was new
+        if (document.getElementById('f-week').value === '__new__' && week) {
+          ['f-week','f-rec-week'].forEach(function(id){
+            var opt = document.createElement('option');
+            opt.value = week; opt.textContent = week;
+            var sel = document.getElementById(id);
+            sel.insertBefore(opt, sel.children[1]);
+            sel.value = week;
+          });
+          document.getElementById('f-week-new').style.display = 'none';
+        }
+      } else {
+        msg.className = 'f-msg f-err';
+        msg.textContent = '❌ ' + ((res && res.error) || 'حصل خطأ');
+      }
+    })
+    .catch(function(e){
+      btn.disabled = false; btn.textContent = '✅ تسجيل';
+      msg.className = 'f-msg f-err';
+      msg.textContent = '❌ ' + e.message;
+    });
+}
+
+function loadRecords() {
+  var week = document.getElementById('f-rec-week').value;
+  var el   = document.getElementById('f-records');
+  if (!week || week === '__new__') { el.innerHTML = '<div class="ldg">اختار أسبوع</div>'; return; }
+  el.innerHTML = '<div class="ldg">⏳ جاري التحميل...</div>';
+
+  gasPost('getFormData', [week, _off]).then(function(res){
+    if (!res || !res.success || !res.rows || !res.rows.length) {
+      el.innerHTML = '<div class="nor">📭 مفيش سجلات لمكتبك هذا الأسبوع</div>';
+      return;
+    }
+    // Group by mart
+    var marts = {};
+    res.rows.forEach(function(r){
+      if (!marts[r.mart]) marts[r.mart] = { IN: [], OUT: [] };
+      (marts[r.mart][r.type] = marts[r.mart][r.type] || []).push(r.id);
+    });
+    el.innerHTML = Object.keys(marts).map(function(m){
+      var g = marts[m];
+      var inChips  = (g['IN']  || []).map(function(id){ return '<span class="id-chip chip-in">'  + id + '</span>'; }).join('');
+      var outChips = (g['OUT'] || []).map(function(id){ return '<span class="id-chip chip-out">' + id + '</span>'; }).join('');
+      return '<div class="mart-group"><div class="mart-name">🏪 ' + m + '</div>' +
+        (inChips  ? '<div style="margin-bottom:6px"><span style="font-size:10px;font-weight:600;color:#1565c0;margin-left:6px">IN ' + (g['IN']||[]).length + '</span><div class="id-chips" style="margin-top:4px">' + inChips  + '</div></div>' : '') +
+        (outChips ? '<div><span style="font-size:10px;font-weight:600;color:#c62828;margin-left:6px">OUT ' + (g['OUT']||[]).length + '</span><div class="id-chips" style="margin-top:4px">' + outChips + '</div></div>' : '') +
+        '</div>';
+    }).join('');
+  }).catch(function(e){
+    el.innerHTML = '<div class="nor">❌ ' + e.message + '</div>';
   });
 }
 </script>
