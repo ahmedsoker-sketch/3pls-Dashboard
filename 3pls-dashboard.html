@@ -222,7 +222,7 @@ const CONFIG = {
   }
 };
 
-var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '';
+var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '', _prevSnap = null;
 
 window.onload = function () {
   var names = Object.keys(CONFIG.offices);
