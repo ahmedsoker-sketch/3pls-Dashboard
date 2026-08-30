@@ -172,7 +172,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 // ╚══════════════════════════════════════════════════════════════╝
 
 const CONFIG = {
-  riderDataUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSPM9g_p3DXYSbY2U0BjKfLCf9QHwVtOl0znSMd-dGbJxqfOiAzDNsjK_H2FkxysqhPMHF8G5EXYiEy/pub?gid=766845401&single=true&output=csv',
+  riderDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data.csv',
 
   offices: {
     'Al Alamia':             'ala815',
@@ -275,8 +275,8 @@ function loadAndShowApp() {
     return;
   }
 
-  var googleUrl = CONFIG.riderDataUrl + '&_t=' + Date.now();
-var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(googleUrl);
+  var url = CONFIG.riderDataUrl + '?_t=' + Date.now();
+
   fetch(url)
     .then(function(r){ return r.text(); })
     .then(function(csv){
