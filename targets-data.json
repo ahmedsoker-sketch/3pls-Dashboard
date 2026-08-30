@@ -1,6 +1,6 @@
 {
   "date": "2026-08-30",
-  "timestamp": "١٠:٣٨ م",
+  "timestamp": "١٠:٤٠ م",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -60,7 +60,7 @@
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 73,
-      "scheduled": 77
+      "scheduled": 76
     },
     {
       "zone": "Mohandiseen",
@@ -156,7 +156,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 49,
-      "scheduled": 29
+      "scheduled": 28
     },
     {
       "zone": "Hadayek el qobba",
