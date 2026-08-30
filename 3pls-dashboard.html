@@ -275,8 +275,8 @@ function loadAndShowApp() {
     return;
   }
 
-  var url = CONFIG.riderDataUrl +
-    (CONFIG.riderDataUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+  var googleUrl = CONFIG.riderDataUrl + '&_t=' + Date.now();
+  var url = 'https://corsproxy.io/?' + encodeURIComponent(googleUrl);
 
   fetch(url)
     .then(function(r){ return r.text(); })
