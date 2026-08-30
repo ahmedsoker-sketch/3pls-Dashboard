@@ -392,18 +392,26 @@ function doLogout() {
 }
 
 function renderSum() {
-  // Use targets-data.json (same source as the tool) for both scheduled & target
+  // Count from rider list (always available)
   var zones = {};
-  _riders.forEach(function(r){ if (r.zone) zones[r.zone] = true; });
+  _riders.forEach(function(r){
+    if (!r.zone) return;
+    if (!zones[r.zone]) zones[r.zone] = { s:0, t:0 };
+    zones[r.zone].t++;
+    if (r.scheduled) zones[r.zone].s++;
+  });
 
+  var hasTargets = Object.keys(_targets).length > 0;
   var totalSched = 0, totalTarget = 0;
   var h = '';
   Object.keys(zones).sort().forEach(function(z){
-    var key  = z + '|||' + _off;
-    var data = _targets[key] || { target:0, scheduled:0 };
-    totalSched  += data.scheduled;
-    totalTarget += data.target;
-    h += sc(z, data.scheduled, data.target, data.target > 0 ? data.scheduled/data.target : null);
+    var key    = z + '|||' + _off;
+    var tData  = _targets[key];
+    var sched  = hasTargets && tData ? tData.scheduled : zones[z].s;
+    var target = hasTargets && tData ? tData.target    : zones[z].t;
+    totalSched  += sched;
+    totalTarget += target;
+    h += sc(z, sched, target, target > 0 ? sched/target : null);
   });
   var totalCard = sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null);
   document.getElementById('sgrid').innerHTML = totalCard + h;
