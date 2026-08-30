@@ -87,6 +87,35 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 /* Config warning */
 .cfg-warn{background:#fff8e6;border:1px solid #f0c060;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:12px;color:#7a5800;line-height:1.6}
 .cfg-warn code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:11px}
+
+/* Phone copy */
+.ph-copy{color:var(--accent);cursor:pointer;font-size:12px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.ph-copy:active{opacity:.6}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:8px 20px;border-radius:24px;font-size:13px;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Mobile card view */
+.rider-cards{display:none;flex-direction:column;gap:8px}
+.rcard{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;box-shadow:var(--sh)}
+.rcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.rcard-name{font-size:13px;font-weight:600;line-height:1.3;flex:1}
+.rcard-id{font-size:10px;color:var(--muted);margin-top:2px}
+.rcard-meta{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--text2)}
+.rcard-meta span{display:flex;align-items:center;gap:3px}
+
+@media(max-width:600px){
+  .wrap{padding:10px}
+  .rtbl{display:none}
+  .rider-cards{display:flex}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+  .snum{font-size:16px}
+  .ohdr{padding:10px 12px}
+  .oname{font-size:14px}
+  .frow{gap:4px}
+  .fbtn{padding:4px 10px;font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -151,7 +180,9 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
     <thead><tr><th>ID</th><th>الاسم</th><th>المنطقة</th><th>آخر شيفت</th><th>الهاتف</th><th>الحالة</th></tr></thead>
     <tbody id="tbody"></tbody>
   </table>
+  <div class="rider-cards" id="rcards"></div>
 </div>
+<div id="toast">✅ تم النسخ</div>
 
 </div><!-- /wrap -->
 
@@ -172,7 +203,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 // ╚══════════════════════════════════════════════════════════════╝
 
 const CONFIG = {
-  riderDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data.csv',
+  riderDataUrl:   'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data.csv',
+  targetsDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/targets-data.json',
 
   offices: {
     'Al Alamia':             'ala815',
@@ -204,7 +236,7 @@ const CONFIG = {
 // App logic — no need to edit below this line
 // ═══════════════════════════════════════════════════════════════
 
-let _riders = [], _flt = 'all', _off = '';
+let _riders = [], _flt = 'all', _off = '', _targets = {}; // _targets: {zone|||office → target}
 
 window.onload = function () {
   // Show config warning if not set up
@@ -286,11 +318,24 @@ function loadAndShowApp() {
     return;
   }
 
-  var url = CONFIG.riderDataUrl + '?_t=' + Date.now();
+  var t = '?_t=' + Date.now();
 
-  fetch(url)
-    .then(function(r){ return r.text(); })
-    .then(function(csv){
+  // Fetch riders + targets in parallel
+  Promise.all([
+    fetch(CONFIG.riderDataUrl + t).then(function(r){ return r.text(); }),
+    fetch(CONFIG.targetsDataUrl + t).then(function(r){ return r.json(); }).catch(function(){ return null; })
+  ])
+    .then(function(results){
+      var csv = results[0], tData = results[1];
+
+      // Build targets map from JSON: {zone|||office → target}
+      _targets = {};
+      if (tData && tData.targets) {
+        tData.targets.forEach(function(t){
+          _targets[(t.zone||'') + '|||' + (t.office||'')] = t.target || 0;
+        });
+      }
+
       var rows = parseCSV(csv);
       var offLower = _off.toLowerCase();
       _riders = rows
@@ -335,20 +380,27 @@ function doLogout() {
 }
 
 function renderSum() {
+  // Count scheduled per zone from rider list
   var zones = {};
   _riders.forEach(function(r){
-    if (!zones[r.zone]) zones[r.zone] = { s:0, t:0 };
-    zones[r.zone].t++;
+    if (!zones[r.zone]) zones[r.zone] = { s:0 };
     if (r.scheduled) zones[r.zone].s++;
   });
-  var ts = _riders.filter(function(r){ return r.scheduled; }).length;
-  var tt = _riders.length;
-  var h  = sc('الإجمالي', ts, tt, tt ? ts/tt : null);
+
+  // Use targets from _targets map (same source as the tool)
+  var totalSched = 0, totalTarget = 0;
+  var h = '';
   Object.keys(zones).sort().forEach(function(z){
-    var x = zones[z];
-    h += sc(z, x.s, x.t, x.t ? x.s/x.t : null);
+    var sched  = zones[z].s;
+    var key    = z + '|||' + _off;
+    var target = _targets[key] || 0;
+    totalSched  += sched;
+    totalTarget += target;
+    h += sc(z, sched, target, target > 0 ? sched/target : null);
   });
-  document.getElementById('sgrid').innerHTML = h;
+  // Total card first
+  var totalCard = sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null);
+  document.getElementById('sgrid').innerHTML = totalCard + h;
 }
 
 function sc(l, s, t, p) {
@@ -396,23 +448,54 @@ function renderTbl() {
     if (a.lastShift) return -1;
     return 0;
   });
+  // Desktop table
   tb.innerHTML = rows.map(function(r){
     var badge = r.scheduled
       ? '<span class="bdg by">✅ مجدول</span>'
       : '<span class="bdg bn">❌ غير مجدول</span>';
     var ph = r.phone
-      ? '<a href="tel:' + r.phone + '" style="color:var(--accent);text-decoration:none">' + r.phone + '</a>'
+      ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>'
       : '—';
     var ls = r.lastShift || '—';
     return '<tr>' +
       '<td>' + (r.id||'—') + '</td>' +
       '<td style="font-weight:500">' + (r.name||'—') + '</td>' +
       '<td>' + (r.zone||'—') + '</td>' +
-      '<td style="font-size:11px;color:var(--text-secondary)">' + ls + '</td>' +
+      '<td style="font-size:11px;color:var(--muted)">' + ls + '</td>' +
       '<td>' + ph + '</td>' +
       '<td>' + badge + '</td>' +
       '</tr>';
   }).join('');
+
+  // Mobile cards
+  document.getElementById('rcards').innerHTML = rows.map(function(r){
+    var badge = r.scheduled
+      ? '<span class="bdg by">✅ مجدول</span>'
+      : '<span class="bdg bn">❌ غير مجدول</span>';
+    var ph = r.phone
+      ? '<span class="ph-copy" onclick="copyPhone(\'' + r.phone + '\')">' + r.phone + ' 📋</span>'
+      : '';
+    return '<div class="rcard">' +
+      '<div class="rcard-top">' +
+        '<div><div class="rcard-name">' + (r.name||'—') + '</div>' +
+        '<div class="rcard-id">' + (r.id||'') + '</div></div>' +
+        badge +
+      '</div>' +
+      '<div class="rcard-meta">' +
+        (r.zone   ? '<span>📍 ' + r.zone + '</span>' : '') +
+        (r.lastShift ? '<span>🗓 ' + r.lastShift + '</span>' : '') +
+        (ph ? '<span>' + ph + '</span>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function copyPhone(phone) {
+  navigator.clipboard.writeText(phone).then(function(){
+    var t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }).catch(function(){});
 }
 
 // ── CSV Parser ──────────────────────────────────────────────────
