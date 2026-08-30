@@ -83,6 +83,16 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .bn{background:var(--danger-bg);color:var(--danger-text)}
 .nor{text-align:center;padding:20px;color:var(--muted);font-size:12px}
 .ldg{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+/* Delta + clickable zone cards */
+.delta-up{color:var(--success-text);font-size:9px;font-weight:700;vertical-align:super}
+.delta-down{color:var(--danger-text);font-size:9px;font-weight:700;vertical-align:super}
+.scard{cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.scard:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(255,89,0,.12)}
+.scard.zact{border-color:var(--accent);background:#fff7f4}
+.scard.zact .sarrow{transform:rotate(180deg);color:var(--accent)}
+.scard-tot{cursor:default!important}
+.scard-tot:hover{border-color:var(--bdr)!important;box-shadow:var(--sh)!important;background:var(--surf)!important}
+.sarrow{font-size:9px;color:var(--muted);display:block;margin-top:4px;transition:transform .2s,color .2s;line-height:1}
 
 /* Phone copy */
 .ph-copy{color:var(--accent);cursor:pointer;font-size:12px;-webkit-tap-highlight-color:transparent}
@@ -338,30 +348,62 @@ function renderSum() {
   });
   var hasTargets = Object.keys(_targets).length > 0;
   var totalSched = 0, totalTarget = 0, h = '';
+
+  // Load prev snapshot for delta
+  var prevSnap = {};
+  try { var sv = localStorage.getItem('dash_snap_' + _off); if (sv) prevSnap = JSON.parse(sv); } catch(e) {}
+  var currSnap = {};
+
   Object.keys(zones).sort().forEach(function(z){
     var key   = z + '|||' + _off;
     var tData = _targets[key];
     var sched  = hasTargets && tData ? tData.scheduled : zones[z].s;
     var target = hasTargets && tData ? tData.target    : zones[z].t;
+    var delta  = prevSnap[z] !== undefined ? sched - prevSnap[z] : null;
+    currSnap[z] = sched;
     totalSched  += sched;
     totalTarget += target;
-    h += sc(z, sched, target, target > 0 ? sched/target : null);
+    h += sc(z, sched, target, target > 0 ? sched/target : null, delta, true);
   });
+
+  // Save current snapshot
+  try { localStorage.setItem('dash_snap_' + _off, JSON.stringify(currSnap)); } catch(e) {}
+
   document.getElementById('sgrid').innerHTML =
-    sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null) + h;
+    sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null, null, false) + h;
 }
 
-function sc(l, s, t, p) {
-  var ps = '', pt = '—';
+function sc(l, s, t, p, delta, clickable) {
+  var ps = '', pt = '—', dh = '';
   if (p !== null) {
     pt = Math.round(p * 100) + '%';
     if      (p >= .85) ps = 'background:var(--success-bg);color:var(--success-text)';
     else if (p >= .65) ps = 'background:var(--warn-bg);color:var(--warn-text)';
     else               ps = 'background:var(--danger-bg);color:var(--danger-text)';
   }
-  return '<div class="scard"><div class="szone">' + l + '</div>' +
-    '<div class="snum">' + s + ' / ' + t + '</div>' +
-    '<span class="spct" style="' + ps + '">' + pt + '</span></div>';
+  if (delta !== null && delta !== undefined && delta !== 0) {
+    dh = delta > 0
+      ? '<sup class="delta-up">↑'+delta+'</sup>'
+      : '<sup class="delta-down">↓'+Math.abs(delta)+'</sup>';
+  }
+  var sid = l.replace(/[^a-zA-Z0-9]/g,'_');
+  var cls = 'scard' + (clickable ? '' : ' scard-tot');
+  var oc  = clickable ? ' id="szc_'+sid+'" onclick="filterZone(\''+l.replace(/'/g,"\\'")+'\')"' : '';
+  var arr = clickable ? '<span class="sarrow">▼</span>' : '';
+  return '<div class="'+cls+'"'+oc+'>' +
+    '<div class="szone">'+l+'</div>' +
+    '<div class="snum">'+s+dh+' / '+t+'</div>' +
+    '<span class="spct" style="'+ps+'">'+pt+'</span>'+arr+'</div>';
+}
+
+function filterZone(z) {
+  if (_zone === z) {
+    setZ('', document.querySelector('#zone-frow .fbtn'));
+  } else {
+    var btn = null;
+    document.querySelectorAll('#zone-frow .fbtn').forEach(function(b){ if (b.textContent.trim() === z) btn = b; });
+    setZ(z, btn);
+  }
 }
 
 function setF(f, b) {
@@ -373,6 +415,10 @@ function setF(f, b) {
 function setZ(z, b) {
   _zone = z;
   document.querySelectorAll('#zone-frow .fbtn').forEach(function(x){ x.classList.toggle('act', x === b); });
+  // Sync scard active state
+  document.querySelectorAll('.scard[id^="szc_"]').forEach(function(c){
+    c.classList.toggle('zact', z && c.id === 'szc_' + z.replace(/[^a-zA-Z0-9]/g,'_'));
+  });
   renderTbl();
 }
 
