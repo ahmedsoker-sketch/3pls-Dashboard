@@ -276,8 +276,7 @@ function loadAndShowApp() {
   }
 
   var googleUrl = CONFIG.riderDataUrl + '&_t=' + Date.now();
-  var url = 'https://corsproxy.io/?' + encodeURIComponent(googleUrl);
-
+var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(googleUrl);
   fetch(url)
     .then(function(r){ return r.text(); })
     .then(function(csv){
