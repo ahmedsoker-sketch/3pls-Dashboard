@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Office Dashboard — Assign Tool</title>
+<title>Mohandiseen 3PLs-Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -94,7 +94,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 <div class="hdr">
   <div class="logo">t</div>
   <div class="hdr-wrap">
-    <div class="hdr-t">Office Dashboard</div>
+    <div class="hdr-t">Mohandiseen 3PLs-Dashboard</div>
     <div class="hdr-s">Rider Coverage Tracker</div>
   </div>
 </div>
@@ -148,7 +148,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div class="cnt" id="cnt"></div>
   <table class="rtbl">
-    <thead><tr><th>ID</th><th>الاسم</th><th>المنطقة</th><th>الهاتف</th><th>الحالة</th></tr></thead>
+    <thead><tr><th>ID</th><th>الاسم</th><th>المنطقة</th><th>آخر شيفت</th><th>الهاتف</th><th>الحالة</th></tr></thead>
     <tbody id="tbody"></tbody>
   </table>
 </div>
@@ -266,12 +266,12 @@ function loadAndShowApp() {
   document.getElementById('aupd').textContent = '';
   document.getElementById('sgrid').innerHTML  = '';
   document.getElementById('tbody').innerHTML  =
-    '<tr><td colspan="5" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
+    '<tr><td colspan="6" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
 
   if (CONFIG.riderDataUrl === 'PASTE_CSV_URL_HERE') {
     document.getElementById('aupd').textContent = '⚠️ riderDataUrl مش محدود في CONFIG';
     document.getElementById('tbody').innerHTML =
-      '<tr><td colspan="5" class="nor">حط الـ CSV URL الأول</td></tr>';
+      '<tr><td colspan="6" class="nor">حط الـ CSV URL الأول</td></tr>';
     return;
   }
 
@@ -285,12 +285,13 @@ function loadAndShowApp() {
       _riders = rows
         .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
         .map(function(r){ return {
-          id:        (r['Rider ID'] || '').trim(),
-          name:      (r['Name']     || '').trim(),
-          zone:      (r['Zone']     || '').trim(),
-          phone:     (r['Phone']    || '').trim(),
-          scheduled: (r['Scheduled']|| '').trim().toLowerCase() === 'yes',
-          ts:        (r['Timestamp']|| '').trim()
+          id:        (r['Rider ID']   || '').trim(),
+          name:      (r['Name']       || '').trim(),
+          zone:      (r['Zone']       || '').trim(),
+          phone:     (r['Phone']      || '').trim(),
+          lastShift: (r['Last Shift'] || '').trim(),
+          scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
+          ts:        (r['Timestamp']  || '').trim()
         }; });
 
       var lastTs = '';
@@ -303,7 +304,7 @@ function loadAndShowApp() {
     .catch(function(e){
       document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
       document.getElementById('tbody').innerHTML =
-        '<tr><td colspan="5" class="nor">❌ ' + e.message + '</td></tr>';
+        '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
     });
 }
 
@@ -371,13 +372,17 @@ function renderTbl() {
   document.getElementById('cnt').textContent = rows.length + ' طيار';
   var tb = document.getElementById('tbody');
   if (!rows.length) {
-    tb.innerHTML = '<tr><td colspan="5" class="nor">📭 مفيش نتايج</td></tr>';
+    tb.innerHTML = '<tr><td colspan="6" class="nor">📭 مفيش نتايج</td></tr>';
     return;
   }
-  // Sort: scheduled first
+  // Sort: by zone ASC, then lastShift DESC (most recent first)
   rows = rows.slice().sort(function(a,b){
-    if (a.scheduled !== b.scheduled) return a.scheduled ? -1 : 1;
-    return (a.zone||'').localeCompare(b.zone||'');
+    var zc = (a.zone||'').localeCompare(b.zone||'');
+    if (zc !== 0) return zc;
+    if (b.lastShift && a.lastShift) return b.lastShift.localeCompare(a.lastShift);
+    if (b.lastShift) return 1;
+    if (a.lastShift) return -1;
+    return 0;
   });
   tb.innerHTML = rows.map(function(r){
     var badge = r.scheduled
@@ -386,10 +391,12 @@ function renderTbl() {
     var ph = r.phone
       ? '<a href="tel:' + r.phone + '" style="color:var(--accent);text-decoration:none">' + r.phone + '</a>'
       : '—';
+    var ls = r.lastShift || '—';
     return '<tr>' +
       '<td>' + (r.id||'—') + '</td>' +
       '<td style="font-weight:500">' + (r.name||'—') + '</td>' +
       '<td>' + (r.zone||'—') + '</td>' +
+      '<td style="font-size:11px;color:var(--text-secondary)">' + ls + '</td>' +
       '<td>' + ph + '</td>' +
       '<td>' + badge + '</td>' +
       '</tr>';
