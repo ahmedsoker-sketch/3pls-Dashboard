@@ -442,7 +442,7 @@ function renderSum() {
   Object.keys(zoneSet).sort().forEach(function(z){
     var key   = z + '|||' + _off;
     var tData = hasTargets ? _targets[key] : null;
-    var sched  = tData ? tData.scheduled : (riderZones[z] ? riderZones[z].s : 0);
+    var sched  = (_activeDay === 'today' && tData) ? tData.scheduled : (riderZones[z] ? riderZones[z].s : 0);
     var target = tData ? tData.target    : (riderZones[z] ? riderZones[z].t : 0);
     var delta  = prevSnap[z] !== undefined ? sched - prevSnap[z] : null;
     currSnap[z] = sched;
