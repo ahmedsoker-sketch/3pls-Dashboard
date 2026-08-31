@@ -137,7 +137,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   <div class="logo">t</div>
   <div class="hdr-wrap">
     <div class="hdr-t">Mohandiseen 3PLs-Dashboard</div>
-    <div class="hdr-s">Rider Coverage Tracker</div>
+    <div class="hdr-s">3PLs Assign Tracker</div>
   </div>
 </div>
 <div class="acc"></div>
@@ -311,6 +311,11 @@ function loadAndShowApp() {
       ? { today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||'' }
       : { today: '', tomorrow: '', day2: '' };
 
+    // Show last push time from extension
+    if (datesData && datesData.pushedAt) {
+      document.getElementById('aupd').textContent = 'آخر رفع من التول: ' + datesData.pushedAt;
+    }
+
     // Parse targets
     _targets = {};
     if (tData && tData.targets) {
@@ -407,27 +412,38 @@ function doLogout() {
 }
 
 function renderSum() {
-  var zones = {};
+  // Build zones from riders
+  var riderZones = {};
   _riders.forEach(function(r){
     if (!r.zone) return;
-    if (!zones[r.zone]) zones[r.zone] = { s:0, t:0 };
-    zones[r.zone].t++;
-    if (r.scheduled) zones[r.zone].s++;
+    if (!riderZones[r.zone]) riderZones[r.zone] = { s:0, t:0 };
+    riderZones[r.zone].t++;
+    if (r.scheduled) riderZones[r.zone].s++;
   });
-  var hasTargets = Object.keys(_targets).length > 0;
-  var totalSched = 0, totalTarget = 0, h = '';
 
-  // Load prev snapshot for delta (keyed per office + active day)
+  var hasTargets = Object.keys(_targets).length > 0;
+
+  // Build full zone list — from riders + targets (so بكرة/بعده still show zones)
+  var zoneSet = {};
+  Object.keys(riderZones).forEach(function(z){ zoneSet[z] = true; });
+  if (hasTargets) {
+    Object.keys(_targets).forEach(function(k){
+      var parts = k.split('|||');
+      if (parts[1] && parts[1].toLowerCase() === _off.toLowerCase()) zoneSet[parts[0]] = true;
+    });
+  }
+
+  var totalSched = 0, totalTarget = 0, h = '';
   var snapKey = 'dash_snap_' + _off + '_' + _activeDay;
   var prevSnap = {};
   try { var sv = localStorage.getItem(snapKey); if (sv) prevSnap = JSON.parse(sv); } catch(e) {}
   var currSnap = {};
 
-  Object.keys(zones).sort().forEach(function(z){
+  Object.keys(zoneSet).sort().forEach(function(z){
     var key   = z + '|||' + _off;
-    var tData = _targets[key];
-    var sched  = hasTargets && tData ? tData.scheduled : zones[z].s;
-    var target = hasTargets && tData ? tData.target    : zones[z].t;
+    var tData = hasTargets ? _targets[key] : null;
+    var sched  = tData ? tData.scheduled : (riderZones[z] ? riderZones[z].s : 0);
+    var target = tData ? tData.target    : (riderZones[z] ? riderZones[z].t : 0);
     var delta  = prevSnap[z] !== undefined ? sched - prevSnap[z] : null;
     currSnap[z] = sched;
     totalSched  += sched;
@@ -435,7 +451,6 @@ function renderSum() {
     h += sc(z, sched, target, target > 0 ? sched/target : null, delta, true);
   });
 
-  // Save current snapshot
   try { localStorage.setItem(snapKey, JSON.stringify(currSnap)); } catch(e) {}
 
   document.getElementById('sgrid').innerHTML =
@@ -459,9 +474,11 @@ function sc(l, s, t, p, delta, clickable) {
   var cls = 'scard' + (clickable ? '' : ' scard-tot');
   var oc  = clickable ? ' id="szc_'+sid+'" onclick="filterZone(\''+l.replace(/'/g,"\\'")+'\')"' : '';
   var arr = clickable ? '<span class="sarrow">▼</span>' : '';
+  // scheduled = colored by status, target = muted
+  var schedColor = p === null ? 'var(--text)' : (p >= .85 ? 'var(--success-text)' : p >= .65 ? 'var(--warn-text)' : 'var(--danger-text)');
   return '<div class="'+cls+'"'+oc+'>' +
     '<div class="szone">'+l+'</div>' +
-    '<div class="snum">'+s+dh+' / '+t+'</div>' +
+    '<div class="snum"><span style="color:'+schedColor+';font-weight:700">'+s+dh+'</span><span style="color:var(--muted);font-size:13px;font-weight:400"> / '+t+'</span></div>' +
     '<span class="spct" style="'+ps+'">'+pt+'</span>'+arr+'</div>';
 }
 
