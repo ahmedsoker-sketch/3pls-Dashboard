@@ -201,14 +201,15 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <script>
+const GH = 'https://cdn.jsdelivr.net/gh/ahmedsoker-sketch/3pls-Dashboard@main';
 const CONFIG = {
   riderDataUrls: {
-    today:    'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-today.csv',
-    tomorrow: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-tomorrow.csv',
-    day2:     'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-day2.csv',
+    today:    GH + '/rider-data-today.csv',
+    tomorrow: GH + '/rider-data-tomorrow.csv',
+    day2:     GH + '/rider-data-day2.csv',
   },
-  datesUrl:       'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-dates.json',
-  targetsDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/targets-data.json',
+  datesUrl:       GH + '/rider-data-dates.json',
+  targetsDataUrl: GH + '/targets-data.json',
   offices: {
     'Al Alamia':             'ala815',
     'Apache':                'apc739',
