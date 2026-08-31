@@ -248,7 +248,7 @@ window.onload = function () {
 
   try {
     var saved = localStorage.getItem('dash_office');
-    if (saved && CONFIG.offices[saved]) { _off = saved; loadAndShowApp(); }
+    if (saved && CONFIG.offices[saved]) { _off = saved; loadAndShowApp(); startAutoRefresh(); }
   } catch(e) {}
 };
 
@@ -283,6 +283,7 @@ function doLogin() {
   }
   try { localStorage.setItem('dash_office', _off); } catch(e) {}
   loadAndShowApp();
+  startAutoRefresh();
 }
 
 function loadAndShowApp() {
@@ -400,7 +401,12 @@ function loadActiveDay() {
   renderSum(); renderTbl();
 }
 
+var _autoRefreshTimer = null;
 function reloadData() { if (_off) loadAndShowApp(); }
+function startAutoRefresh() {
+  if (_autoRefreshTimer) clearInterval(_autoRefreshTimer);
+  _autoRefreshTimer = setInterval(function(){ if (_off) loadAndShowApp(); }, 30 * 60 * 1000);
+}
 
 function doLogout() {
   try { localStorage.removeItem('dash_office'); } catch(e) {}
