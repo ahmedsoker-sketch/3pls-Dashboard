@@ -94,6 +94,13 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .scard-tot:hover{border-color:var(--bdr)!important;box-shadow:var(--sh)!important;background:var(--surf)!important}
 .sarrow{font-size:9px;color:var(--muted);display:block;margin-top:4px;transition:transform .2s,color .2s;line-height:1}
 
+/* Day tabs */
+.day-tabs{display:flex;gap:6px;margin-bottom:12px}
+.day-tab{flex:1;padding:7px 6px;border:1px solid var(--bdr);border-radius:8px;background:var(--surf);color:var(--text2);font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;cursor:pointer;text-align:center;line-height:1.3;transition:all .15s}
+.day-tab:hover{border-color:var(--accent);color:var(--accent)}
+.day-tab.act{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+.day-tab .day-lbl{display:block;font-size:10px;opacity:.8;margin-top:1px}
+
 /* Phone copy */
 .ph-copy{color:var(--accent);cursor:pointer;font-size:12px;-webkit-tap-highlight-color:transparent}
 .ph-copy:active{opacity:.6}
@@ -172,6 +179,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
       <button class="logbtn"    onclick="doLogout()">← خروج</button>
     </div>
   </div>
+  <div class="day-tabs" id="day-tabs"></div>
   <div class="sgrid" id="sgrid"></div>
   <div class="stit">👥 قائمة الطيارين</div>
   <input class="sinp" type="text" id="srch" placeholder="🔍 ابحث بالاسم أو الـ ID أو المنطقة..." oninput="renderTbl()">
@@ -194,7 +202,12 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 
 <script>
 const CONFIG = {
-  riderDataUrl:   'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data.csv',
+  riderDataUrls: {
+    today:    'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-today.csv',
+    tomorrow: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-tomorrow.csv',
+    day2:     'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-day2.csv',
+  },
+  datesUrl:       'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/rider-data-dates.json',
   targetsDataUrl: 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main/targets-data.json',
   offices: {
     'Al Alamia':             'ala815',
@@ -223,6 +236,7 @@ const CONFIG = {
 };
 
 var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '', _prevSnap = null;
+var _activeDay = 'today', _ridersByDay = {}, _dayDates = {};
 
 window.onload = function () {
   var names = Object.keys(CONFIG.offices);
@@ -276,54 +290,108 @@ function loadAndShowApp() {
   document.getElementById('aoff').textContent = _off;
   document.getElementById('aupd').textContent = '';
   document.getElementById('sgrid').innerHTML  = '';
+  document.getElementById('day-tabs').innerHTML = '';
   document.getElementById('tbody').innerHTML  =
     '<tr><td colspan="6" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
 
   var t = '?_t=' + Date.now();
+  var dayKeys = ['today', 'tomorrow', 'day2'];
   Promise.all([
-    fetch(CONFIG.riderDataUrl   + t).then(function(r){ return r.text(); }),
-    fetch(CONFIG.targetsDataUrl + t).then(function(r){ return r.json(); }).catch(function(){ return null; })
+    fetch(CONFIG.riderDataUrls.today    + t).then(function(r){ return r.text(); }).catch(function(){ return ''; }),
+    fetch(CONFIG.riderDataUrls.tomorrow + t).then(function(r){ return r.text(); }).catch(function(){ return ''; }),
+    fetch(CONFIG.riderDataUrls.day2     + t).then(function(r){ return r.text(); }).catch(function(){ return ''; }),
+    fetch(CONFIG.targetsDataUrl         + t).then(function(r){ return r.json(); }).catch(function(){ return null; }),
+    fetch(CONFIG.datesUrl               + t).then(function(r){ return r.json(); }).catch(function(){ return null; })
   ]).then(function(results){
-    var csv = results[0], tData = results[1];
+    var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
+    var tData = results[3], datesData = results[4];
+
+    // Store date strings from metadata
+    _dayDates = datesData
+      ? { today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||'' }
+      : { today: '', tomorrow: '', day2: '' };
+
+    // Parse targets
     _targets = {};
     if (tData && tData.targets) {
       tData.targets.forEach(function(t){
         _targets[(t.zone||'') + '|||' + (t.office||'')] = { target: t.target||0, scheduled: t.scheduled||0 };
       });
     }
-    var rows = parseCSV(csv);
-    var offLower = _off.toLowerCase();
-    _riders = rows
-      .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
-      .map(function(r){ return {
-        id:        (r['Rider ID']   || '').trim(),
-        name:      (r['Name']       || '').trim(),
-        zone:      (r['Zone']       || '').trim(),
-        phone:     (r['Phone']      || '').trim(),
-        lastShift: (r['Last Shift'] || '').trim(),
-        scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
-        ts:        (r['Timestamp']  || '').trim()
-      }; });
 
+    // Parse riders for each day
+    var offLower = _off.toLowerCase();
+    function parseDay(csv) {
+      var rows = parseCSV(csv);
+      return rows
+        .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
+        .map(function(r){ return {
+          id:        (r['Rider ID']   || '').trim(),
+          name:      (r['Name']       || '').trim(),
+          zone:      (r['Zone']       || '').trim(),
+          phone:     (r['Phone']      || '').trim(),
+          lastShift: (r['Last Shift'] || '').trim(),
+          scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
+          ts:        (r['Timestamp']  || '').trim()
+        }; });
+    }
+    _ridersByDay = {
+      today:    parseDay(csvToday),
+      tomorrow: parseDay(csvTomorrow),
+      day2:     parseDay(csvDay2)
+    };
+
+    // Use last timestamp from today for the header
     var lastTs = '';
-    _riders.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
+    _ridersByDay.today.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
     document.getElementById('aupd').textContent = lastTs ? 'آخر تحديث: ' + lastTs : '';
 
-    var zones = [];
-    _riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone) === -1) zones.push(r.zone); });
-    zones.sort(); _zone = '';
-    var zf = document.getElementById('zone-frow');
-    zf.innerHTML = '<button class="fbtn act" onclick="setZ(\'\',this)">كل الزونات</button>' +
-      zones.map(function(z){
-        return '<button class="fbtn" onclick="setZ(\'' + z.replace(/'/g,"\\'") + '\',this)">' + z + '</button>';
-      }).join('');
-
-    renderSum(); renderTbl();
+    // Render day tabs then load active day
+    renderDayTabs();
+    loadActiveDay();
   }).catch(function(e){
     document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
     document.getElementById('tbody').innerHTML =
       '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
   });
+}
+
+function renderDayTabs() {
+  var labels   = { today: 'النهارده', tomorrow: 'بكرة', day2: 'بعده' };
+  var dayNames = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  var dayKeys  = ['today','tomorrow','day2'];
+  var html = dayKeys.map(function(k){
+    var dateStr  = _dayDates[k];
+    var dayLabel = '';
+    if (dateStr) {
+      var dt = new Date(dateStr + 'T12:00:00Z');
+      dayLabel = dayNames[dt.getUTCDay()];
+    }
+    var act = k === _activeDay ? ' act' : '';
+    return '<button class="day-tab'+act+'" onclick="setActiveDay(\''+k+'\')">' +
+      labels[k] + (dayLabel ? '<span class="day-lbl">'+dayLabel+'</span>' : '') +
+      '</button>';
+  }).join('');
+  document.getElementById('day-tabs').innerHTML = html;
+}
+
+function setActiveDay(day) {
+  _activeDay = day;
+  renderDayTabs();
+  loadActiveDay();
+}
+
+function loadActiveDay() {
+  _riders = _ridersByDay[_activeDay] || [];
+  var zones = [];
+  _riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone) === -1) zones.push(r.zone); });
+  zones.sort(); _zone = '';
+  var zf = document.getElementById('zone-frow');
+  zf.innerHTML = '<button class="fbtn act" onclick="setZ(\'\',this)">كل الزونات</button>' +
+    zones.map(function(z){
+      return '<button class="fbtn" onclick="setZ(\'' + z.replace(/'/g,"\\'") + '\',this)">' + z + '</button>';
+    }).join('');
+  renderSum(); renderTbl();
 }
 
 function reloadData() { if (_off) loadAndShowApp(); }
@@ -349,9 +417,10 @@ function renderSum() {
   var hasTargets = Object.keys(_targets).length > 0;
   var totalSched = 0, totalTarget = 0, h = '';
 
-  // Load prev snapshot for delta
+  // Load prev snapshot for delta (keyed per office + active day)
+  var snapKey = 'dash_snap_' + _off + '_' + _activeDay;
   var prevSnap = {};
-  try { var sv = localStorage.getItem('dash_snap_' + _off); if (sv) prevSnap = JSON.parse(sv); } catch(e) {}
+  try { var sv = localStorage.getItem(snapKey); if (sv) prevSnap = JSON.parse(sv); } catch(e) {}
   var currSnap = {};
 
   Object.keys(zones).sort().forEach(function(z){
@@ -367,7 +436,7 @@ function renderSum() {
   });
 
   // Save current snapshot
-  try { localStorage.setItem('dash_snap_' + _off, JSON.stringify(currSnap)); } catch(e) {}
+  try { localStorage.setItem(snapKey, JSON.stringify(currSnap)); } catch(e) {}
 
   document.getElementById('sgrid').innerHTML =
     sc('الإجمالي', totalSched, totalTarget, totalTarget > 0 ? totalSched/totalTarget : null, null, false) + h;
