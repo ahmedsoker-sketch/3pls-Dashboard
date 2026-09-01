@@ -201,15 +201,15 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <script>
-const GH = 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main';
+const GH_API = 'https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/contents';
 const CONFIG = {
   riderDataUrls: {
-    today:    GH + '/rider-data-today.csv',
-    tomorrow: GH + '/rider-data-tomorrow.csv',
-    day2:     GH + '/rider-data-day2.csv',
+    today:    GH_API + '/rider-data-today.csv',
+    tomorrow: GH_API + '/rider-data-tomorrow.csv',
+    day2:     GH_API + '/rider-data-day2.csv',
   },
-  datesUrl:       GH + '/rider-data-dates.json',
-  targetsDataUrl: GH + '/targets-data.json',
+  datesUrl:       GH_API + '/rider-data-dates.json',
+  targetsDataUrl: GH_API + '/targets-data.json',
   offices: {
     'Al Alamia':             'ala815',
     'Apache':                'apc739',
@@ -368,19 +368,19 @@ function renderFromExtCache(result) {
   loadActiveDay();
 }
 
-// Fallback: fetch from GitHub CDN
-// Strategy: fetch dates.json always fresh (?_t=now, tiny ~100 bytes).
-// Use its pushedAt as a version key for CSVs — same push = same URL = CDN cache hit (fast);
-// new push = new URL = CDN miss = fresh data. No reliance on jsDelivr purge.
+// Fallback: fetch from GitHub Contents API — bypasses CDN entirely, always latest commit.
+// Accept: application/vnd.github.v3.raw returns file content directly (no base64).
 function loadFromGitHub() {
   document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
+  var API_HEADERS = { 'Accept': 'application/vnd.github.v3.raw' };
 
-  function fetchWithTimeout(url, asJson, timeoutMs) {
+  function ghFetch(url, asJson, timeoutMs) {
     timeoutMs = timeoutMs || 20000;
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
-    return fetch(url, { signal: ctrl.signal }).then(function(r){
+    return fetch(url, { headers: API_HEADERS, signal: ctrl.signal }).then(function(r){
       clearTimeout(timer);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       return asJson ? r.json() : r.text();
     }).catch(function(e){
       clearTimeout(timer);
@@ -388,28 +388,19 @@ function loadFromGitHub() {
     });
   }
 
-  // Step 1: fetch dates.json with hard cache-bust (tiny file)
-  fetchWithTimeout(CONFIG.datesUrl + '?_t=' + Date.now(), true, 10000)
-    .then(function(datesData) {
+  Promise.all([
+    ghFetch(CONFIG.riderDataUrls.today,    false, 20000),
+    ghFetch(CONFIG.riderDataUrls.tomorrow, false, 20000),
+    ghFetch(CONFIG.riderDataUrls.day2,     false, 20000),
+    ghFetch(CONFIG.targetsDataUrl,         true,  10000),
+    ghFetch(CONFIG.datesUrl,               true,  10000)
+  ]).then(function(results){
+      var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
+      var tData = results[3], datesData = results[4];
+
       _dayDates = datesData
         ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
         : {today:'', tomorrow:'', day2:''};
-
-      // Step 2: derive version string from pushedAt so CSVs are only re-fetched when data changed
-      var v = datesData && datesData.pushedAt
-        ? '?v=' + datesData.pushedAt.replace(/[^0-9]/g, '')
-        : '?_t=' + Date.now();
-
-      return Promise.all([
-        fetchWithTimeout(CONFIG.riderDataUrls.today    + v, false, 20000),
-        fetchWithTimeout(CONFIG.riderDataUrls.tomorrow + v, false, 20000),
-        fetchWithTimeout(CONFIG.riderDataUrls.day2     + v, false, 20000),
-        fetchWithTimeout(CONFIG.targetsDataUrl         + v, true,  10000)
-      ]).then(function(r){ return [r[0], r[1], r[2], r[3], datesData]; });
-    })
-    .then(function(results){
-      var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
-      var tData = results[3], datesData = results[4];
 
       _targets = {};
       if (tData && tData.targets) {
