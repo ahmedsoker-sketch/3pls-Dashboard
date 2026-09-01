@@ -368,13 +368,15 @@ function renderFromExtCache(result) {
   loadActiveDay();
 }
 
-// Fallback: fetch from GitHub CDN (no ?_t= cache-buster — use CDN cache for speed,
-// CDN is purged after every push so it stays fresh)
+// Fallback: fetch from GitHub CDN
+// Strategy: fetch dates.json always fresh (?_t=now, tiny ~100 bytes).
+// Use its pushedAt as a version key for CSVs — same push = same URL = CDN cache hit (fast);
+// new push = new URL = CDN miss = fresh data. No reliance on jsDelivr purge.
 function loadFromGitHub() {
   document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
-  var t = '';
+
   function fetchWithTimeout(url, asJson, timeoutMs) {
-    timeoutMs = timeoutMs || 15000;
+    timeoutMs = timeoutMs || 20000;
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
     return fetch(url, { signal: ctrl.signal }).then(function(r){
@@ -385,60 +387,70 @@ function loadFromGitHub() {
       return asJson ? null : '';
     });
   }
-  Promise.all([
-    fetchWithTimeout(CONFIG.riderDataUrls.today    + t, false),
-    fetchWithTimeout(CONFIG.riderDataUrls.tomorrow + t, false),
-    fetchWithTimeout(CONFIG.riderDataUrls.day2     + t, false),
-    fetchWithTimeout(CONFIG.targetsDataUrl         + t, true),
-    fetchWithTimeout(CONFIG.datesUrl               + t, true)
-  ]).then(function(results){
-    var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
-    var tData = results[3], datesData = results[4];
 
-    _dayDates = datesData
-      ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
-      : {today:'', tomorrow:'', day2:''};
+  // Step 1: fetch dates.json with hard cache-bust (tiny file)
+  fetchWithTimeout(CONFIG.datesUrl + '?_t=' + Date.now(), true, 10000)
+    .then(function(datesData) {
+      _dayDates = datesData
+        ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
+        : {today:'', tomorrow:'', day2:''};
 
-    _targets = {};
-    if (tData && tData.targets) {
-      tData.targets.forEach(function(row){
-        _targets[(row.zone||'') + '|||' + (row.office||'')] = {target: row.target||0, scheduled: row.scheduled||0};
-      });
-    }
+      // Step 2: derive version string from pushedAt so CSVs are only re-fetched when data changed
+      var v = datesData && datesData.pushedAt
+        ? '?v=' + datesData.pushedAt.replace(/[^0-9]/g, '')
+        : '?_t=' + Date.now();
 
-    var offLower = _off.toLowerCase();
-    function parseDay(csv) {
-      return parseCSV(csv)
-        .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
-        .map(function(r){ return {
-          id:        (r['Rider ID']   || '').trim(),
-          name:      (r['Name']       || '').trim(),
-          zone:      (r['Zone']       || '').trim(),
-          phone:     (r['Phone']      || '').trim(),
-          lastShift: (r['Last Shift'] || '').trim(),
-          scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
-          ts:        (r['Timestamp']  || '').trim()
-        }; });
-    }
-    _ridersByDay = {
-      today:    parseDay(csvToday),
-      tomorrow: parseDay(csvTomorrow),
-      day2:     parseDay(csvDay2)
-    };
+      return Promise.all([
+        fetchWithTimeout(CONFIG.riderDataUrls.today    + v, false, 20000),
+        fetchWithTimeout(CONFIG.riderDataUrls.tomorrow + v, false, 20000),
+        fetchWithTimeout(CONFIG.riderDataUrls.day2     + v, false, 20000),
+        fetchWithTimeout(CONFIG.targetsDataUrl         + v, true,  10000)
+      ]).then(function(r){ return [r[0], r[1], r[2], r[3], datesData]; });
+    })
+    .then(function(results){
+      var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
+      var tData = results[3], datesData = results[4];
 
-    var lastTs = '';
-    _ridersByDay.today.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
-    document.getElementById('aupd').textContent =
-      lastTs ? 'آخر تحديث: ' + lastTs
-             : (datesData && datesData.pushedAt ? 'آخر رفع: ' + datesData.pushedAt : '');
+      _targets = {};
+      if (tData && tData.targets) {
+        tData.targets.forEach(function(row){
+          _targets[(row.zone||'') + '|||' + (row.office||'')] = {target: row.target||0, scheduled: row.scheduled||0};
+        });
+      }
 
-    renderDayTabs();
-    loadActiveDay();
-  }).catch(function(e){
-    document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
-    document.getElementById('tbody').innerHTML =
-      '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
-  });
+      var offLower = _off.toLowerCase();
+      function parseDay(csv) {
+        return parseCSV(csv)
+          .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
+          .map(function(r){ return {
+            id:        (r['Rider ID']   || '').trim(),
+            name:      (r['Name']       || '').trim(),
+            zone:      (r['Zone']       || '').trim(),
+            phone:     (r['Phone']      || '').trim(),
+            lastShift: (r['Last Shift'] || '').trim(),
+            scheduled: (r['Scheduled']  || '').trim().toLowerCase() === 'yes',
+            ts:        (r['Timestamp']  || '').trim()
+          }; });
+      }
+      _ridersByDay = {
+        today:    parseDay(csvToday),
+        tomorrow: parseDay(csvTomorrow),
+        day2:     parseDay(csvDay2)
+      };
+
+      var lastTs = '';
+      _ridersByDay.today.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
+      document.getElementById('aupd').textContent =
+        lastTs ? 'آخر تحديث: ' + lastTs
+               : (datesData && datesData.pushedAt ? 'آخر رفع: ' + datesData.pushedAt : '');
+
+      renderDayTabs();
+      loadActiveDay();
+    }).catch(function(e){
+      document.getElementById('aupd').textContent = '❌ خطأ في تحميل البيانات';
+      document.getElementById('tbody').innerHTML =
+        '<tr><td colspan="6" class="nor">❌ ' + e.message + '</td></tr>';
+    });
 }
 
 function renderDayTabs() {
