@@ -1,12 +1,12 @@
 {
   "date": "2026-09-01",
-  "timestamp": "٠١:٤٠ م",
+  "timestamp": "٠١:٤٣ م",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 168
+      "scheduled": 169
     },
     {
       "zone": "Mohandiseen",
@@ -18,7 +18,7 @@
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 195,
-      "scheduled": 155
+      "scheduled": 156
     },
     {
       "zone": "Mohandiseen",
@@ -42,7 +42,7 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 135,
-      "scheduled": 105
+      "scheduled": 104
     },
     {
       "zone": "Mohandiseen",
