@@ -319,13 +319,13 @@ function loadAndShowApp() {
   // Ask content script; if it already fired, this triggers a fresh response
   window.postMessage({type: 'GET_ASSIGN_TOOL_DATA'}, '*');
 
-  // Fallback: if no extension response within 1.5 seconds, use GitHub
+  // Fallback: if no extension response within 500ms, use GitHub CDN
   var _fbTimer = setTimeout(function() {
     if (!_extDone) {
       window.removeEventListener('message', onExtMsg);
       loadFromGitHub();
     }
-  }, 1500);
+  }, 500);
 }
 
 // Render directly from extension's cov_last_result cache
@@ -368,10 +368,11 @@ function renderFromExtCache(result) {
   loadActiveDay();
 }
 
-// Fallback: fetch from GitHub CDN (original behaviour)
+// Fallback: fetch from GitHub CDN (no ?_t= cache-buster — use CDN cache for speed,
+// CDN is purged after every push so it stays fresh)
 function loadFromGitHub() {
-  document.getElementById('aupd').textContent = '⏳ جاري التحميل من GitHub...';
-  var t = '?_t=' + Date.now();
+  document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
+  var t = '';
   function fetchWithTimeout(url, asJson, timeoutMs) {
     timeoutMs = timeoutMs || 15000;
     var ctrl = new AbortController();
