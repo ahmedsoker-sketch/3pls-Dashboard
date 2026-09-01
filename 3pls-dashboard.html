@@ -201,15 +201,15 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <script>
-const GH_API = 'https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/contents';
+const GH = 'https://raw.githubusercontent.com/ahmedsoker-sketch/3pls-Dashboard/main';
 const CONFIG = {
   riderDataUrls: {
-    today:    GH_API + '/rider-data-today.csv',
-    tomorrow: GH_API + '/rider-data-tomorrow.csv',
-    day2:     GH_API + '/rider-data-day2.csv',
+    today:    GH + '/rider-data-today.csv',
+    tomorrow: GH + '/rider-data-tomorrow.csv',
+    day2:     GH + '/rider-data-day2.csv',
   },
-  datesUrl:       GH_API + '/rider-data-dates.json',
-  targetsDataUrl: GH_API + '/targets-data.json',
+  datesUrl:       GH + '/rider-data-dates.json',
+  targetsDataUrl: GH + '/targets-data.json',
   offices: {
     'Al Alamia':             'ala815',
     'Apache':                'apc739',
@@ -368,17 +368,19 @@ function renderFromExtCache(result) {
   loadActiveDay();
 }
 
-// Fallback: fetch from GitHub Contents API — bypasses CDN entirely, always latest commit.
-// Accept: application/vnd.github.v3.raw returns file content directly (no base64).
+// Fetch from raw.githubusercontent.com
+// ?_=Date.now()  → unique URL per request → Fastly CDN can't serve cached version
+// cache:'no-store' → browser never caches the response
+// No custom headers → no CORS preflight → works on all mobile browsers
 function loadFromGitHub() {
   document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
-  var API_HEADERS = { 'Accept': 'application/vnd.github.v3.raw' };
+  var t = '?_=' + Date.now();
 
   function ghFetch(url, asJson, timeoutMs) {
     timeoutMs = timeoutMs || 20000;
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
-    return fetch(url, { headers: API_HEADERS, signal: ctrl.signal, cache: 'no-store' }).then(function(r){
+    return fetch(url, { cache: 'no-store', signal: ctrl.signal }).then(function(r){
       clearTimeout(timer);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return asJson ? r.json() : r.text();
@@ -389,11 +391,11 @@ function loadFromGitHub() {
   }
 
   Promise.all([
-    ghFetch(CONFIG.riderDataUrls.today,    false, 20000),
-    ghFetch(CONFIG.riderDataUrls.tomorrow, false, 20000),
-    ghFetch(CONFIG.riderDataUrls.day2,     false, 20000),
-    ghFetch(CONFIG.targetsDataUrl,         true,  10000),
-    ghFetch(CONFIG.datesUrl,               true,  10000)
+    ghFetch(CONFIG.riderDataUrls.today    + t, false, 20000),
+    ghFetch(CONFIG.riderDataUrls.tomorrow + t, false, 20000),
+    ghFetch(CONFIG.riderDataUrls.day2     + t, false, 20000),
+    ghFetch(CONFIG.targetsDataUrl         + t, true,  10000),
+    ghFetch(CONFIG.datesUrl               + t, true,  10000)
   ]).then(function(results){
       var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
       var tData = results[3], datesData = results[4];
