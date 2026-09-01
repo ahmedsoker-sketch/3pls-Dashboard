@@ -302,7 +302,7 @@ function loadAndShowApp() {
     timeoutMs = timeoutMs || 15000;
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
-    var p = fetch(url, { signal: ctrl.signal }).then(function(r){
+    var p = fetch(url, { signal: ctrl.signal, cache: 'no-cache' }).then(function(r){
       clearTimeout(timer);
       return asJson ? r.json() : r.text();
     }).catch(function(e){
