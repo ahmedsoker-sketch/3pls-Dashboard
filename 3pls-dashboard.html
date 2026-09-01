@@ -360,8 +360,8 @@ function renderFromExtCache(result) {
     }
   });
 
-  // Show "live from extension" label with the run timestamp
-  var ts = (result.statusText||'').replace(/^✅\s*/, '');
+  // Show time only — strip count ("| 16877 مجدول اليوم") so office users don't see the total
+  var ts = (result.statusText||'').replace(/^✅\s*/, '').replace(/\s*\|.*$/, '');
   document.getElementById('aupd').textContent = ts ? '⚡ ' + ts : '⚡ بيانات حية من التول';
 
   renderDayTabs();
