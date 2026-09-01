@@ -286,33 +286,104 @@ function doLogin() {
   startAutoRefresh();
 }
 
+// ── Extension-first data loading ──────────────────────────────────────────────
+// 1. Ask the content script (injected by Assign Tool extension) for cached data.
+// 2. If extension responds within 1.5s → render instantly from cache (no GitHub).
+// 3. Otherwise fall back to GitHub CDN (old behaviour, 15s timeout per file).
+
 function loadAndShowApp() {
   document.getElementById('login').style.display = 'none';
   document.getElementById('app').style.display   = 'block';
   document.getElementById('aoff').textContent = _off;
-  document.getElementById('aupd').textContent = '';
+  document.getElementById('aupd').textContent = '⏳ جاري تحميل...';
   document.getElementById('sgrid').innerHTML  = '';
   document.getElementById('day-tabs').innerHTML = '';
   document.getElementById('tbody').innerHTML  =
     '<tr><td colspan="6" class="ldg">⏳ جاري تحميل البيانات...</td></tr>';
 
-  // ?_t=Date.now() ensures fresh data on every refresh (bypasses CDN cache).
-  // AbortController limits max wait to 15 seconds so it never hangs.
+  var _extDone = false;
+
+  function onExtMsg(e) {
+    if (!e.data || e.data.type !== 'ASSIGN_TOOL_DATA') return;
+    window.removeEventListener('message', onExtMsg);
+    _extDone = true;
+    clearTimeout(_fbTimer);
+    if (e.data.result && e.data.result.byDate && e.data.result.dates) {
+      renderFromExtCache(e.data.result);
+    } else {
+      // Extension present but no data yet — fall back to GitHub
+      loadFromGitHub();
+    }
+  }
+  window.addEventListener('message', onExtMsg);
+  // Ask content script; if it already fired, this triggers a fresh response
+  window.postMessage({type: 'GET_ASSIGN_TOOL_DATA'}, '*');
+
+  // Fallback: if no extension response within 1.5 seconds, use GitHub
+  var _fbTimer = setTimeout(function() {
+    if (!_extDone) {
+      window.removeEventListener('message', onExtMsg);
+      loadFromGitHub();
+    }
+  }, 1500);
+}
+
+// Render directly from extension's cov_last_result cache
+function renderFromExtCache(result) {
+  var dates   = result.dates || [];
+  var dayKeys = ['today', 'tomorrow', 'day2'];
+  _dayDates   = {today: dates[0]||'', tomorrow: dates[1]||'', day2: dates[2]||''};
+
+  // Map targets from today's zoneData (same targets apply to all days)
+  _targets = {};
+  var todayRes = result.byDate[dates[0]];
+  if (todayRes && todayRes.zoneData) {
+    Object.keys(todayRes.zoneData).forEach(function(zone) {
+      (todayRes.zoneData[zone] || []).forEach(function(o) {
+        _targets[zone + '|||' + o.office] = {target: o.target||0, scheduled: o.scheduled||0};
+      });
+    });
+  }
+
+  // Map ridersByDay — filter to this office
+  _ridersByDay = {today: [], tomorrow: [], day2: []};
+  var offLower = _off.toLowerCase();
+  dayKeys.forEach(function(k, i) {
+    var res = result.byDate[dates[i]];
+    if (res && res.riderList) {
+      _ridersByDay[k] = res.riderList
+        .filter(function(r){ return (r.office||'').toLowerCase() === offLower; })
+        .map(function(r){ return {
+          id: r.id||'', name: r.name||'', zone: r.zone||'',
+          phone: r.phone||'', lastShift: '', scheduled: !!r.scheduled, ts: ''
+        }; });
+    }
+  });
+
+  // Show "live from extension" label with the run timestamp
+  var ts = (result.statusText||'').replace(/^✅\s*/, '');
+  document.getElementById('aupd').textContent = ts ? '⚡ ' + ts : '⚡ بيانات حية من التول';
+
+  renderDayTabs();
+  loadActiveDay();
+}
+
+// Fallback: fetch from GitHub CDN (original behaviour)
+function loadFromGitHub() {
+  document.getElementById('aupd').textContent = '⏳ جاري التحميل من GitHub...';
   var t = '?_t=' + Date.now();
   function fetchWithTimeout(url, asJson, timeoutMs) {
     timeoutMs = timeoutMs || 15000;
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
-    var p = fetch(url, { signal: ctrl.signal }).then(function(r){
+    return fetch(url, { signal: ctrl.signal }).then(function(r){
       clearTimeout(timer);
       return asJson ? r.json() : r.text();
     }).catch(function(e){
       clearTimeout(timer);
       return asJson ? null : '';
     });
-    return p;
   }
-  var dayKeys = ['today', 'tomorrow', 'day2'];
   Promise.all([
     fetchWithTimeout(CONFIG.riderDataUrls.today    + t, false),
     fetchWithTimeout(CONFIG.riderDataUrls.tomorrow + t, false),
@@ -323,29 +394,20 @@ function loadAndShowApp() {
     var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
     var tData = results[3], datesData = results[4];
 
-    // Store date strings from metadata
     _dayDates = datesData
-      ? { today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||'' }
-      : { today: '', tomorrow: '', day2: '' };
+      ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
+      : {today:'', tomorrow:'', day2:''};
 
-    // Show last push time from extension
-    if (datesData && datesData.pushedAt) {
-      document.getElementById('aupd').textContent = 'آخر رفع من التول: ' + datesData.pushedAt;
-    }
-
-    // Parse targets
     _targets = {};
     if (tData && tData.targets) {
-      tData.targets.forEach(function(t){
-        _targets[(t.zone||'') + '|||' + (t.office||'')] = { target: t.target||0, scheduled: t.scheduled||0 };
+      tData.targets.forEach(function(row){
+        _targets[(row.zone||'') + '|||' + (row.office||'')] = {target: row.target||0, scheduled: row.scheduled||0};
       });
     }
 
-    // Parse riders for each day
     var offLower = _off.toLowerCase();
     function parseDay(csv) {
-      var rows = parseCSV(csv);
-      return rows
+      return parseCSV(csv)
         .filter(function(r){ return (r['Office']||'').trim().toLowerCase() === offLower; })
         .map(function(r){ return {
           id:        (r['Rider ID']   || '').trim(),
@@ -363,12 +425,12 @@ function loadAndShowApp() {
       day2:     parseDay(csvDay2)
     };
 
-    // Use last timestamp from today for the header
     var lastTs = '';
     _ridersByDay.today.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
-    document.getElementById('aupd').textContent = lastTs ? 'آخر تحديث: ' + lastTs : '';
+    document.getElementById('aupd').textContent =
+      lastTs ? 'آخر تحديث: ' + lastTs
+             : (datesData && datesData.pushedAt ? 'آخر رفع: ' + datesData.pushedAt : '');
 
-    // Render day tabs then load active day
     renderDayTabs();
     loadActiveDay();
   }).catch(function(e){
