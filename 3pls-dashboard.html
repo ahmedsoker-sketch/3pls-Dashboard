@@ -961,7 +961,7 @@ function renderSupBody() {
       '</div>' +
       '<div class="sup-chips">' + (chips || '<span style="font-size:10px;color:var(--muted)">لا يوجد طيارين</span>') + '</div>' +
       '<div class="sup-addrow">' +
-        '<input class="sup-idinp" id="supinp_' + key + '" placeholder="ID طيار (أو أكتر مفصولة بفاصلة)..."' +
+        '<input class="sup-idinp" id="supinp_' + key + '" placeholder="ID طيار (أو أكتر — فاصلة أو مسافة أو paste من الشيت)..."' +
           ' onkeydown="if(event.key===\'Enter\')supAddId(\'' + s.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">' +
         '<button class="sup-addbtn" onclick="supAddId(\'' + s.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">➕ إضافة</button>' +
       '</div>' +
@@ -988,7 +988,7 @@ function supAddId(supName) {
   var key = supName.replace(/[^a-zA-Z0-9]/g,'_');
   var inp = document.getElementById('supinp_' + key);
   if (!inp) return;
-  var ids = inp.value.split(/[,\n]+/).map(function(x){ return x.trim(); }).filter(Boolean);
+  var ids = inp.value.split(/[\s,]+/).map(function(x){ return x.trim(); }).filter(Boolean);
   if (!ids.length) return;
   if (!_supEdits[supName]) _supEdits[supName] = [];
   ids.forEach(function(id){ if (_supEdits[supName].indexOf(id) === -1) _supEdits[supName].push(id); });
@@ -1000,7 +1000,7 @@ function supAddNew() {
   var idsInp  = document.getElementById('sup-new-ids');
   var name    = nameInp.value.trim();
   if (!name) { nameInp.focus(); return; }
-  var ids = idsInp.value ? idsInp.value.split(/[,\n]+/).map(function(x){ return x.trim(); }).filter(Boolean) : [];
+  var ids = idsInp.value ? idsInp.value.split(/[\s,]+/).map(function(x){ return x.trim(); }).filter(Boolean) : [];
   if (_supEdits[name]) {
     ids.forEach(function(id){ if (_supEdits[name].indexOf(id) === -1) _supEdits[name].push(id); });
   } else {
