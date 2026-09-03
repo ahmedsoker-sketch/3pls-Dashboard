@@ -124,10 +124,16 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   .rider-cards{display:flex}
   .sgrid{grid-template-columns:repeat(2,1fr)}
   .snum{font-size:16px}
-  .ohdr{padding:10px 12px}
+  .ohdr{padding:10px 12px;gap:6px}
   .oname{font-size:14px}
+  .ohdr-btns{gap:4px;flex-wrap:wrap}
+  .logbtn{padding:4px 8px!important;font-size:10px!important}
+  .reloadbtn{padding:4px 8px!important;font-size:10px!important}
   .frow{gap:4px}
   .fbtn{padding:4px 10px;font-size:10px}
+  .day-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .day-tab{flex:0 0 auto;min-width:90px}
+  .stit{font-size:12px}
 }
 
 /* ── Supervisor Modal ── */
@@ -1157,29 +1163,35 @@ function renderAdmZones() {
     return;
   }
 
-  // Count scheduled per zone and per zone+office
-  var zSched = {}, offSched = {};
+  // Count scheduled AND total per zone and per zone+office
+  var zSched = {}, zTotal = {}, offSched = {}, offTotal = {};
   riders.forEach(function(r) {
-    if (!r.zone || !r.scheduled) return;
+    if (!r.zone) return;
+    zTotal[r.zone] = (zTotal[r.zone]||0) + 1;
+    var k = r.zone + '|||' + (r.office||'');
+    offTotal[k] = (offTotal[k]||0) + 1;
+    if (!r.scheduled) return;
     zSched[r.zone] = (zSched[r.zone]||0) + 1;
-    var k = r.zone + '|||' + r.office;
     offSched[k] = (offSched[k]||0) + 1;
   });
 
-  // Zones from target map (source of truth)
-  var zones = Object.keys(_admZoneTarget).sort();
-  if (!zones.length) {
-    // fallback: zones from CSV
-    riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone)===-1) zones.push(r.zone); });
-    zones.sort();
+  // Zones: prefer target map, fall back to CSV zones
+  var hasTargets = Object.keys(_admZoneTarget).length > 0;
+  var zones = hasTargets ? Object.keys(_admZoneTarget).sort() : Object.keys(zTotal).sort();
+
+  // Denominator: prefer targets-data, fall back to total rider count
+  function zDen(z) { return hasTargets ? (_admZoneTarget[z]||zTotal[z]||0) : (zTotal[z]||0); }
+  function oDen(k) {
+    if (hasTargets && _admZoneOffTarget[k]) return _admZoneOffTarget[k];
+    return offTotal[k]||0;
   }
 
   // Totals
   var totalS = zones.reduce(function(s,z){ return s+(zSched[z]||0); }, 0);
-  var totalT = zones.reduce(function(s,z){ return s+(_admZoneTarget[z]||0); }, 0);
+  var totalT = zones.reduce(function(s,z){ return s+zDen(z); }, 0);
 
   function zoneCard(z) {
-    var s = zSched[z]||0, t = _admZoneTarget[z]||0;
+    var s = zSched[z]||0, t = zDen(z);
     var p = t ? s/t : null;
     var pBg  = p===null?'':p>=0.85?'background:var(--success-bg);color:var(--success-text)':p>=0.65?'background:var(--warn-bg);color:var(--warn-text)':'background:var(--danger-bg);color:var(--danger-text)';
     var sCol = p===null?'var(--text)':p>=0.85?'var(--success-text)':p>=0.65?'var(--warn-text)':'var(--danger-text)';
@@ -1187,10 +1199,17 @@ function renderAdmZones() {
 
     // Office breakdown — styled rows like extension
     var offLines = '';
-    var offKeys = Object.keys(_admZoneOffTarget).filter(function(k){ return k.split('|||')[0]===z; });
+    // Build office keys: prefer target-based, fall back to CSV-observed
+    var offKeysSet = {};
+    if (hasTargets) {
+      Object.keys(_admZoneOffTarget).forEach(function(k){ if(k.split('|||')[0]===z) offKeysSet[k]=1; });
+    } else {
+      Object.keys(offTotal).forEach(function(k){ if(k.split('|||')[0]===z) offKeysSet[k]=1; });
+    }
+    var offKeys = Object.keys(offKeysSet);
     // sort by % descending
     offKeys.sort(function(a,b){
-      var oa = _admZoneOffTarget[a]||0, ob = _admZoneOffTarget[b]||0;
+      var oa = oDen(a), ob = oDen(b);
       var pa = oa ? (offSched[a]||0)/oa : 0;
       var pb = ob ? (offSched[b]||0)/ob : 0;
       return pb - pa;
@@ -1199,7 +1218,7 @@ function renderAdmZones() {
       offLines = '<div class="adm-zoffs">' +
         offKeys.map(function(k){
           var off = k.split('|||')[1];
-          var os  = offSched[k]||0, ot = _admZoneOffTarget[k]||0;
+          var os  = offSched[k]||0, ot = oDen(k);
           var op  = ot ? Math.round(os/ot*100) : 0;
           var pStyle = op>=85 ? 'background:var(--success-bg);color:var(--success-text)'
                      : op>=65 ? 'background:var(--warn-bg);color:var(--warn-text)'
