@@ -806,10 +806,11 @@ function exportRiders() {
   // Build reverse map: riderId → supervisorName
   var supMap = {};
   var offSups = _supervisors && _off && _supervisors[_off];
-  if (offSups && Array.isArray(offSups)) {
-    offSups.forEach(function(sup) {
-      if (sup.ids && Array.isArray(sup.ids)) {
-        sup.ids.forEach(function(id) { supMap[String(id).trim()] = sup.name || ''; });
+  if (offSups && typeof offSups === 'object') {
+    Object.keys(offSups).forEach(function(supName) {
+      var ids = offSups[supName];
+      if (Array.isArray(ids)) {
+        ids.forEach(function(id) { supMap[String(id).trim()] = supName; });
       }
     });
   }
