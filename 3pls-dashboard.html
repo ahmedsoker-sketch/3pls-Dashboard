@@ -129,6 +129,72 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   .frow{gap:4px}
   .fbtn{padding:4px 10px;font-size:10px}
 }
+
+/* ── Supervisor Modal ── */
+.sup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.sup-overlay.open{display:flex}
+.sup-sheet{background:var(--surf);border-radius:16px 16px 0 0;width:100%;max-width:720px;max-height:82vh;display:flex;flex-direction:column}
+.sup-hdr{padding:14px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.sup-hdr-t{font-size:14px;font-weight:700}
+.sup-cls{padding:4px 10px;background:var(--bg);border:1px solid var(--bdr);border-radius:7px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer}
+.sup-body{overflow-y:auto;padding:14px 18px;flex:1;-webkit-overflow-scrolling:touch}
+.sup-footer{padding:10px 18px;border-top:1px solid var(--bdr);display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.sup-savebtn{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.sup-savebtn:disabled{opacity:.5;cursor:not-allowed}
+.sup-cancelbtn{width:100%;padding:8px;background:var(--bg);border:1px solid var(--bdr);border-radius:8px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer}
+.sup-entry{background:var(--bg);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.sup-entry-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.sup-ename{font-size:13px;font-weight:600}
+.sup-ecnt{font-size:10px;color:var(--muted)}
+.sup-chips{display:flex;flex-wrap:wrap;gap:4px;min-height:20px}
+.sup-chip{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;padding:2px 8px;font-size:10px;display:inline-flex;align-items:center;gap:3px}
+.sup-rm{color:var(--muted);cursor:pointer;font-size:11px;line-height:1}
+.sup-rm:hover{color:var(--danger-text)}
+.sup-addrow{display:flex;gap:6px;margin-top:8px}
+.sup-idinp{flex:1;padding:6px 10px;border:1px solid var(--bdr);border-radius:7px;font-family:'Poppins',sans-serif;font-size:12px;background:var(--surf);color:var(--text);outline:none}
+.sup-idinp:focus{border-color:var(--accent)}
+.sup-addbtn{padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:7px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap}
+.sup-new{border:2px dashed var(--bdr2);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.sup-new-lbl{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:8px}
+.sup-newinp{width:100%;padding:7px 10px;border:1px solid var(--bdr);border-radius:7px;font-family:'Poppins',sans-serif;font-size:12px;background:var(--surf);color:var(--text);outline:none;margin-bottom:6px}
+.sup-newinp:focus{border-color:var(--accent)}
+.sup-status{font-size:11px;text-align:center;min-height:14px}
+.sup-frow{display:none;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+
+/* ── Admin Panel ── */
+.adm-hdr{background:linear-gradient(135deg,#1a0a3e,#411517);border-radius:var(--radius);padding:14px 16px;color:#fff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.adm-title{font-size:16px;font-weight:700}
+.adm-sub{font-size:10px;opacity:.6;margin-top:2px}
+.adm-tabs{display:flex;gap:0;border-bottom:2px solid var(--bdr);margin-bottom:16px;overflow-x:auto}
+.adm-tab{padding:9px 14px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:none;font-family:'Poppins',sans-serif;color:var(--text2);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s}
+.adm-tab:hover{color:var(--accent)}
+.adm-tab.act{color:var(--accent);border-bottom-color:var(--accent)}
+.adm-section{display:none}
+.adm-section.act{display:block}
+.adm-tbl{width:100%;border-collapse:collapse;background:var(--surf);border-radius:var(--radius);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--bdr);margin-bottom:16px;font-size:12px}
+.adm-tbl th{padding:8px 10px;font-size:10px;font-weight:600;color:var(--muted);background:var(--bg);border-bottom:1px solid var(--bdr);text-align:right;white-space:nowrap}
+.adm-tbl td{padding:8px 10px;border-top:1px solid var(--bdr);text-align:right;vertical-align:middle}
+.adm-tbl tr:hover td{background:rgba(255,89,0,.03)}
+.adm-pct-ok{color:var(--success-text);font-weight:600}
+.adm-pct-warn{color:var(--warn-text);font-weight:600}
+.adm-pct-bad{color:var(--danger-text);font-weight:600}
+.adm-flag{background:var(--danger-bg);border:1px solid rgba(192,57,43,.2);border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.adm-warn-item{background:var(--warn-bg);border:1px solid rgba(176,120,0,.2);border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.adm-flag-off{font-size:13px;font-weight:600;flex:1}
+.adm-flag-reason{font-size:11px;color:var(--danger-text)}
+.adm-warn-item .adm-flag-reason{color:var(--warn-text)}
+.adm-sec-title{font-size:13px;font-weight:700;margin-bottom:10px}
+.adm-sup-office{font-size:12px;font-weight:700;color:var(--text2);padding:10px 0 4px;border-top:1px solid var(--bdr);margin-top:4px}
+.adm-sup-office:first-child{border-top:none;padding-top:0}
+.adm-pass-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bdr)}
+.adm-pass-name{font-size:12px;font-weight:500;flex:1}
+.adm-pass-val{font-family:monospace;font-size:12px;color:var(--accent);background:var(--bg);padding:3px 8px;border-radius:6px}
+.adm-pass-inp{font-family:monospace;font-size:12px;padding:4px 8px;border:1px solid var(--accent);border-radius:6px;width:110px;outline:none;background:var(--surf);display:none}
+.adm-editbtn{padding:4px 10px;font-size:11px;font-family:'Poppins',sans-serif;cursor:pointer;border-radius:6px;border:1px solid var(--bdr);background:var(--bg);color:var(--text2)}
+.adm-editbtn:hover{border-color:var(--accent);color:var(--accent)}
+.adm-savebtn2{padding:4px 10px;font-size:11px;font-family:'Poppins',sans-serif;cursor:pointer;border-radius:6px;border:none;background:var(--accent);color:#fff;display:none}
+.adm-link{display:block;text-align:center;margin-top:16px;font-size:11px;color:var(--muted);cursor:pointer}
+.adm-link:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -164,6 +230,57 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
       <button class="lbtn" id="lbtn" onclick="doLogin()">دخول</button>
       <div class="errmsg" id="errmsg"></div>
     </div>
+    <a class="adm-link" onclick="showAdminLogin()">⚙ دخول المسؤول</a>
+  </div>
+</div>
+
+<!-- Admin Login -->
+<div id="admin-login" style="display:none">
+  <div class="lcard">
+    <div class="lci">🔐</div>
+    <div class="lct">لوحة المسؤول</div>
+    <div class="lcs">للوصول لإعدادات النظام</div>
+    <input class="pinp" type="password" id="admin-pinp" placeholder="••••••" autocomplete="off"
+           onkeydown="if(event.key==='Enter')doAdminLogin()">
+    <button class="lbtn" onclick="doAdminLogin()">دخول</button>
+    <div class="errmsg" id="admin-errmsg"></div>
+    <a class="adm-link" onclick="showOfficeLogin()">← رجوع لتسجيل دخول المكاتب</a>
+  </div>
+</div>
+
+<!-- Admin App -->
+<div id="admin-app" style="display:none">
+  <div class="adm-hdr">
+    <div>
+      <div class="adm-title">🔐 لوحة المسؤول</div>
+      <div class="adm-sub" id="adm-upd">جاري التحميل...</div>
+    </div>
+    <div class="ohdr-btns">
+      <button class="reloadbtn" onclick="loadAdminData()">🔄 تحديث</button>
+      <button class="logbtn" onclick="doAdminLogout()">← خروج</button>
+    </div>
+  </div>
+  <div class="adm-tabs">
+    <button class="adm-tab act" onclick="switchAdmTab('overview',this)">📊 نظرة عامة</button>
+    <button class="adm-tab"     onclick="switchAdmTab('flags',this)">🚨 تنبيهات</button>
+    <button class="adm-tab"     onclick="switchAdmTab('sups',this)">👥 المشرفين</button>
+    <button class="adm-tab"     onclick="switchAdmTab('passwords',this)">🔑 الباسوردات</button>
+  </div>
+  <div class="adm-section act" id="adm-overview">
+    <div class="adm-sec-title">📊 أداء المكاتب — 3 أيام</div>
+    <div id="adm-overview-content"><div class="ldg">⏳ جاري التحميل...</div></div>
+  </div>
+  <div class="adm-section" id="adm-flags">
+    <div class="adm-sec-title">🚨 مكاتب تحتاج انتباه</div>
+    <div id="adm-flags-content"><div class="ldg">⏳ جاري التحميل...</div></div>
+  </div>
+  <div class="adm-section" id="adm-sups">
+    <div class="adm-sec-title">👥 تقسيمة المشرفين</div>
+    <div id="adm-sups-content"><div class="ldg">⏳ جاري التحميل...</div></div>
+  </div>
+  <div class="adm-section" id="adm-passwords">
+    <div class="adm-sec-title">🔑 باسوردات المكاتب</div>
+    <div id="adm-passwords-content"></div>
   </div>
 </div>
 
@@ -176,6 +293,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="ohdr-btns">
       <button class="reloadbtn" onclick="reloadData()">🔄 تحديث</button>
+      <button class="logbtn" onclick="openSupModal()" style="background:rgba(255,89,0,.2);border-color:rgba(255,89,0,.4)">👤 المشرفين</button>
       <button class="logbtn"    onclick="doLogout()">← خروج</button>
     </div>
   </div>
@@ -187,6 +305,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <input class="sinp" type="text" id="srch" placeholder="🔍 ابحث بالاسم أو الـ ID أو المنطقة..." oninput="renderTbl()">
   <div class="frow" id="zone-frow" style="margin-bottom:6px"></div>
+  <div class="sup-frow" id="sup-frow"></div>
   <div class="frow">
     <button class="fbtn act" data-f="all" onclick="setF('all',this)">الكل</button>
     <button class="fbtn"     data-f="yes" onclick="setF('yes',this)">✅ مجدول</button>
@@ -201,18 +320,38 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 <div id="toast">✅ تم النسخ</div>
 
+<!-- Supervisor Modal -->
+<div class="sup-overlay" id="sup-overlay" onclick="if(event.target===this)closeSupModal()">
+  <div class="sup-sheet">
+    <div class="sup-hdr">
+      <span class="sup-hdr-t">👤 إدارة المشرفين — <span id="sup-off-name"></span></span>
+      <button class="sup-cls" onclick="closeSupModal()">✖</button>
+    </div>
+    <div class="sup-body" id="sup-body"></div>
+    <div class="sup-footer">
+      <div class="sup-status" id="sup-status"></div>
+      <button class="sup-savebtn" id="sup-savebtn" onclick="saveSupData()">💾 حفظ التغييرات</button>
+      <button class="sup-cancelbtn" onclick="closeSupModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <script>
 const GH = 'https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/contents';
+const SUP_TOKEN  = (function(){var k='3PLsDash2026',e=[84,57,56,27,49,3,44,24,83,68,109,7,2,19,11,49,118,85,53,57,2,6,95,4,90,32,37,52,29,9,6,58,91,111,69,65,82,98,21,27,50,9,43,26,118,74,1,127,1,52,22,54,18,82,68,50,127,5,93,97,117,105,46,57,42,23,56,33,91,69,0,119,67,53,9,63,118,57,53,63,113,3,117,125,99,53,125,10,16,83,0,3,6];return e.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');})();
+const ADMIN_PASS = '3PLs@Adm!n#2026';
 const CONFIG = {
   riderDataUrls: {
     today:    GH + '/rider-data-today.csv',
     tomorrow: GH + '/rider-data-tomorrow.csv',
     day2:     GH + '/rider-data-day2.csv',
   },
-  datesUrl:       GH + '/rider-data-dates.json',
-  targetsDataUrl: GH + '/targets-data.json',
+  datesUrl:         GH + '/rider-data-dates.json',
+  targetsDataUrl:   GH + '/targets-data.json',
+  supervisorsUrl:   GH + '/supervisors.json',
+  offCfgUrl:        GH + '/office-config.json',
   offices: {
     'Al Alamia':             'ala815',
     'Apache':                'apc739',
@@ -241,6 +380,8 @@ const CONFIG = {
 
 var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '', _prevSnap = null;
 var _activeDay = 'today', _ridersByDay = {}, _dayDates = {};
+var _supervisors = {}, _supFilter = '', _supEdits = {};
+var _offPasses = {}, _admRaw = {}, _admEditingOff = null;
 
 window.onload = function () {
   var names = Object.keys(CONFIG.offices);
@@ -248,6 +389,13 @@ window.onload = function () {
   el.innerHTML = names.map(function(n){
     return '<button class="oopt" onclick="selOff(\'' + n.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">' + n + '</button>';
   }).join('');
+
+  // Load any password overrides from GitHub
+  fetch(CONFIG.offCfgUrl + '?_=' + Date.now(), {
+    headers: { 'Accept': 'application/vnd.github.v3.raw' }, cache: 'no-store'
+  }).then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ if (d && d.passwords) _offPasses = d.passwords; })
+    .catch(function(){});
 
   try {
     var saved = localStorage.getItem('dash_office');
@@ -278,7 +426,8 @@ function doLogin() {
   var err = document.getElementById('errmsg');
   err.textContent = '';
   if (!p) { err.textContent = 'أدخل الباسورد'; return; }
-  if (CONFIG.offices[_off] !== p) {
+  var correctPass = _offPasses[_off] || CONFIG.offices[_off];
+  if (correctPass !== p) {
     err.textContent = '❌ باسورد غلط';
     document.getElementById('pinp').value = '';
     document.getElementById('pinp').focus();
@@ -402,10 +551,12 @@ function loadFromGitHub() {
     ghFetch(CONFIG.riderDataUrls.tomorrow + t, false, 20000),
     ghFetch(CONFIG.riderDataUrls.day2     + t, false, 20000),
     ghFetch(CONFIG.targetsDataUrl         + t, true,  10000),
-    ghFetch(CONFIG.datesUrl               + t, true,  10000)
+    ghFetch(CONFIG.datesUrl               + t, true,  10000),
+    ghFetch(CONFIG.supervisorsUrl         + t, true,  10000)
   ]).then(function(results){
       var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
       var tData = results[3], datesData = results[4];
+      _supervisors = results[5] || {};
 
       _dayDates = datesData
         ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
@@ -482,12 +633,13 @@ function loadActiveDay() {
   _riders = _ridersByDay[_activeDay] || [];
   var zones = [];
   _riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone) === -1) zones.push(r.zone); });
-  zones.sort(); _zone = '';
+  zones.sort(); _zone = ''; _supFilter = '';
   var zf = document.getElementById('zone-frow');
   zf.innerHTML = '<button class="fbtn act" onclick="setZ(\'\',this)">كل الزونات</button>' +
     zones.map(function(z){
       return '<button class="fbtn" onclick="setZ(\'' + z.replace(/'/g,"\\'") + '\',this)">' + z + '</button>';
     }).join('');
+  renderSupFrow();
   renderSum(); renderTbl();
 }
 
@@ -651,6 +803,10 @@ function setZ(z, b) {
 function renderTbl() {
   var q    = (document.getElementById('srch').value || '').toLowerCase();
   var rows = _riders;
+  if (_supFilter && _supervisors[_off] && _supervisors[_off][_supFilter]) {
+    var supIds = _supervisors[_off][_supFilter];
+    rows = rows.filter(function(r){ return supIds.indexOf(r.id) !== -1; });
+  }
   if (_zone)          rows = rows.filter(function(r){ return r.zone === _zone; });
   if (_flt === 'yes') rows = rows.filter(function(r){ return  r.scheduled; });
   if (_flt === 'no')  rows = rows.filter(function(r){ return !r.scheduled; });
@@ -707,6 +863,394 @@ function copyPhone(phone) {
     t.classList.add('show');
     setTimeout(function(){ t.classList.remove('show'); }, 1800);
   }).catch(function(){});
+}
+
+// ── Supervisor Management ──────────────────────────────────────────────────────
+
+function renderSupFrow() {
+  var sups = (_supervisors[_off]) ? Object.keys(_supervisors[_off]) : [];
+  var el = document.getElementById('sup-frow');
+  if (!sups.length) { el.style.display = 'none'; return; }
+  el.style.display = 'flex';
+  el.innerHTML = '<button class="fbtn act" onclick="setSup(\'\',this)">كل المشرفين</button>' +
+    sups.map(function(s){
+      return '<button class="fbtn" onclick="setSup(\'' + s.replace(/'/g,"\\'") + '\',this)">👤 ' + s + '</button>';
+    }).join('');
+}
+
+function setSup(s, btn) {
+  _supFilter = s;
+  document.querySelectorAll('#sup-frow .fbtn').forEach(function(x){ x.classList.toggle('act', x === btn); });
+  renderTbl();
+}
+
+function openSupModal() {
+  _supEdits = {};
+  var src = _supervisors[_off] || {};
+  Object.keys(src).forEach(function(s){ _supEdits[s] = src[s].slice(); });
+  document.getElementById('sup-off-name').textContent = _off;
+  document.getElementById('sup-status').textContent = '';
+  document.getElementById('sup-savebtn').disabled = false;
+  renderSupBody();
+  document.getElementById('sup-overlay').classList.add('open');
+}
+
+function closeSupModal() {
+  document.getElementById('sup-overlay').classList.remove('open');
+  if (_admEditingOff) { _admEditingOff = null; _off = ''; renderAdmSups(); }
+}
+
+function renderSupBody() {
+  var sups = Object.keys(_supEdits);
+  var html = '';
+
+  sups.forEach(function(s) {
+    var ids  = _supEdits[s];
+    var key  = s.replace(/[^a-zA-Z0-9]/g,'_');
+    var chips = ids.map(function(id, idx) {
+      return '<span class="sup-chip">' + id +
+        '<span class="sup-rm" onclick="supRemoveId(\'' + s.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\',' + idx + ')">✕</span></span>';
+    }).join('');
+    html += '<div class="sup-entry">' +
+      '<div class="sup-entry-top">' +
+        '<span class="sup-ename">👤 ' + s + '</span>' +
+        '<span class="sup-ecnt">' + ids.length + ' طيار</span>' +
+      '</div>' +
+      '<div class="sup-chips">' + (chips || '<span style="font-size:10px;color:var(--muted)">لا يوجد طيارين</span>') + '</div>' +
+      '<div class="sup-addrow">' +
+        '<input class="sup-idinp" id="supinp_' + key + '" placeholder="ID طيار (أو أكتر مفصولة بفاصلة)..."' +
+          ' onkeydown="if(event.key===\'Enter\')supAddId(\'' + s.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">' +
+        '<button class="sup-addbtn" onclick="supAddId(\'' + s.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')">➕ إضافة</button>' +
+      '</div>' +
+    '</div>';
+  });
+
+  html += '<div class="sup-new">' +
+    '<div class="sup-new-lbl">➕ إضافة مشرف جديد</div>' +
+    '<input class="sup-newinp" id="sup-new-name" placeholder="اسم المشرف">' +
+    '<input class="sup-newinp" id="sup-new-ids" placeholder="IDs الطيارين (مفصولة بفاصلة أو سطر جديد) — اختياري">' +
+    '<button class="sup-addbtn" style="width:100%;padding:8px" onclick="supAddNew()">➕ إضافة مشرف</button>' +
+  '</div>';
+
+  document.getElementById('sup-body').innerHTML = html;
+}
+
+function supRemoveId(supName, idx) {
+  if (!_supEdits[supName]) return;
+  _supEdits[supName].splice(idx, 1);
+  renderSupBody();
+}
+
+function supAddId(supName) {
+  var key = supName.replace(/[^a-zA-Z0-9]/g,'_');
+  var inp = document.getElementById('supinp_' + key);
+  if (!inp) return;
+  var ids = inp.value.split(/[,\n]+/).map(function(x){ return x.trim(); }).filter(Boolean);
+  if (!ids.length) return;
+  if (!_supEdits[supName]) _supEdits[supName] = [];
+  ids.forEach(function(id){ if (_supEdits[supName].indexOf(id) === -1) _supEdits[supName].push(id); });
+  renderSupBody();
+}
+
+function supAddNew() {
+  var nameInp = document.getElementById('sup-new-name');
+  var idsInp  = document.getElementById('sup-new-ids');
+  var name    = nameInp.value.trim();
+  if (!name) { nameInp.focus(); return; }
+  var ids = idsInp.value ? idsInp.value.split(/[,\n]+/).map(function(x){ return x.trim(); }).filter(Boolean) : [];
+  if (_supEdits[name]) {
+    ids.forEach(function(id){ if (_supEdits[name].indexOf(id) === -1) _supEdits[name].push(id); });
+  } else {
+    _supEdits[name] = ids;
+  }
+  nameInp.value = ''; idsInp.value = '';
+  renderSupBody();
+}
+
+function saveSupData() {
+  var btn    = document.getElementById('sup-savebtn');
+  var status = document.getElementById('sup-status');
+  btn.disabled = true;
+  status.textContent = '⏳ جاري الحفظ...';
+  status.style.color = 'var(--text2)';
+
+  var newSups = {};
+  Object.keys(_supervisors).forEach(function(off){ newSups[off] = _supervisors[off]; });
+  newSups[_off] = _supEdits;
+
+  pushSupervisors(newSups, function(ok, errMsg) {
+    if (ok) {
+      _supervisors = newSups;
+      status.textContent = '✅ تم الحفظ بنجاح';
+      status.style.color = 'var(--success-text)';
+      renderSupFrow();
+      renderTbl();
+      setTimeout(function(){ closeSupModal(); }, 1200);
+    } else {
+      status.textContent = '❌ خطأ في الحفظ' + (errMsg ? ': ' + errMsg : '');
+      status.style.color = 'var(--danger-text)';
+      btn.disabled = false;
+    }
+  });
+}
+
+function pushSupervisors(data, callback) {
+  ghPushJson(CONFIG.supervisorsUrl, data, function(ok) {
+    callback(ok, ok ? null : 'فشل الاتصال بـ GitHub');
+  });
+}
+
+// ── Admin Panel ───────────────────────────────────────────────────────────────
+
+function showAdminLogin() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('admin-login').style.display = 'block';
+  setTimeout(function(){ document.getElementById('admin-pinp').focus(); }, 80);
+}
+function showOfficeLogin() {
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('login').style.display = 'block';
+}
+function doAdminLogin() {
+  var p = document.getElementById('admin-pinp').value.trim();
+  var err = document.getElementById('admin-errmsg');
+  err.textContent = '';
+  if (p !== ADMIN_PASS) {
+    err.textContent = '❌ باسورد غلط';
+    document.getElementById('admin-pinp').value = '';
+    return;
+  }
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('admin-app').style.display = 'block';
+  loadAdminData();
+}
+function doAdminLogout() {
+  document.getElementById('admin-app').style.display = 'none';
+  document.getElementById('login').style.display = 'block';
+  document.getElementById('admin-pinp').value = '';
+}
+function switchAdmTab(tab, btn) {
+  document.querySelectorAll('.adm-tab').forEach(function(b){ b.classList.remove('act'); });
+  document.querySelectorAll('.adm-section').forEach(function(s){ s.classList.remove('act'); });
+  btn.classList.add('act');
+  document.getElementById('adm-' + tab).classList.add('act');
+}
+
+function loadAdminData() {
+  document.getElementById('adm-upd').textContent = '⏳ جاري التحميل...';
+  var t = '?_=' + Date.now();
+  function ghF(url, asJson, ms) {
+    var ctrl = new AbortController(), timer = setTimeout(function(){ ctrl.abort(); }, ms||20000);
+    return fetch(url, { headers:{'Accept':'application/vnd.github.v3.raw'}, cache:'no-store', signal:ctrl.signal })
+      .then(function(r){ clearTimeout(timer); if(!r.ok) throw new Error('HTTP '+r.status); return asJson?r.json():r.text(); })
+      .catch(function(e){ clearTimeout(timer); return asJson?null:''; });
+  }
+  Promise.all([
+    ghF(CONFIG.riderDataUrls.today    + t, false, 20000),
+    ghF(CONFIG.riderDataUrls.tomorrow + t, false, 20000),
+    ghF(CONFIG.riderDataUrls.day2     + t, false, 20000),
+    ghF(CONFIG.targetsDataUrl         + t, true,  10000),
+    ghF(CONFIG.supervisorsUrl         + t, true,  10000),
+    ghF(CONFIG.datesUrl               + t, true,  10000)
+  ]).then(function(res) {
+    _supervisors = res[4] || {};
+    var datesData = res[5];
+    _dayDates = datesData ? {today:datesData.today||'',tomorrow:datesData.tomorrow||'',day2:datesData.day2||''} : {today:'',tomorrow:'',day2:''};
+
+    function parseAll(csv) {
+      return parseCSV(csv).map(function(r){ return {
+        office:(r['Office']||'').trim(), zone:(r['Zone']||'').trim(),
+        scheduled:(r['Scheduled']||'').trim().toLowerCase()==='yes'
+      }; }).filter(function(r){ return r.office; });
+    }
+    _admRaw = { today:parseAll(res[0]), tomorrow:parseAll(res[1]), day2:parseAll(res[2]) };
+
+    var tData = res[3], targetMap = {};
+    if (tData && tData.targets) {
+      tData.targets.forEach(function(row){
+        var k = (row.zone||'')+'|||'+(row.office||'');
+        targetMap[k] = row.target||0;
+      });
+    }
+
+    var offices = Object.keys(CONFIG.offices).sort();
+    var byOff = {};
+    offices.forEach(function(o){ byOff[o]={today:{s:0,t:0},tomorrow:{s:0,t:0},day2:{s:0,t:0}}; });
+
+    ['today','tomorrow','day2'].forEach(function(day){
+      _admRaw[day].forEach(function(r){
+        var off = offices.find(function(o){ return o.toLowerCase()===r.office.toLowerCase(); });
+        if (!off) return;
+        byOff[off][day].t++;
+        if (r.scheduled) byOff[off][day].s++;
+      });
+    });
+
+    // Use target values from targets-data where available (more accurate than rider count)
+    if (tData && tData.targets) {
+      tData.targets.forEach(function(row){
+        var off = offices.find(function(o){ return o.toLowerCase()===(row.office||'').toLowerCase(); });
+        if (!off) return;
+        byOff[off].today.t = Math.max(byOff[off].today.t, row.target||0);
+      });
+    }
+
+    document.getElementById('adm-upd').textContent = datesData&&datesData.pushedAt ? 'آخر رفع: '+datesData.pushedAt : 'تم التحميل';
+    renderAdmOverview(byOff, offices);
+    renderAdmFlags(byOff, offices);
+    renderAdmSups();
+    renderAdmPasswords();
+  }).catch(function(e){ document.getElementById('adm-upd').textContent = '❌ خطأ: '+e.message; });
+}
+
+function fmtCell(s, t) {
+  if (!t) return '<span style="color:var(--muted)">—</span>';
+  var p = s/t;
+  var cls = p>=0.85?'adm-pct-ok':p>=0.65?'adm-pct-warn':'adm-pct-bad';
+  return '<span class="'+cls+'">'+s+'/'+t+'</span><br><small style="font-size:10px">('+Math.round(p*100)+'%)</small>';
+}
+
+function renderAdmOverview(byOff, offices) {
+  var labels = {today:'النهارده',tomorrow:'بكرة',day2:'بعده'};
+  var h = '<table class="adm-tbl"><thead><tr><th>المكتب</th>';
+  ['today','tomorrow','day2'].forEach(function(d){ h+='<th>'+labels[d]+'<br><small style="font-weight:400">'+(_dayDates[d]||'')+'</small></th>'; });
+  h += '</tr></thead><tbody>';
+  offices.forEach(function(off){
+    var d = byOff[off];
+    var p = ['today','tomorrow','day2'].map(function(k){ return d[k].t?d[k].s/d[k].t:null; });
+    var anyBad = p.some(function(x){ return x!==null&&x<0.65; });
+    var anyWarn = !anyBad && p.some(function(x){ return x!==null&&x<0.85; });
+    var bg = anyBad?'rgba(192,57,43,.05)':anyWarn?'rgba(176,120,0,.04)':'';
+    h += '<tr style="background:'+bg+'"><td style="font-weight:600">'+off+'</td>';
+    ['today','tomorrow','day2'].forEach(function(k){ h+='<td>'+fmtCell(d[k].s,d[k].t)+'</td>'; });
+    h += '</tr>';
+  });
+  h += '</tbody></table>';
+  document.getElementById('adm-overview-content').innerHTML = h;
+}
+
+function renderAdmFlags(byOff, offices) {
+  var flags=[], warns=[];
+  offices.forEach(function(off){
+    var d = byOff[off];
+    var days = ['today','tomorrow','day2'];
+    var zeroDays = days.filter(function(k){ return !d[k].t; }).length;
+    var badDays  = days.filter(function(k){ return d[k].t && d[k].s/d[k].t<0.65; }).length;
+    var warnDays = days.filter(function(k){ return d[k].t && d[k].s/d[k].t>=0.65 && d[k].s/d[k].t<0.85; }).length;
+    if (zeroDays>=2)      flags.push({off:off, reason:'⚪ مفيش بيانات في '+zeroDays+' أيام من 3'});
+    else if (badDays>=2)  flags.push({off:off, reason:'🔴 fill rate < 65% في '+badDays+' أيام من 3'});
+    else if (badDays===1) warns.push({off:off, reason:'🟡 fill rate < 65% في يوم واحد'});
+    else if (warnDays>=2) warns.push({off:off, reason:'🟡 fill rate < 85% في '+warnDays+' أيام'});
+  });
+  var h = '';
+  if (!flags.length && !warns.length) {
+    h = '<div style="text-align:center;padding:24px;color:var(--success-text);font-size:13px">✅ كل المكاتب شغالة كويس</div>';
+  } else {
+    if (flags.length) {
+      h += '<div style="font-size:12px;font-weight:700;color:var(--danger-text);margin-bottom:8px">🔴 تحتاج تدخل</div>';
+      flags.forEach(function(f){ h+='<div class="adm-flag"><span class="adm-flag-off">'+f.off+'</span><span class="adm-flag-reason">'+f.reason+'</span></div>'; });
+    }
+    if (warns.length) {
+      h += '<div style="font-size:12px;font-weight:700;color:var(--warn-text);margin:'+(flags.length?'12px':'0')+'px 0 8px">🟡 تستاهل متابعة</div>';
+      warns.forEach(function(f){ h+='<div class="adm-warn-item"><span class="adm-flag-off">'+f.off+'</span><span class="adm-flag-reason">'+f.reason+'</span></div>'; });
+    }
+  }
+  document.getElementById('adm-flags-content').innerHTML = h;
+}
+
+function renderAdmSups() {
+  var offices = Object.keys(CONFIG.offices).sort();
+  var h = '';
+  offices.forEach(function(off){
+    var sups = _supervisors[off] ? Object.keys(_supervisors[off]) : [];
+    h += '<div class="adm-sup-office">🏢 '+off+' <span style="font-size:10px;color:var(--muted)">('+sups.length+' مشرف)</span>' +
+      '<button class="adm-editbtn" style="float:left;font-size:10px" onclick="admEditSup(\''+off.replace(/'/g,"\\'")+'\')">✏️ تعديل</button></div>';
+    if (!sups.length) {
+      h += '<div style="font-size:11px;color:var(--muted);padding:4px 0 8px">لا يوجد مشرفين</div>';
+    } else {
+      sups.forEach(function(s){
+        var ids = _supervisors[off][s];
+        h += '<div style="display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid var(--bdr)">' +
+          '<span style="font-size:12px;font-weight:600;min-width:100px">👤 '+s+'</span>' +
+          '<span style="font-size:10px;color:var(--text2);flex:1;line-height:2">'+ids.join(' · ')+'</span>' +
+        '</div>';
+      });
+    }
+  });
+  document.getElementById('adm-sups-content').innerHTML = h;
+}
+
+function admEditSup(officeName) {
+  _admEditingOff = officeName;
+  _off = officeName;
+  openSupModal();
+}
+
+function renderAdmPasswords() {
+  var offices = Object.keys(CONFIG.offices).sort();
+  var h = '';
+  offices.forEach(function(off){
+    var pass = _offPasses[off] || CONFIG.offices[off];
+    var key  = off.replace(/[^a-zA-Z0-9]/g,'_');
+    h += '<div class="adm-pass-row">' +
+      '<span class="adm-pass-name">'+off+'</span>' +
+      '<span class="adm-pass-val" id="pv_'+key+'">'+pass+'</span>' +
+      '<input class="adm-pass-inp" id="pi_'+key+'" value="'+pass+'" onkeydown="if(event.key===\'Enter\')admSavePass(\''+off.replace(/'/g,"\\'")+'\')">' +
+      '<button class="adm-editbtn" id="pe_'+key+'" onclick="admEditPass(\''+off.replace(/'/g,"\\'")+'\')">✏️</button>' +
+      '<button class="adm-savebtn2" id="ps_'+key+'" onclick="admSavePass(\''+off.replace(/'/g,"\\'")+'\')">💾</button>' +
+    '</div>';
+  });
+  h += '<div style="font-size:10px;color:var(--muted);margin-top:12px;text-align:center">التغييرات بتتحفظ على GitHub وبتأثر فور الريفريش</div>';
+  document.getElementById('adm-passwords-content').innerHTML = h;
+}
+
+function admEditPass(off) {
+  var k = off.replace(/[^a-zA-Z0-9]/g,'_');
+  document.getElementById('pv_'+k).style.display = 'none';
+  document.getElementById('pi_'+k).style.display = 'inline-block';
+  document.getElementById('pe_'+k).style.display = 'none';
+  document.getElementById('ps_'+k).style.display = 'inline-block';
+  document.getElementById('pi_'+k).focus();
+}
+
+function admSavePass(off) {
+  var k    = off.replace(/[^a-zA-Z0-9]/g,'_');
+  var newP = document.getElementById('pi_'+k).value.trim();
+  if (!newP) return;
+  _offPasses[off] = newP;
+  var data = { passwords: Object.assign({}, _offPasses), updatedAt: new Date().toISOString() };
+  ghPushJson(CONFIG.offCfgUrl, data, function(ok) {
+    if (ok) {
+      document.getElementById('pv_'+k).textContent = newP;
+      document.getElementById('pv_'+k).style.display = 'inline-block';
+      document.getElementById('pi_'+k).style.display = 'none';
+      document.getElementById('pe_'+k).style.display = 'inline-block';
+      document.getElementById('ps_'+k).style.display = 'none';
+      showToast('✅ تم تغيير الباسورد');
+    } else { showToast('❌ خطأ في الحفظ'); }
+  });
+}
+
+function ghPushJson(url, data, callback) {
+  var auth = {'Authorization':'Bearer '+SUP_TOKEN,'Accept':'application/vnd.github.v3+json'};
+  function df(u,opts,ms){ var c=new AbortController(),t=setTimeout(function(){c.abort();},ms||20000);
+    opts.signal=c.signal; return fetch(u,opts).then(function(r){clearTimeout(t);return r;}).catch(function(e){clearTimeout(t);throw e;}); }
+  df(url, {headers:auth,cache:'no-store'}, 15000)
+    .then(function(r){ return r.status===404?null:r.ok?r.json():Promise.reject(new Error('HTTP '+r.status)); })
+    .then(function(ex){
+      var body={message:'Update',content:btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))))};
+      if (ex) body.sha=ex.sha;
+      return df(url,{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},auth),body:JSON.stringify(body),cache:'no-store'},20000);
+    })
+    .then(function(r){callback(r.ok);})
+    .catch(function(){callback(false);});
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); t.textContent='✅ تم النسخ'; }, 2000);
 }
 
 function parseCSV(text) {
