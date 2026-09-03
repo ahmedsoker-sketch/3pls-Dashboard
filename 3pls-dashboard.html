@@ -195,6 +195,19 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .adm-savebtn2{padding:4px 10px;font-size:11px;font-family:'Poppins',sans-serif;cursor:pointer;border-radius:6px;border:none;background:var(--accent);color:#fff;display:none}
 .adm-link{display:block;text-align:center;margin-top:16px;font-size:11px;color:var(--muted);cursor:pointer}
 .adm-link:hover{color:var(--accent)}
+/* Zone cards in admin */
+.adm-zone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.adm-zcard{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:10px 12px;text-align:center;box-shadow:var(--sh);transition:border-color .15s}
+.adm-zcard:hover{border-color:var(--accent)}
+.adm-zname{font-size:9px;font-weight:700;color:var(--text2);margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-znums{font-size:15px;font-weight:700;margin-bottom:3px}
+.adm-znums span{font-size:11px;font-weight:400;color:var(--muted)}
+.adm-zpct{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;margin-bottom:4px}
+.adm-zoffs{font-size:9px;color:var(--muted);line-height:1.6}
+.adm-day-sel{display:flex;gap:6px;margin-bottom:12px}
+.adm-dsbtn{flex:1;padding:6px 4px;border:1px solid var(--bdr);border-radius:8px;background:var(--surf);font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s;color:var(--text2)}
+.adm-dsbtn.act{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+@media(max-width:480px){.adm-zone-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -263,6 +276,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   <div class="adm-tabs">
     <button class="adm-tab act" onclick="switchAdmTab('overview',this)">📊 نظرة عامة</button>
     <button class="adm-tab"     onclick="switchAdmTab('flags',this)">🚨 تنبيهات</button>
+    <button class="adm-tab"     onclick="switchAdmTab('zones',this)">🗺️ الزونات</button>
     <button class="adm-tab"     onclick="switchAdmTab('sups',this)">👥 المشرفين</button>
     <button class="adm-tab"     onclick="switchAdmTab('passwords',this)">🔑 الباسوردات</button>
   </div>
@@ -273,6 +287,14 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
   <div class="adm-section" id="adm-flags">
     <div class="adm-sec-title">🚨 مكاتب تحتاج انتباه</div>
     <div id="adm-flags-content"><div class="ldg">⏳ جاري التحميل...</div></div>
+  </div>
+  <div class="adm-section" id="adm-zones">
+    <div class="adm-day-sel">
+      <button class="adm-dsbtn act" onclick="setAdmZoneDay('today',this)">النهارده<br><small id="adz-d0" style="font-weight:400;opacity:.8"></small></button>
+      <button class="adm-dsbtn"     onclick="setAdmZoneDay('tomorrow',this)">بكرة<br><small id="adz-d1" style="font-weight:400;opacity:.8"></small></button>
+      <button class="adm-dsbtn"     onclick="setAdmZoneDay('day2',this)">بعده<br><small id="adz-d2" style="font-weight:400;opacity:.8"></small></button>
+    </div>
+    <div id="adm-zones-content"><div class="ldg">⏳ جاري التحميل...</div></div>
   </div>
   <div class="adm-section" id="adm-sups">
     <div class="adm-sec-title">👥 تقسيمة المشرفين</div>
@@ -381,7 +403,7 @@ const CONFIG = {
 var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '', _prevSnap = null;
 var _activeDay = 'today', _ridersByDay = {}, _dayDates = {};
 var _supervisors = {}, _supFilter = '', _supEdits = {};
-var _offPasses = {}, _admRaw = {}, _admEditingOff = null;
+var _offPasses = {}, _admRaw = {}, _admEditingOff = null, _admZoneDay = 'today';
 
 window.onload = function () {
   var names = Object.keys(CONFIG.offices);
@@ -1095,12 +1117,92 @@ function loadAdminData() {
       });
     }
 
+    // Update day labels in zone selector
+    document.getElementById('adz-d0').textContent = _dayDates.today||'';
+    document.getElementById('adz-d1').textContent = _dayDates.tomorrow||'';
+    document.getElementById('adz-d2').textContent = _dayDates.day2||'';
+
     document.getElementById('adm-upd').textContent = datesData&&datesData.pushedAt ? 'آخر رفع: '+datesData.pushedAt : 'تم التحميل';
     renderAdmOverview(byOff, offices);
     renderAdmFlags(byOff, offices);
+    renderAdmZones();
     renderAdmSups();
     renderAdmPasswords();
   }).catch(function(e){ document.getElementById('adm-upd').textContent = '❌ خطأ: '+e.message; });
+}
+
+function setAdmZoneDay(day, btn) {
+  _admZoneDay = day;
+  document.querySelectorAll('.adm-dsbtn').forEach(function(b){ b.classList.remove('act'); });
+  btn.classList.add('act');
+  renderAdmZones();
+}
+
+function renderAdmZones() {
+  var riders = _admRaw[_admZoneDay] || [];
+  if (!riders.length) {
+    document.getElementById('adm-zones-content').innerHTML = '<div class="ldg">⏳ لا توجد بيانات — اضغط تحديث</div>';
+    return;
+  }
+
+  // Group by zone
+  var byZone = {};
+  riders.forEach(function(r) {
+    if (!r.zone) return;
+    if (!byZone[r.zone]) byZone[r.zone] = { s:0, t:0, offices:{} };
+    byZone[r.zone].t++;
+    if (r.scheduled) byZone[r.zone].s++;
+    // track per-office within zone
+    var off = r.office || '—';
+    if (!byZone[r.zone].offices[off]) byZone[r.zone].offices[off] = {s:0,t:0};
+    byZone[r.zone].offices[off].t++;
+    if (r.scheduled) byZone[r.zone].offices[off].s++;
+  });
+
+  var zones = Object.keys(byZone).sort();
+
+  // Calculate totals
+  var totalS = 0, totalT = 0;
+  zones.forEach(function(z){ totalS += byZone[z].s; totalT += byZone[z].t; });
+
+  function card(name, s, t, offBreak) {
+    var p   = t ? s/t : null;
+    var cls = p===null?'':p>=0.85?'background:var(--success-bg);color:var(--success-text)':p>=0.65?'background:var(--warn-bg);color:var(--warn-text)':'background:var(--danger-bg);color:var(--danger-text)';
+    var pTxt = p!==null ? Math.round(p*100)+'%' : '—';
+    var sColor = p===null?'var(--text)':p>=0.85?'var(--success-text)':p>=0.65?'var(--warn-text)':'var(--danger-text)';
+
+    var offLines = '';
+    if (offBreak) {
+      var offs = Object.keys(offBreak).sort();
+      offLines = '<div class="adm-zoffs">' +
+        offs.map(function(o){
+          var od = offBreak[o];
+          var op = od.t ? Math.round(od.s/od.t*100) : 0;
+          return '<span>' + o + ': <b>' + od.s + '/' + od.t + '</b> (' + op + '%)</span>';
+        }).join('<br>') +
+      '</div>';
+    }
+
+    return '<div class="adm-zcard">' +
+      '<div class="adm-zname">' + name + '</div>' +
+      '<div class="adm-znums"><span style="color:'+sColor+';font-weight:700">'+s+'</span><span> / '+t+'</span></div>' +
+      '<div class="adm-zpct" style="'+cls+'">'+pTxt+'</div>' +
+      offLines +
+    '</div>';
+  }
+
+  // Total card first
+  var h = '<div class="adm-zcard" style="grid-column:1/-1;background:var(--hdr);color:#fff;border-color:transparent">' +
+    '<div class="adm-zname" style="color:rgba(255,255,255,.7)">الإجمالي الكلي</div>' +
+    '<div class="adm-znums" style="font-size:20px"><span style="color:#ffb090">'+totalS+'</span><span style="color:rgba(255,255,255,.5)"> / '+totalT+'</span></div>' +
+    (totalT ? '<div class="adm-zpct" style="background:rgba(255,255,255,.15);color:#fff">'+Math.round(totalS/totalT*100)+'%</div>' : '') +
+  '</div>';
+
+  h += zones.map(function(z){
+    return card(z, byZone[z].s, byZone[z].t, byZone[z].offices);
+  }).join('');
+
+  document.getElementById('adm-zones-content').innerHTML = '<div class="adm-zone-grid">' + h + '</div>';
 }
 
 function fmtCell(s, t) {
