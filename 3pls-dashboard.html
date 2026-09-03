@@ -803,7 +803,20 @@ function exportRiders() {
     if (a.lastShift) return -1;
     return 0;
   });
-  var lines = ['ID,Name,Zone,Last Shift,Phone,Status'];
+  // Build reverse map: riderId → supervisorName
+  var supMap = {};
+  var offSups = _supervisors && _off && _supervisors[_off];
+  if (offSups && Array.isArray(offSups)) {
+    offSups.forEach(function(sup) {
+      if (sup.ids && Array.isArray(sup.ids)) {
+        sup.ids.forEach(function(id) { supMap[String(id).trim()] = sup.name || ''; });
+      }
+    });
+  }
+  var hasSup = Object.keys(supMap).length > 0;
+  var headers = ['ID', 'Name', 'Zone', 'Last Shift', 'Phone', 'Status'];
+  if (hasSup) headers.push('المشرف');
+  var lines = [headers.join(',')];
   rows.forEach(function(r){
     var cols = [
       r.id||'',
@@ -812,7 +825,9 @@ function exportRiders() {
       r.lastShift||'',
       r.phone||'',
       r.scheduled ? 'Scheduled' : 'Not Scheduled'
-    ].map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; });
+    ];
+    if (hasSup) cols.push(supMap[String(r.id||'').trim()] || '');
+    cols = cols.map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; });
     lines.push(cols.join(','));
   });
   var csv = '﻿' + lines.join('\r\n');
@@ -1039,6 +1054,9 @@ function saveSupData() {
 
 function pushSupervisors(data, callback) {
   ghPushJson(CONFIG.supervisorsUrl, data, function(ok) {
+    if (ok) {
+      fetch('https://purge.jsdelivr.net/gh/ahmedsoker-sketch/3pls-Dashboard@main/supervisors.json', {cache:'no-store'}).catch(function(){});
+    }
     callback(ok, ok ? null : 'فشل الاتصال بـ GitHub');
   });
 }
