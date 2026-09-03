@@ -632,7 +632,7 @@ function loadFromGitHub() {
       // Show real commit time from GitHub
       if (commitDate) {
         var opts = {hour:'2-digit',minute:'2-digit',hour12:true};
-        document.getElementById('aupd').textContent = 'آخر رفع من التول: ' + commitDate.toLocaleTimeString('ar-EG',opts);
+        document.getElementById('aupd').textContent = 'آخر تحديث: ' + commitDate.toLocaleTimeString('ar-EG',opts);
       } else {
         document.getElementById('aupd').textContent = '⚡ بيانات محدثة';
       }
