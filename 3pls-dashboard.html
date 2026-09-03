@@ -1165,7 +1165,7 @@ function loadAdminData() {
     document.getElementById('adz-d1').textContent = _dayDates.tomorrow||'';
     document.getElementById('adz-d2').textContent = _dayDates.day2||'';
 
-    document.getElementById('adm-upd').textContent = datesData&&datesData.pushedAt ? 'آخر رفع: '+datesData.pushedAt : 'تم التحميل';
+    document.getElementById('adm-upd').textContent = datesData&&datesData.pushedAt ? 'آخر تحديث: '+datesData.pushedAt : 'تم التحميل';
     renderAdmOverview(byOff, offices);
     renderAdmFlags(byOff, offices);
     renderAdmZones();
