@@ -374,7 +374,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <script>
-const GH = 'https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/contents';
+const GH  = 'https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/contents';
+const CDN = 'https://cdn.jsdelivr.net/gh/ahmedsoker-sketch/3pls-Dashboard@main';
 const SUP_TOKEN  = (function(){var k='3PLsDash2026',e=[84,57,56,27,49,3,44,24,83,68,109,7,2,19,11,49,118,85,53,57,2,6,95,4,90,32,37,52,29,9,6,58,91,111,69,65,82,98,21,27,50,9,43,26,118,74,1,127,1,52,22,54,18,82,68,50,127,5,93,97,117,105,46,57,42,23,56,33,91,69,0,119,67,53,9,63,118,57,53,63,113,3,117,125,99,53,125,10,16,83,0,3,6];return e.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');})();
 const ADMIN_PASS = '3PLs@Adm!n#2026';
 const CONFIG = {
@@ -556,39 +557,46 @@ function renderFromExtCache(result) {
   loadActiveDay();
 }
 
-// GitHub Contents API — bypasses CDN entirely (real API, not static hosting)
-// Accept: application/vnd.github.v3.raw → returns file content directly (works for files > 1MB)
-// ?_=Date.now() → unique URL per call → GitHub API treats as fresh request
-// cache: 'no-store' → browser never caches the response
+// Data loading: CDN-first (jsDelivr, no rate limit) with GitHub API fallback.
+// Extension purges CDN after every upload so CDN data is always fresh.
+// GitHub API (rate-limited 60 req/hr unauthenticated) used only when CDN fails.
 function loadFromGitHub() {
   document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
   var t = '?_=' + Date.now();
 
-  function ghFetch(url, asJson, timeoutMs) {
-    timeoutMs = timeoutMs || 20000;
+  // Generic fetch with timeout; returns null/'') on error
+  function df(url, asJson, ms, extraHeaders) {
     var ctrl = new AbortController();
-    var timer = setTimeout(function(){ ctrl.abort(); }, timeoutMs);
-    return fetch(url, {
-      headers: { 'Accept': 'application/vnd.github.v3.raw' },
-      cache: 'no-store',
-      signal: ctrl.signal
-    }).then(function(r){
-      clearTimeout(timer);
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return asJson ? r.json() : r.text();
-    }).catch(function(e){
-      clearTimeout(timer);
-      return asJson ? null : '';
+    var timer = setTimeout(function(){ ctrl.abort(); }, ms||20000);
+    var hdrs = Object.assign({'cache-control':'no-cache'}, extraHeaders||{});
+    return fetch(url, { headers:hdrs, cache:'no-store', signal:ctrl.signal })
+      .then(function(r){ clearTimeout(timer); if(!r.ok) throw new Error('HTTP '+r.status); return asJson?r.json():r.text(); })
+      .catch(function(){ clearTimeout(timer); return asJson?null:''; });
+  }
+
+  // CDN fetch (jsDelivr — no rate limit, purged after each extension upload)
+  function cdnFetch(filename, asJson, ms) {
+    return df(CDN + '/' + filename + t, asJson, ms);
+  }
+  // GitHub API fetch (always fresh but rate-limited 60/hr unauthenticated)
+  function apiFetch(url, asJson, ms) {
+    return df(url + t, asJson, ms, {'Accept':'application/vnd.github.v3.raw'});
+  }
+  // Try CDN first; if result is empty/null fall back to GitHub API
+  function smartFetch(filename, apiUrl, asJson, ms) {
+    return cdnFetch(filename, asJson, ms).then(function(res) {
+      if (res === null || res === '') return apiFetch(apiUrl, asJson, ms);
+      return res;
     });
   }
 
   Promise.all([
-    ghFetch(CONFIG.riderDataUrls.today    + t, false, 20000),
-    ghFetch(CONFIG.riderDataUrls.tomorrow + t, false, 20000),
-    ghFetch(CONFIG.riderDataUrls.day2     + t, false, 20000),
-    ghFetch(CONFIG.targetsDataUrl         + t, true,  10000),
-    ghFetch(CONFIG.datesUrl               + t, true,  10000),
-    ghFetch(CONFIG.supervisorsUrl         + t, true,  10000)
+    smartFetch('rider-data-today.csv',    CONFIG.riderDataUrls.today,    false, 20000),
+    smartFetch('rider-data-tomorrow.csv', CONFIG.riderDataUrls.tomorrow, false, 20000),
+    smartFetch('rider-data-day2.csv',     CONFIG.riderDataUrls.day2,     false, 20000),
+    smartFetch('targets-data.json',       CONFIG.targetsDataUrl,         true,  10000),
+    smartFetch('rider-data-dates.json',   CONFIG.datesUrl,               true,  10000),
+    smartFetch('supervisors.json',        CONFIG.supervisorsUrl,         true,  10000)
   ]).then(function(results){
       var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
       var tData = results[3], datesData = results[4];
