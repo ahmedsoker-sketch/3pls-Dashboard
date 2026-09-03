@@ -564,21 +564,20 @@ function loadFromGitHub() {
   document.getElementById('aupd').textContent = '⏳ جاري التحميل...';
   var t = '?_=' + Date.now();
 
-  // Generic fetch with timeout; returns null/'') on error
-  function df(url, asJson, ms, extraHeaders) {
+  // Generic fetch with timeout; returns null/'' on error
+  function df(url, asJson, ms, hdrs) {
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, ms||20000);
-    var hdrs = Object.assign({'cache-control':'no-cache'}, extraHeaders||{});
-    return fetch(url, { headers:hdrs, cache:'no-store', signal:ctrl.signal })
+    return fetch(url, { headers:hdrs||{}, cache:'no-store', signal:ctrl.signal })
       .then(function(r){ clearTimeout(timer); if(!r.ok) throw new Error('HTTP '+r.status); return asJson?r.json():r.text(); })
       .catch(function(){ clearTimeout(timer); return asJson?null:''; });
   }
 
-  // CDN fetch (jsDelivr — no rate limit, purged after each extension upload)
+  // CDN fetch — no custom headers (avoids CORS preflight on jsDelivr)
   function cdnFetch(filename, asJson, ms) {
-    return df(CDN + '/' + filename + t, asJson, ms);
+    return df(CDN + '/' + filename, asJson, ms);
   }
-  // GitHub API fetch (always fresh but rate-limited 60/hr unauthenticated)
+  // GitHub API fetch — needs Accept header (simple CORS header, no preflight)
   function apiFetch(url, asJson, ms) {
     return df(url + t, asJson, ms, {'Accept':'application/vnd.github.v3.raw'});
   }
