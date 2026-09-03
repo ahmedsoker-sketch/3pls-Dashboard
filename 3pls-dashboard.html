@@ -101,9 +101,10 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .day-tab.act{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
 .day-tab .day-lbl{display:block;font-size:10px;opacity:.8;margin-top:1px}
 
-/* Phone copy */
-.ph-copy{color:var(--accent);cursor:pointer;font-size:12px;-webkit-tap-highlight-color:transparent}
-.ph-copy:active{opacity:.6}
+/* Phone WhatsApp link */
+.ph-wa{display:inline-flex;align-items:center;gap:4px;color:var(--text);text-decoration:none;font-size:12px;-webkit-tap-highlight-color:transparent}
+.ph-wa:active{opacity:.6}
+.ph-wa svg{flex-shrink:0}
 
 /* Toast */
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:8px 20px;border-radius:24px;font-size:13px;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
