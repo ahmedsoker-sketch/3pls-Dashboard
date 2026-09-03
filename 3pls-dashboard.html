@@ -203,7 +203,14 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min
 .adm-znums{font-size:15px;font-weight:700;margin-bottom:3px}
 .adm-znums span{font-size:11px;font-weight:400;color:var(--muted)}
 .adm-zpct{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;margin-bottom:4px}
-.adm-zoffs{font-size:9px;color:var(--muted);line-height:1.6}
+.adm-zoffs{margin-top:8px;border-top:1px solid var(--bdr);padding-top:6px}
+.adm-off-row{display:flex;align-items:center;gap:6px;padding:4px 2px;border-radius:6px;transition:background .1s;cursor:default}
+.adm-off-row:hover{background:var(--hov)}
+.adm-off-nums{font-size:10px;font-weight:700;color:var(--text);min-width:58px;text-align:left;flex-shrink:0}
+.adm-off-nums span{font-weight:400;color:var(--muted)}
+.adm-off-pct{font-size:9px;font-weight:700;padding:2px 5px;border-radius:10px;flex-shrink:0;min-width:32px;text-align:center}
+.adm-off-name{font-size:9px;color:var(--text2);flex:1;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-off-arr{font-size:9px;color:var(--muted);flex-shrink:0}
 .adm-day-sel{display:flex;gap:6px;margin-bottom:12px}
 .adm-dsbtn{flex:1;padding:6px 4px;border:1px solid var(--bdr);border-radius:8px;background:var(--surf);font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s;color:var(--text2)}
 .adm-dsbtn.act{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
@@ -1178,18 +1185,32 @@ function renderAdmZones() {
     var sCol = p===null?'var(--text)':p>=0.85?'var(--success-text)':p>=0.65?'var(--warn-text)':'var(--danger-text)';
     var pTxt = p!==null ? Math.round(p*100)+'%' : '—';
 
-    // Office breakdown — only offices that have a target for this zone
+    // Office breakdown — styled rows like extension
     var offLines = '';
     var offKeys = Object.keys(_admZoneOffTarget).filter(function(k){ return k.split('|||')[0]===z; });
-    offKeys.sort(function(a,b){ return a.split('|||')[1].localeCompare(b.split('|||')[1]); });
+    // sort by % descending
+    offKeys.sort(function(a,b){
+      var oa = _admZoneOffTarget[a]||0, ob = _admZoneOffTarget[b]||0;
+      var pa = oa ? (offSched[a]||0)/oa : 0;
+      var pb = ob ? (offSched[b]||0)/ob : 0;
+      return pb - pa;
+    });
     if (offKeys.length) {
       offLines = '<div class="adm-zoffs">' +
         offKeys.map(function(k){
           var off = k.split('|||')[1];
           var os  = offSched[k]||0, ot = _admZoneOffTarget[k]||0;
           var op  = ot ? Math.round(os/ot*100) : 0;
-          return '<span>' + off + ': <b>' + os + '/' + ot + '</b> (' + op + '%)</span>';
-        }).join('<br>') +
+          var pStyle = op>=85 ? 'background:var(--success-bg);color:var(--success-text)'
+                     : op>=65 ? 'background:var(--warn-bg);color:var(--warn-text)'
+                     :          'background:var(--danger-bg);color:var(--danger-text)';
+          return '<div class="adm-off-row">' +
+            '<div class="adm-off-nums">' + os + '<span>/' + ot + '</span></div>' +
+            '<div class="adm-off-pct" style="' + pStyle + '">' + op + '%</div>' +
+            '<div class="adm-off-name">' + off + '</div>' +
+            '<div class="adm-off-arr">▶</div>' +
+          '</div>';
+        }).join('') +
       '</div>';
     }
 
