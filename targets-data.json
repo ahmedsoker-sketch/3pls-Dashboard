@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "timestamp": "٠٣:٠١ م",
+  "timestamp": "٠٣:٠٣ م",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -30,7 +30,7 @@
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 162,
-      "scheduled": 155
+      "scheduled": 154
     },
     {
       "zone": "Mohandiseen",
