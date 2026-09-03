@@ -404,6 +404,7 @@ var _riders = [], _flt = 'all', _off = '', _targets = {}, _zone = '', _prevSnap 
 var _activeDay = 'today', _ridersByDay = {}, _dayDates = {};
 var _supervisors = {}, _supFilter = '', _supEdits = {};
 var _offPasses = {}, _admRaw = {}, _admEditingOff = null, _admZoneDay = 'today';
+var _admZoneTarget = {}, _admZoneOffTarget = {}; // zone->target, zone+off->target
 
 window.onload = function () {
   var names = Object.keys(CONFIG.offices);
@@ -1088,10 +1089,14 @@ function loadAdminData() {
     _admRaw = { today:parseAll(res[0]), tomorrow:parseAll(res[1]), day2:parseAll(res[2]) };
 
     var tData = res[3], targetMap = {};
+    _admZoneTarget = {}; _admZoneOffTarget = {};
     if (tData && tData.targets) {
       tData.targets.forEach(function(row){
-        var k = (row.zone||'')+'|||'+(row.office||'');
-        targetMap[k] = row.target||0;
+        var z = (row.zone||'').trim(), o = (row.office||'').trim(), t = row.target||0;
+        var k = z+'|||'+o;
+        targetMap[k] = t;
+        _admZoneOffTarget[k] = t;
+        _admZoneTarget[z] = (_admZoneTarget[z]||0) + t;
       });
     }
 
@@ -1145,63 +1150,64 @@ function renderAdmZones() {
     return;
   }
 
-  // Group by zone
-  var byZone = {};
+  // Count scheduled per zone and per zone+office
+  var zSched = {}, offSched = {};
   riders.forEach(function(r) {
-    if (!r.zone) return;
-    if (!byZone[r.zone]) byZone[r.zone] = { s:0, t:0, offices:{} };
-    byZone[r.zone].t++;
-    if (r.scheduled) byZone[r.zone].s++;
-    // track per-office within zone
-    var off = r.office || '—';
-    if (!byZone[r.zone].offices[off]) byZone[r.zone].offices[off] = {s:0,t:0};
-    byZone[r.zone].offices[off].t++;
-    if (r.scheduled) byZone[r.zone].offices[off].s++;
+    if (!r.zone || !r.scheduled) return;
+    zSched[r.zone] = (zSched[r.zone]||0) + 1;
+    var k = r.zone + '|||' + r.office;
+    offSched[k] = (offSched[k]||0) + 1;
   });
 
-  var zones = Object.keys(byZone).sort();
+  // Zones from target map (source of truth)
+  var zones = Object.keys(_admZoneTarget).sort();
+  if (!zones.length) {
+    // fallback: zones from CSV
+    riders.forEach(function(r){ if (r.zone && zones.indexOf(r.zone)===-1) zones.push(r.zone); });
+    zones.sort();
+  }
 
-  // Calculate totals
-  var totalS = 0, totalT = 0;
-  zones.forEach(function(z){ totalS += byZone[z].s; totalT += byZone[z].t; });
+  // Totals
+  var totalS = zones.reduce(function(s,z){ return s+(zSched[z]||0); }, 0);
+  var totalT = zones.reduce(function(s,z){ return s+(_admZoneTarget[z]||0); }, 0);
 
-  function card(name, s, t, offBreak) {
-    var p   = t ? s/t : null;
-    var cls = p===null?'':p>=0.85?'background:var(--success-bg);color:var(--success-text)':p>=0.65?'background:var(--warn-bg);color:var(--warn-text)':'background:var(--danger-bg);color:var(--danger-text)';
+  function zoneCard(z) {
+    var s = zSched[z]||0, t = _admZoneTarget[z]||0;
+    var p = t ? s/t : null;
+    var pBg  = p===null?'':p>=0.85?'background:var(--success-bg);color:var(--success-text)':p>=0.65?'background:var(--warn-bg);color:var(--warn-text)':'background:var(--danger-bg);color:var(--danger-text)';
+    var sCol = p===null?'var(--text)':p>=0.85?'var(--success-text)':p>=0.65?'var(--warn-text)':'var(--danger-text)';
     var pTxt = p!==null ? Math.round(p*100)+'%' : '—';
-    var sColor = p===null?'var(--text)':p>=0.85?'var(--success-text)':p>=0.65?'var(--warn-text)':'var(--danger-text)';
 
+    // Office breakdown — only offices that have a target for this zone
     var offLines = '';
-    if (offBreak) {
-      var offs = Object.keys(offBreak).sort();
+    var offKeys = Object.keys(_admZoneOffTarget).filter(function(k){ return k.split('|||')[0]===z; });
+    offKeys.sort(function(a,b){ return a.split('|||')[1].localeCompare(b.split('|||')[1]); });
+    if (offKeys.length) {
       offLines = '<div class="adm-zoffs">' +
-        offs.map(function(o){
-          var od = offBreak[o];
-          var op = od.t ? Math.round(od.s/od.t*100) : 0;
-          return '<span>' + o + ': <b>' + od.s + '/' + od.t + '</b> (' + op + '%)</span>';
+        offKeys.map(function(k){
+          var off = k.split('|||')[1];
+          var os  = offSched[k]||0, ot = _admZoneOffTarget[k]||0;
+          var op  = ot ? Math.round(os/ot*100) : 0;
+          return '<span>' + off + ': <b>' + os + '/' + ot + '</b> (' + op + '%)</span>';
         }).join('<br>') +
       '</div>';
     }
 
     return '<div class="adm-zcard">' +
-      '<div class="adm-zname">' + name + '</div>' +
-      '<div class="adm-znums"><span style="color:'+sColor+';font-weight:700">'+s+'</span><span> / '+t+'</span></div>' +
-      '<div class="adm-zpct" style="'+cls+'">'+pTxt+'</div>' +
+      '<div class="adm-zname">' + z + '</div>' +
+      '<div class="adm-znums"><span style="color:'+sCol+';font-weight:700">'+s+'</span><span> / '+t+'</span></div>' +
+      '<div class="adm-zpct" style="'+pBg+'">'+pTxt+'</div>' +
       offLines +
     '</div>';
   }
 
-  // Total card first
   var h = '<div class="adm-zcard" style="grid-column:1/-1;background:var(--hdr);color:#fff;border-color:transparent">' +
     '<div class="adm-zname" style="color:rgba(255,255,255,.7)">الإجمالي الكلي</div>' +
     '<div class="adm-znums" style="font-size:20px"><span style="color:#ffb090">'+totalS+'</span><span style="color:rgba(255,255,255,.5)"> / '+totalT+'</span></div>' +
-    (totalT ? '<div class="adm-zpct" style="background:rgba(255,255,255,.15);color:#fff">'+Math.round(totalS/totalT*100)+'%</div>' : '') +
+    (totalT?'<div class="adm-zpct" style="background:rgba(255,255,255,.15);color:#fff">'+Math.round(totalS/totalT*100)+'%</div>':'') +
   '</div>';
 
-  h += zones.map(function(z){
-    return card(z, byZone[z].s, byZone[z].t, byZone[z].offices);
-  }).join('');
-
+  h += zones.map(zoneCard).join('');
   document.getElementById('adm-zones-content').innerHTML = '<div class="adm-zone-grid">' + h + '</div>';
 }
 
