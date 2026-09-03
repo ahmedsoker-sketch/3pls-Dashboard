@@ -575,17 +575,28 @@ function loadFromGitHub() {
       .catch(function(){ clearTimeout(timer); return asJson?null:''; });
   }
 
+  // Fetch last commit time to show real upload timestamp
+  var metaHdrs = {'Accept':'application/vnd.github.v3+json','Authorization':'token '+SUP_TOKEN};
+  function getLastCommitTime() {
+    return fetch('https://api.github.com/repos/ahmedsoker-sketch/3pls-Dashboard/commits?path=rider-data-today.csv&per_page=1'+t,{headers:metaHdrs,cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(c){return(c&&c[0])?new Date(c[0].commit.committer.date):null;})
+      .catch(function(){return null;});
+  }
+
   Promise.all([
     apiFetch(CONFIG.riderDataUrls.today,    false, 20000),
     apiFetch(CONFIG.riderDataUrls.tomorrow, false, 20000),
     apiFetch(CONFIG.riderDataUrls.day2,     false, 20000),
     apiFetch(CONFIG.targetsDataUrl,         true,  10000),
     apiFetch(CONFIG.datesUrl,               true,  10000),
-    apiFetch(CONFIG.supervisorsUrl,         true,  10000)
+    apiFetch(CONFIG.supervisorsUrl,         true,  10000),
+    getLastCommitTime()
   ]).then(function(results){
       var csvToday = results[0], csvTomorrow = results[1], csvDay2 = results[2];
       var tData = results[3], datesData = results[4];
       _supervisors = results[5] || {};
+      var commitDate = results[6];
 
       _dayDates = datesData
         ? {today: datesData.today||'', tomorrow: datesData.tomorrow||'', day2: datesData.day2||''}
@@ -618,11 +629,13 @@ function loadFromGitHub() {
         day2:     parseDay(csvDay2)
       };
 
-      var lastTs = '';
-      _ridersByDay.today.forEach(function(r){ if (r.ts > lastTs) lastTs = r.ts; });
-      document.getElementById('aupd').textContent =
-        lastTs ? 'آخر تحديث: ' + lastTs
-               : (datesData && datesData.pushedAt ? 'آخر رفع: ' + datesData.pushedAt : '');
+      // Show real commit time from GitHub
+      if (commitDate) {
+        var opts = {hour:'2-digit',minute:'2-digit',hour12:true};
+        document.getElementById('aupd').textContent = 'آخر رفع من التول: ' + commitDate.toLocaleTimeString('ar-EG',opts);
+      } else {
+        document.getElementById('aupd').textContent = '⚡ بيانات محدثة';
+      }
 
       renderDayTabs();
       loadActiveDay();
