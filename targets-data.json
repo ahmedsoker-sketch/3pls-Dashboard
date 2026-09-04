@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "timestamp": "٠٣:٠١ م",
+  "timestamp": "٠٣:٠٤ م",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -90,7 +90,7 @@
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 39,
-      "scheduled": 17
+      "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
@@ -246,7 +246,7 @@
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 63,
-      "scheduled": 34
+      "scheduled": 35
     },
     {
       "zone": "Shobra",
