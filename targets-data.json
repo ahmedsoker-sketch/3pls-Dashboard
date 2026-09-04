@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "timestamp": "٠٢:٥٤ ص",
+  "timestamp": "٠٣:٢٤ ص",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,7 +12,7 @@
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 121
+      "scheduled": 122
     },
     {
       "zone": "Mohandiseen",
@@ -24,7 +24,7 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 172,
-      "scheduled": 67
+      "scheduled": 68
     },
     {
       "zone": "Mohandiseen",
@@ -42,19 +42,19 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 135,
-      "scheduled": 99
+      "scheduled": 98
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 116,
-      "scheduled": 72
+      "scheduled": 74
     },
     {
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 97,
-      "scheduled": 31
+      "scheduled": 32
     },
     {
       "zone": "Mohandiseen",
@@ -66,7 +66,7 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 66,
-      "scheduled": 34
+      "scheduled": 33
     },
     {
       "zone": "Mohandiseen",
@@ -144,13 +144,13 @@
       "zone": "Hadayek el qobba",
       "office": "Jasson",
       "target": 63,
-      "scheduled": 19
+      "scheduled": 20
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Full Speed",
       "target": 57,
-      "scheduled": 29
+      "scheduled": 32
     },
     {
       "zone": "Hadayek el qobba",
@@ -252,7 +252,7 @@
       "zone": "Shobra",
       "office": "Speedo",
       "target": 41,
-      "scheduled": 26
+      "scheduled": 25
     },
     {
       "zone": "Shobra",
@@ -310,15 +310,15 @@
     },
     {
       "zone": "Shobra",
-      "office": "Ready",
+      "office": "Ayla Express",
       "target": 0,
       "scheduled": 1
     },
     {
       "zone": "Shobra",
-      "office": "Ayla Express",
+      "office": "Ready",
       "target": 0,
-      "scheduled": 0
+      "scheduled": 1
     }
   ]
 }
