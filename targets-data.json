@@ -1,24 +1,24 @@
 {
   "date": "2026-09-05",
-  "timestamp": "02:47 AM",
+  "timestamp": "03:17 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 237,
-      "scheduled": 203
+      "scheduled": 204
     },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 149
+      "scheduled": 151
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 195,
-      "scheduled": 133
+      "scheduled": 132
     },
     {
       "zone": "Mohandiseen",
@@ -30,7 +30,7 @@
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 162,
-      "scheduled": 134
+      "scheduled": 135
     },
     {
       "zone": "Mohandiseen",
@@ -42,7 +42,7 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 135,
-      "scheduled": 101
+      "scheduled": 98
     },
     {
       "zone": "Mohandiseen",
@@ -66,19 +66,19 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 66,
-      "scheduled": 44
+      "scheduled": 45
     },
     {
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 49,
-      "scheduled": 28
+      "scheduled": 27
     },
     {
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 41,
-      "scheduled": 20
+      "scheduled": 21
     },
     {
       "zone": "Mohandiseen",
@@ -90,7 +90,7 @@
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 39,
-      "scheduled": 20
+      "scheduled": 21
     },
     {
       "zone": "Mohandiseen",
@@ -126,7 +126,7 @@
       "zone": "Mohandiseen",
       "office": "Noot",
       "target": 15,
-      "scheduled": 17
+      "scheduled": 16
     },
     {
       "zone": "Shobra",
@@ -138,7 +138,7 @@
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 99,
-      "scheduled": 108
+      "scheduled": 107
     },
     {
       "zone": "Shobra",
@@ -180,7 +180,7 @@
       "zone": "Shobra",
       "office": "el Dawlya",
       "target": 31,
-      "scheduled": 11
+      "scheduled": 12
     },
     {
       "zone": "Shobra",
