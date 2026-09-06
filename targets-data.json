@@ -1,54 +1,54 @@
 {
   "date": "2026-09-06",
-  "timestamp": "07:00 PM",
+  "timestamp": "07:06 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 237,
-      "scheduled": 226
+      "scheduled": 222
     },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 189
+      "scheduled": 186
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 195,
-      "scheduled": 160
+      "scheduled": 157
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 172,
-      "scheduled": 149
+      "scheduled": 147
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 162,
-      "scheduled": 160
+      "scheduled": 158
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 148,
-      "scheduled": 131
+      "scheduled": 127
     },
     {
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 135,
-      "scheduled": 110
+      "scheduled": 109
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 116,
-      "scheduled": 96
+      "scheduled": 98
     },
     {
       "zone": "Mohandiseen",
@@ -60,13 +60,13 @@
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 86,
-      "scheduled": 68
+      "scheduled": 67
     },
     {
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 66,
-      "scheduled": 62
+      "scheduled": 61
     },
     {
       "zone": "Mohandiseen",
@@ -78,7 +78,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 41,
-      "scheduled": 33
+      "scheduled": 32
     },
     {
       "zone": "Mohandiseen",
@@ -114,13 +114,13 @@
       "zone": "Mohandiseen",
       "office": "Super Speed",
       "target": 25,
-      "scheduled": 24
+      "scheduled": 23
     },
     {
       "zone": "Mohandiseen",
       "office": "MR Delivery",
       "target": 20,
-      "scheduled": 12
+      "scheduled": 10
     },
     {
       "zone": "Mohandiseen",
@@ -132,13 +132,13 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 134,
-      "scheduled": 92
+      "scheduled": 90
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 83,
-      "scheduled": 57
+      "scheduled": 56
     },
     {
       "zone": "Hadayek el qobba",
@@ -156,7 +156,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 49,
-      "scheduled": 23
+      "scheduled": 22
     },
     {
       "zone": "Hadayek el qobba",
@@ -180,7 +180,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 35,
-      "scheduled": 24
+      "scheduled": 25
     },
     {
       "zone": "Hadayek el qobba",
@@ -204,7 +204,7 @@
       "zone": "Hadayek el qobba",
       "office": "Ebad El rahman",
       "target": 21,
-      "scheduled": 14
+      "scheduled": 13
     },
     {
       "zone": "Hadayek el qobba",
@@ -228,19 +228,19 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 110,
-      "scheduled": 84
+      "scheduled": 87
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 99,
-      "scheduled": 98
+      "scheduled": 95
     },
     {
       "zone": "Shobra",
       "office": "MTA",
       "target": 64,
-      "scheduled": 58
+      "scheduled": 60
     },
     {
       "zone": "Shobra",
