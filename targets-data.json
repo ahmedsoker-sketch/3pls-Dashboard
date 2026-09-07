@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "timestamp": "01:00 PM",
+  "timestamp": "٠١:٠٣ م",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -54,7 +54,7 @@
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 95,
-      "scheduled": 63
+      "scheduled": 64
     },
     {
       "zone": "Mohandiseen",
@@ -228,13 +228,13 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 131,
-      "scheduled": 66
+      "scheduled": 68
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 86,
-      "scheduled": 42
+      "scheduled": 43
     },
     {
       "zone": "Hadayek el qobba",
