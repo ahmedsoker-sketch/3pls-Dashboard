@@ -1,6 +1,6 @@
 {
   "date": "2026-09-08",
-  "timestamp": "04:12 PM",
+  "timestamp": "04:15 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,13 +12,13 @@
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 236,
-      "scheduled": 216
+      "scheduled": 215
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 198,
-      "scheduled": 160
+      "scheduled": 158
     },
     {
       "zone": "Mohandiseen",
@@ -36,7 +36,7 @@
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 149,
-      "scheduled": 118
+      "scheduled": 117
     },
     {
       "zone": "Mohandiseen",
@@ -48,7 +48,7 @@
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 115,
-      "scheduled": 96
+      "scheduled": 97
     },
     {
       "zone": "Mohandiseen",
