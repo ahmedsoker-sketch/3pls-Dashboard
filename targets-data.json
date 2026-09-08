@@ -1,12 +1,12 @@
 {
   "date": "2026-09-08",
-  "timestamp": "04:28 PM",
+  "timestamp": "04:30 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 237,
-      "scheduled": 177
+      "scheduled": 178
     },
     {
       "zone": "Mohandiseen",
@@ -132,7 +132,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 131,
-      "scheduled": 105
+      "scheduled": 106
     },
     {
       "zone": "Hadayek el qobba",
