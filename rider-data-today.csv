@@ -1718,7 +1718,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-09-09,04:42 PM,3678443,Ahmed Gabr Mohamed Gabr _SPEEDO_BC,Hadayek el qobba,Speedo,201550067871,,Yes
 2026-09-09,04:42 PM,3678680,Hussein Mohammed Hussein Saleh _EBAD EL RAHMAN_BC,Mohandiseen,Ebad El rahman,201099584367,,Yes
 2026-09-09,04:42 PM,3678726,Mohamed Wael Mohamed Elsayed _SPEEDO,Mohandiseen,Speedo,201119167030,,Yes
-2026-09-09,04:42 PM,3678945,Mostafa mohamed saeed ahmed _El Dawlya_BC,Shobra,el Dawlya,201117407164,,No
+2026-09-09,04:42 PM,3678945,Mostafa mohamed saeed ahmed _El Dawlya_BC,Shobra,el Dawlya,201117407164,,Yes
 2026-09-09,04:42 PM,3681949,Mostafa  Yasser Mohamed Eid _READY_BC,Mohandiseen,Ready,201116614983,,No
 2026-09-09,04:42 PM,3682088,Amr Maher Hamed Abdelnaeem _SPEEDO_BC,Hadayek el qobba,Speedo,201030317898,,No
 2026-09-09,04:42 PM,3683648,Mohamed Ahmed Mustafa Hassan _Al Alamia,Hadayek el qobba,Al Alamia,201050944959,,No
@@ -3394,7 +3394,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-09-09,04:42 PM,4697340,Ali Muhamad Ahmad Muhamad _EL DAWLYA,Mohandiseen,el Dawlya,201126517655,,No
 2026-09-09,04:42 PM,4699151,Ahmed Sayed Abdelwadoud Abdelzaher _EL TOHAMI,Hadayek el qobba,El Tohami,201158137707,,Yes
 2026-09-09,04:42 PM,4699229,Youssef Abdelazim Mohamed Mohamed _EL TOHAMI_BC,Shobra,El Tohami,201278550246,,No
-2026-09-09,04:42 PM,4699280,Mohamed Farouk Mahmoud Hassan _EL TOHAMI_BC,Shobra,El Tohami,201229092326,,Yes
+2026-09-09,04:42 PM,4699280,Mohamed Farouk Mahmoud Hassan _EL TOHAMI_BC,Shobra,El Tohami,201229092326,,No
 2026-09-09,04:42 PM,4699314,Youssef Atef Mohamed Ibrahim _EL TOHAMI_BC,Shobra,El Tohami,201128939067,,No
 2026-09-09,04:42 PM,4699407,Ahmed Ezzeldin Abdeen Abdelaal _FULL SPEED_BC,Mohandiseen,Full Speed,201097182193,,Yes
 2026-09-09,04:42 PM,4699432,Ahmed Mahmoud Sayed Mahmoud _TEAM MH,Mohandiseen,Team mh for Delivery,201200004982,,Yes
