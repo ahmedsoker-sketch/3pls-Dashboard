@@ -1,42 +1,42 @@
 {
   "date": "2026-09-13",
-  "timestamp": "01:49 AM",
+  "timestamp": "02:19 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 237,
-      "scheduled": 154
+      "scheduled": 153
     },
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 236,
-      "scheduled": 221
+      "scheduled": 219
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 198,
-      "scheduled": 155
+      "scheduled": 156
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 194,
-      "scheduled": 75
+      "scheduled": 76
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 161,
-      "scheduled": 137
+      "scheduled": 135
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 149,
-      "scheduled": 118
+      "scheduled": 119
     },
     {
       "zone": "Mohandiseen",
@@ -54,7 +54,7 @@
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 95,
-      "scheduled": 51
+      "scheduled": 53
     },
     {
       "zone": "Mohandiseen",
@@ -84,13 +84,13 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 41,
-      "scheduled": 17
+      "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
       "office": "Apache",
       "target": 40,
-      "scheduled": 26
+      "scheduled": 27
     },
     {
       "zone": "Mohandiseen",
@@ -114,7 +114,7 @@
       "zone": "Mohandiseen",
       "office": "Super Speed",
       "target": 23,
-      "scheduled": 19
+      "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
