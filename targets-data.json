@@ -1,18 +1,18 @@
 {
   "date": "2026-09-16",
-  "timestamp": "11:42 AM",
+  "timestamp": "11:47 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 146
+      "scheduled": 145
     },
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 230,
-      "scheduled": 224
+      "scheduled": 226
     },
     {
       "zone": "Mohandiseen",
@@ -66,7 +66,7 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 66,
-      "scheduled": 55
+      "scheduled": 57
     },
     {
       "zone": "Mohandiseen",
@@ -108,7 +108,7 @@
       "zone": "Mohandiseen",
       "office": "Stop Car",
       "target": 29,
-      "scheduled": 16
+      "scheduled": 15
     },
     {
       "zone": "Mohandiseen",
@@ -246,7 +246,7 @@
       "zone": "Hadayek el qobba",
       "office": "Full Speed",
       "target": 55,
-      "scheduled": 36
+      "scheduled": 37
     },
     {
       "zone": "Hadayek el qobba",
