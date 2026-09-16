@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "timestamp": "12:19 PM",
+  "timestamp": "12:20 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -234,7 +234,7 @@
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 78,
-      "scheduled": 53
+      "scheduled": 52
     },
     {
       "zone": "Hadayek el qobba",
@@ -306,7 +306,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Ezz",
       "target": 13,
-      "scheduled": 3
+      "scheduled": 4
     },
     {
       "zone": "Hadayek el qobba",
