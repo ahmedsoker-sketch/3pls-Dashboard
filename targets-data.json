@@ -1,24 +1,24 @@
 {
   "date": "2026-09-17",
-  "timestamp": "05:04 PM",
+  "timestamp": "05:12 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 233,
-      "scheduled": 167
+      "scheduled": 168
     },
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 230,
-      "scheduled": 215
+      "scheduled": 216
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 193,
-      "scheduled": 170
+      "scheduled": 169
     },
     {
       "zone": "Mohandiseen",
@@ -60,7 +60,7 @@
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 89,
-      "scheduled": 71
+      "scheduled": 72
     },
     {
       "zone": "Mohandiseen",
@@ -168,7 +168,7 @@
       "zone": "Shobra",
       "office": "Jasson",
       "target": 30,
-      "scheduled": 3
+      "scheduled": 4
     },
     {
       "zone": "Shobra",
@@ -228,7 +228,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 133,
-      "scheduled": 108
+      "scheduled": 111
     },
     {
       "zone": "Hadayek el qobba",
@@ -252,7 +252,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 48,
-      "scheduled": 31
+      "scheduled": 32
     },
     {
       "zone": "Hadayek el qobba",
@@ -270,7 +270,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 37,
-      "scheduled": 33
+      "scheduled": 34
     },
     {
       "zone": "Hadayek el qobba",
@@ -294,7 +294,7 @@
       "zone": "Hadayek el qobba",
       "office": "el Dawlya",
       "target": 26,
-      "scheduled": 14
+      "scheduled": 15
     },
     {
       "zone": "Hadayek el qobba",
@@ -310,15 +310,15 @@
     },
     {
       "zone": "Hadayek el qobba",
-      "office": "Ready",
+      "office": "Barg",
       "target": 0,
-      "scheduled": 2
+      "scheduled": 3
     },
     {
       "zone": "Hadayek el qobba",
-      "office": "Barg",
+      "office": "Ready",
       "target": 0,
-      "scheduled": 1
+      "scheduled": 2
     }
   ]
 }
