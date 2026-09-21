@@ -1,84 +1,84 @@
 {
   "date": "2026-09-21",
-  "timestamp": "04:56 PM",
+  "timestamp": "05:13 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
-      "office": "Speedo",
-      "target": 233,
-      "scheduled": 155
-    },
-    {
-      "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
-      "target": 230,
-      "scheduled": 189
+      "target": 226,
+      "scheduled": 192
     },
     {
       "zone": "Mohandiseen",
-      "office": "El Abtal",
-      "target": 193,
-      "scheduled": 158
+      "office": "Speedo",
+      "target": 226,
+      "scheduled": 160
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
-      "target": 187,
-      "scheduled": 130
+      "target": 195,
+      "scheduled": 141
+    },
+    {
+      "zone": "Mohandiseen",
+      "office": "El Abtal",
+      "target": 192,
+      "scheduled": 162
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
-      "target": 157,
-      "scheduled": 136
+      "target": 163,
+      "scheduled": 137
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
-      "target": 147,
-      "scheduled": 125
+      "target": 145,
+      "scheduled": 127
     },
     {
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
-      "target": 130,
-      "scheduled": 94
+      "target": 129,
+      "scheduled": 100
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 111,
-      "scheduled": 85
+      "scheduled": 90
     },
     {
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 96,
-      "scheduled": 54
+      "scheduled": 56
     },
     {
       "zone": "Mohandiseen",
       "office": "Full Speed",
-      "target": 89,
-      "scheduled": 65
+      "target": 87,
+      "scheduled": 67
     },
     {
       "zone": "Mohandiseen",
       "office": "El Ezz",
-      "target": 66,
-      "scheduled": 49
+      "target": 65,
+      "scheduled": 51
     },
     {
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 50,
-      "scheduled": 33
+      "scheduled": 34
     },
     {
       "zone": "Mohandiseen",
       "office": "Apache",
-      "target": 42,
-      "scheduled": 32
+      "target": 44,
+      "scheduled": 35
     },
     {
       "zone": "Mohandiseen",
@@ -89,32 +89,20 @@
     {
       "zone": "Mohandiseen",
       "office": "Ready",
-      "target": 40,
-      "scheduled": 17
+      "target": 37,
+      "scheduled": 19
     },
     {
       "zone": "Mohandiseen",
       "office": "BeCool",
-      "target": 35,
+      "target": 34,
       "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
-      "office": "Tanta",
-      "target": 30,
-      "scheduled": 5
-    },
-    {
-      "zone": "Mohandiseen",
       "office": "Stop Car",
-      "target": 29,
-      "scheduled": 17
-    },
-    {
-      "zone": "Mohandiseen",
-      "office": "MR Delivery",
-      "target": 24,
-      "scheduled": 7
+      "target": 25,
+      "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
@@ -124,68 +112,80 @@
     },
     {
       "zone": "Mohandiseen",
+      "office": "MR Delivery",
+      "target": 23,
+      "scheduled": 7
+    },
+    {
+      "zone": "Mohandiseen",
+      "office": "Tanta",
+      "target": 23,
+      "scheduled": 5
+    },
+    {
+      "zone": "Mohandiseen",
       "office": "Noot",
-      "target": 16,
-      "scheduled": 13
+      "target": 13,
+      "scheduled": 14
     },
     {
       "zone": "Shobra",
       "office": "Al Alamia",
-      "target": 109,
-      "scheduled": 99
-    },
-    {
-      "zone": "Shobra",
-      "office": "Team mh for Delivery",
-      "target": 102,
+      "target": 114,
       "scheduled": 104
     },
     {
       "zone": "Shobra",
+      "office": "Team mh for Delivery",
+      "target": 101,
+      "scheduled": 105
+    },
+    {
+      "zone": "Shobra",
       "office": "MTA",
-      "target": 64,
-      "scheduled": 47
+      "target": 62,
+      "scheduled": 49
     },
     {
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 61,
-      "scheduled": 24
+      "scheduled": 25
     },
     {
       "zone": "Shobra",
       "office": "Speedo",
-      "target": 42,
-      "scheduled": 22
+      "target": 41,
+      "scheduled": 24
     },
     {
       "zone": "Shobra",
       "office": "El Tohami",
       "target": 33,
-      "scheduled": 16
+      "scheduled": 17
+    },
+    {
+      "zone": "Shobra",
+      "office": "Ebad El rahman",
+      "target": 33,
+      "scheduled": 27
+    },
+    {
+      "zone": "Shobra",
+      "office": "Jasson",
+      "target": 33,
+      "scheduled": 3
     },
     {
       "zone": "Shobra",
       "office": "el Dawlya",
       "target": 30,
-      "scheduled": 16
-    },
-    {
-      "zone": "Shobra",
-      "office": "Jasson",
-      "target": 30,
-      "scheduled": 3
-    },
-    {
-      "zone": "Shobra",
-      "office": "Ebad El rahman",
-      "target": 29,
-      "scheduled": 27
+      "scheduled": 17
     },
     {
       "zone": "Shobra",
       "office": "Full Speed",
-      "target": 24,
+      "target": 26,
       "scheduled": 17
     },
     {
@@ -196,21 +196,21 @@
     },
     {
       "zone": "Shobra",
-      "office": "Noot",
-      "target": 19,
+      "office": "El Ezz",
+      "target": 20,
       "scheduled": 1
     },
     {
       "zone": "Shobra",
-      "office": "El Ezz",
-      "target": 15,
+      "office": "Noot",
+      "target": 17,
       "scheduled": 1
     },
     {
       "zone": "Shobra",
       "office": "Apache",
-      "target": 8,
-      "scheduled": 4
+      "target": 7,
+      "scheduled": 5
     },
     {
       "zone": "Shobra",
@@ -227,85 +227,85 @@
     {
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
-      "target": 133,
-      "scheduled": 90
+      "target": 132,
+      "scheduled": 97
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
-      "target": 78,
+      "target": 81,
       "scheduled": 44
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Jasson",
       "target": 60,
-      "scheduled": 35
+      "scheduled": 37
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Full Speed",
-      "target": 55,
-      "scheduled": 33
+      "target": 54,
+      "scheduled": 36
     },
     {
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
-      "target": 48,
-      "scheduled": 16
+      "target": 50,
+      "scheduled": 19
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Al Alamia",
-      "target": 44,
-      "scheduled": 26
+      "target": 45,
+      "scheduled": 28
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Team mh for Delivery",
       "target": 37,
-      "scheduled": 39
-    },
-    {
-      "zone": "Hadayek el qobba",
-      "office": "El Abtal",
-      "target": 37,
-      "scheduled": 25
+      "scheduled": 40
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Stop Car",
       "target": 36,
-      "scheduled": 20
+      "scheduled": 22
+    },
+    {
+      "zone": "Hadayek el qobba",
+      "office": "El Abtal",
+      "target": 36,
+      "scheduled": 25
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Speedo",
-      "target": 32,
+      "target": 35,
       "scheduled": 12
     },
     {
       "zone": "Hadayek el qobba",
       "office": "BeCool",
-      "target": 27,
+      "target": 29,
       "scheduled": 12
     },
     {
       "zone": "Hadayek el qobba",
       "office": "el Dawlya",
-      "target": 26,
-      "scheduled": 15
+      "target": 28,
+      "scheduled": 17
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Ebad El rahman",
-      "target": 20,
+      "target": 23,
       "scheduled": 9
     },
     {
       "zone": "Hadayek el qobba",
       "office": "El Ezz",
-      "target": 13,
+      "target": 14,
       "scheduled": 5
     },
     {
