@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "timestamp": "06:59 PM",
+  "timestamp": "07:06 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -48,7 +48,7 @@
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 111,
-      "scheduled": 91
+      "scheduled": 92
     },
     {
       "zone": "Mohandiseen",
@@ -84,7 +84,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 42,
-      "scheduled": 36
+      "scheduled": 35
     },
     {
       "zone": "Mohandiseen",
@@ -252,7 +252,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 50,
-      "scheduled": 25
+      "scheduled": 26
     },
     {
       "zone": "Hadayek el qobba",
