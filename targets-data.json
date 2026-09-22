@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "timestamp": "01:02 PM",
+  "timestamp": "01:03 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -54,7 +54,7 @@
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 96,
-      "scheduled": 62
+      "scheduled": 61
     },
     {
       "zone": "Mohandiseen",
