@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "timestamp": "10:06 PM",
+  "timestamp": "10:12 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,7 +12,7 @@
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 226,
-      "scheduled": 196
+      "scheduled": 195
     },
     {
       "zone": "Mohandiseen",
@@ -60,7 +60,7 @@
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 87,
-      "scheduled": 62
+      "scheduled": 61
     },
     {
       "zone": "Mohandiseen",
