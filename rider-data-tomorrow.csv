@@ -3823,7 +3823,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-09-24,12:07 AM,4478895,Samir Hany Samir Gargis _MTA_BC,Shobra,MTA,201015673464,2026-09-20,No
 2026-09-24,12:07 AM,4478906,Michelle Malak Mouris Michelle _MTA_BC,Shobra,MTA,201273221395,2026-09-20,No
 2026-09-24,12:07 AM,4481594,Abdelrahman Hassan Ahmad Hassan _EL TOHAMI_BC,Shobra,El Tohami,201126648920,2026-09-20,Yes
-2026-09-24,12:07 AM,4483260,Bahaelden Mostafa Anwar Mohamed _EL DAWLYA_BC,Shobra,el Dawlya,201029489940,2026-09-20,Yes
+2026-09-24,12:07 AM,4483260,Bahaelden Mostafa Anwar Mohamed _EL DAWLYA_BC,Shobra,el Dawlya,201029489940,2026-09-20,No
 2026-09-24,12:07 AM,4488851,Islam Ahmed Mohamed Hassan _TEAM MH,Shobra,Team mh for Delivery,201210630399,2026-09-20,Yes
 2026-09-24,12:07 AM,4492305,Mohamed Khalid Ahmed Abdulrahim _TEAM MH,Shobra,Team mh for Delivery,201035840825,2026-09-20,Yes
 2026-09-24,12:07 AM,4494391,Omar Mohamed Abdelhamid Abdullah _JASSON_BC,Shobra,Jasson,201288335824,2026-09-20,No
@@ -3981,7 +3981,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-09-24,12:07 AM,4874680,#N/A,Shobra,Al Alamia,#N/A,2026-09-20,Yes
 2026-09-24,12:07 AM,4876825,#N/A,Shobra,Speedo,#N/A,2026-09-20,Yes
 2026-09-24,12:07 AM,4876888,#N/A,Shobra,MTA,#N/A,2026-09-20,Yes
-2026-09-24,12:07 AM,4879944,#N/A,Shobra,Noot,#N/A,2026-09-20,No
+2026-09-24,12:07 AM,4879944,#N/A,Shobra,Noot,#N/A,2026-09-20,Yes
 2026-09-24,12:07 AM,4880051,#N/A,Shobra,Noot,#N/A,2026-09-20,No
 2026-09-24,12:07 AM,4880083,#N/A,Shobra,MTA,#N/A,2026-09-20,No
 2026-09-24,12:07 AM,4880516,#N/A,Shobra,Speedo,#N/A,2026-09-20,Yes
@@ -4044,7 +4044,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-09-24,12:07 AM,2406022,Ali Abdelaati Saleh_MTA_BC,Shobra,MTA,201120894544,2026-09-19,Yes
 2026-09-24,12:07 AM,2440001,Taher Ragab Mohamed Ali _TEAM MH_BC,Shobra,Team mh for Delivery,201141458210,2026-09-19,No
 2026-09-24,12:07 AM,2480219,#N/A,Shobra,El Abtal,#N/A,2026-09-19,No
-2026-09-24,12:07 AM,2528218,Hussam Hassan Abuela Mohamed _ALALAMIA,Shobra,Al Alamia,201117793546,2026-09-19,No
+2026-09-24,12:07 AM,2528218,Hussam Hassan Abuela Mohamed _ALALAMIA,Shobra,Al Alamia,201117793546,2026-09-19,Yes
 2026-09-24,12:07 AM,2529419,Mohamed Hassan Mustafa Hassan _ALALAMIA_BC,Shobra,Al Alamia,201030365244,2026-09-19,No
 2026-09-24,12:07 AM,2539412,Ahmed Shehata Ghonem Shehata _TEAM MH_BC,Shobra,Team mh for Delivery,201009726408,2026-09-19,No
 2026-09-24,12:07 AM,2599196,Amir Essam Kandas Abdrabu _AL ALAMIA,Shobra,Al Alamia,201144359081,2026-09-19,No
