@@ -1,18 +1,18 @@
 {
   "date": "2026-09-23",
-  "timestamp": "05:39 PM",
+  "timestamp": "05:42 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 226,
-      "scheduled": 215
+      "scheduled": 212
     },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 226,
-      "scheduled": 173
+      "scheduled": 174
     },
     {
       "zone": "Mohandiseen",
@@ -24,31 +24,31 @@
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 192,
-      "scheduled": 176
+      "scheduled": 177
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 163,
-      "scheduled": 144
+      "scheduled": 143
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 145,
-      "scheduled": 123
+      "scheduled": 122
     },
     {
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 129,
-      "scheduled": 112
+      "scheduled": 113
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 111,
-      "scheduled": 95
+      "scheduled": 94
     },
     {
       "zone": "Mohandiseen",
@@ -108,13 +108,13 @@
       "zone": "Mohandiseen",
       "office": "Super Speed",
       "target": 24,
-      "scheduled": 16
+      "scheduled": 15
     },
     {
       "zone": "Mohandiseen",
       "office": "Tanta",
       "target": 23,
-      "scheduled": 6
+      "scheduled": 5
     },
     {
       "zone": "Mohandiseen",
@@ -132,13 +132,13 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 102
+      "scheduled": 104
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 101,
-      "scheduled": 104
+      "scheduled": 106
     },
     {
       "zone": "Shobra",
@@ -162,13 +162,13 @@
       "zone": "Shobra",
       "office": "Ebad El rahman",
       "target": 33,
-      "scheduled": 27
+      "scheduled": 29
     },
     {
       "zone": "Shobra",
       "office": "El Tohami",
       "target": 33,
-      "scheduled": 20
+      "scheduled": 21
     },
     {
       "zone": "Shobra",
@@ -180,13 +180,13 @@
       "zone": "Shobra",
       "office": "el Dawlya",
       "target": 30,
-      "scheduled": 14
+      "scheduled": 16
     },
     {
       "zone": "Shobra",
       "office": "Full Speed",
       "target": 26,
-      "scheduled": 21
+      "scheduled": 22
     },
     {
       "zone": "Shobra",
@@ -228,31 +228,31 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 132,
-      "scheduled": 101
+      "scheduled": 98
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 81,
-      "scheduled": 59
+      "scheduled": 57
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Jasson",
       "target": 60,
-      "scheduled": 30
+      "scheduled": 31
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Full Speed",
       "target": 54,
-      "scheduled": 39
+      "scheduled": 37
     },
     {
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 50,
-      "scheduled": 28
+      "scheduled": 27
     },
     {
       "zone": "Hadayek el qobba",
@@ -264,7 +264,7 @@
       "zone": "Hadayek el qobba",
       "office": "Team mh for Delivery",
       "target": 37,
-      "scheduled": 41
+      "scheduled": 39
     },
     {
       "zone": "Hadayek el qobba",
@@ -276,7 +276,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 36,
-      "scheduled": 26
+      "scheduled": 28
     },
     {
       "zone": "Hadayek el qobba",
@@ -294,13 +294,13 @@
       "zone": "Hadayek el qobba",
       "office": "el Dawlya",
       "target": 28,
-      "scheduled": 12
+      "scheduled": 13
     },
     {
       "zone": "Hadayek el qobba",
       "office": "Ebad El rahman",
       "target": 23,
-      "scheduled": 11
+      "scheduled": 12
     },
     {
       "zone": "Hadayek el qobba",
