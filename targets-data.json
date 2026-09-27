@@ -1,6 +1,6 @@
 {
   "date": "2026-09-27",
-  "timestamp": "04:36 PM",
+  "timestamp": "04:42 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -24,7 +24,7 @@
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 192,
-      "scheduled": 167
+      "scheduled": 168
     },
     {
       "zone": "Mohandiseen",
@@ -48,13 +48,13 @@
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 111,
-      "scheduled": 88
+      "scheduled": 90
     },
     {
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 96,
-      "scheduled": 61
+      "scheduled": 62
     },
     {
       "zone": "Mohandiseen",
@@ -90,7 +90,7 @@
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 37,
-      "scheduled": 19
+      "scheduled": 20
     },
     {
       "zone": "Mohandiseen",
@@ -144,7 +144,7 @@
       "zone": "Hadayek el qobba",
       "office": "Jasson",
       "target": 60,
-      "scheduled": 23
+      "scheduled": 24
     },
     {
       "zone": "Hadayek el qobba",
@@ -180,7 +180,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 36,
-      "scheduled": 31
+      "scheduled": 32
     },
     {
       "zone": "Hadayek el qobba",
@@ -228,7 +228,7 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 104
+      "scheduled": 105
     },
     {
       "zone": "Shobra",
@@ -312,7 +312,7 @@
       "zone": "Shobra",
       "office": "Ayla Express",
       "target": 0,
-      "scheduled": 1
+      "scheduled": 2
     }
   ]
 }
