@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "timestamp": "02:06 PM",
+  "timestamp": "02:11 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -18,7 +18,7 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 190,
-      "scheduled": 118
+      "scheduled": 120
     },
     {
       "zone": "Mohandiseen",
@@ -60,7 +60,7 @@
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 87,
-      "scheduled": 56
+      "scheduled": 55
     },
     {
       "zone": "Mohandiseen",
@@ -78,7 +78,7 @@
       "zone": "Mohandiseen",
       "office": "Apache",
       "target": 43,
-      "scheduled": 29
+      "scheduled": 30
     },
     {
       "zone": "Mohandiseen",
@@ -132,7 +132,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 126,
-      "scheduled": 84
+      "scheduled": 85
     },
     {
       "zone": "Hadayek el qobba",
@@ -240,7 +240,7 @@
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 65,
-      "scheduled": 23
+      "scheduled": 26
     },
     {
       "zone": "Shobra",
