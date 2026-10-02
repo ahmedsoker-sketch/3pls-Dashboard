@@ -1,18 +1,18 @@
 {
   "date": "2026-10-02",
-  "timestamp": "08:36 PM",
+  "timestamp": "09:06 PM",
   "targets": [
     {
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 126,
-      "scheduled": 148
+      "scheduled": 150
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 73,
-      "scheduled": 65
+      "scheduled": 66
     },
     {
       "zone": "Hadayek el qobba",
@@ -42,7 +42,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 36,
-      "scheduled": 31
+      "scheduled": 34
     },
     {
       "zone": "Hadayek el qobba",
@@ -72,7 +72,7 @@
       "zone": "Hadayek el qobba",
       "office": "el Dawlya",
       "target": 23,
-      "scheduled": 11
+      "scheduled": 13
     },
     {
       "zone": "Hadayek el qobba",
@@ -102,7 +102,7 @@
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 230,
-      "scheduled": 183
+      "scheduled": 185
     },
     {
       "zone": "Mohandiseen",
@@ -114,7 +114,7 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 190,
-      "scheduled": 120
+      "scheduled": 121
     },
     {
       "zone": "Mohandiseen",
@@ -126,7 +126,7 @@
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 156,
-      "scheduled": 118
+      "scheduled": 119
     },
     {
       "zone": "Mohandiseen",
@@ -180,7 +180,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 40,
-      "scheduled": 76
+      "scheduled": 77
     },
     {
       "zone": "Mohandiseen",
@@ -228,13 +228,13 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 110,
-      "scheduled": 105
+      "scheduled": 107
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 103,
-      "scheduled": 105
+      "scheduled": 107
     },
     {
       "zone": "Shobra",
@@ -246,7 +246,7 @@
       "zone": "Shobra",
       "office": "MTA",
       "target": 62,
-      "scheduled": 52
+      "scheduled": 53
     },
     {
       "zone": "Shobra",
