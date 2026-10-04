@@ -3738,7 +3738,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-06,12:17 PM,3917398,Rahim Mohamed Ibrahim Mohamed _TEAM MH,Shobra,Team mh for Delivery,+201128266745,2026-10-02,No
 2026-10-06,12:17 PM,3920873,Hazem Mohamed Imam Ali _TEAM MH,Shobra,Team mh for Delivery,+201068282994,2026-10-02,Yes
 2026-10-06,12:17 PM,3921547,Muhammad Ali Sabry Atwa _EBAD EL RAHMAN_BC,Shobra,Ebad El rahman,+201159135337,2026-10-02,No
-2026-10-06,12:17 PM,3925295,Hassan Ali Hassan Ali _JASSON,Shobra,Top delivery,+201201957526,2026-10-02,No
+2026-10-06,12:17 PM,3925295,Hassan Ali Hassan Ali _JASSON,Shobra,Top delivery,+201201957526,2026-10-02,Yes
 2026-10-06,12:17 PM,3926078,Gamal Shamseldin Abubakr Abdulfattah _EL TOHAMI_BC,Shobra,El Tohami,+201514139084,2026-10-02,No
 2026-10-06,12:17 PM,3930608,Fady Anes Labib Ghaly _TOP DELIVERY_BC,Shobra,Top delivery,+201555969119,2026-10-02,Yes
 2026-10-06,12:17 PM,3930704,Mohammed Atef Saleh Abdeljalil _El Dawlya,Shobra,el Dawlya,+201065048215,2026-10-02,No
@@ -3797,7 +3797,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-06,12:17 PM,4356108,Abdulrahman Ahmed Mustafa Abdulhamid _AL ALAMIA,Shobra,Al Alamia,+201147209026,2026-10-02,Yes
 2026-10-06,12:17 PM,4363303,Hana Maged Makram Ayad _EL ABTAL,Shobra,El Abtal,+201277860479,2026-10-02,No
 2026-10-06,12:17 PM,4364183,Saif Abdullah Ahmed Amer _TOP DELIVERY_BC,Shobra,Top delivery,+201101614515,2026-10-02,No
-2026-10-06,12:17 PM,4366474,Sabri Ahmed Mohamed Sabri _FULL SPEED,Shobra,Full Speed,+201203949932,2026-10-02,No
+2026-10-06,12:17 PM,4366474,Sabri Ahmed Mohamed Sabri _FULL SPEED,Shobra,Full Speed,+201203949932,2026-10-02,Yes
 2026-10-06,12:17 PM,4370373,Mamdouh Mamdouh Imam Madbouly _EL ABTAL,Shobra,El Abtal,+201002584334,2026-10-02,No
 2026-10-06,12:17 PM,4370436,Ahmed Haider Abdulkhaliq Ahmed _EL ABTAL_BC,Shobra,El Abtal,+201055020542,2026-10-02,Yes
 2026-10-06,12:17 PM,4371225,Ibrahim Abdulrahman Alsabai Abbass _JASSON,Shobra,Top delivery,+201062369552,2026-10-02,No
@@ -3813,7 +3813,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-06,12:17 PM,4427437,Mohamed Salah ElSayed Abdelazim _AL ALAMIA_BC,Shobra,Al Alamia,+201227235907,2026-10-02,No
 2026-10-06,12:17 PM,4427492,Mohamed Maher Abdelrahim Ibrahim  _AL ALAMIA_BC,Shobra,Al Alamia,+201113664357,2026-10-02,Yes
 2026-10-06,12:17 PM,4429373,Maged Malak Moris Michel _MTA_BC,Shobra,MTA,+201210267472,2026-10-02,No
-2026-10-06,12:17 PM,4445989,Paula Raif Jarjis Qazman  _TEAM MH,Shobra,Team mh for Delivery,+201277427869,2026-10-02,No
+2026-10-06,12:17 PM,4445989,Paula Raif Jarjis Qazman  _TEAM MH,Shobra,Team mh for Delivery,+201277427869,2026-10-02,Yes
 2026-10-06,12:17 PM,4450292,Amr Ayman Ramadan Ibrahim _AL ALAMIA_BC,Shobra,Al Alamia,+201019958350,2026-10-02,No
 2026-10-06,12:17 PM,4450710,Ali Hussein Mohamed Mohamed _EL ABTAL_BC,Shobra,El Abtal,+201205569362,2026-10-02,No
 2026-10-06,12:17 PM,4453762,Ali Abdulrahman Mahmoud Ali _EBAD EL RAHMAN_BC,Shobra,Ebad El rahman,+201114491821,2026-10-02,Yes
@@ -4217,7 +4217,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-06,12:17 PM,4811482,Mina Maher Naiem Youssef _TEAM MH,Shobra,Team mh for Delivery,+201158051685,2026-09-29,No
 2026-10-06,12:17 PM,4839435,Ahmed Alaa Jumaa Abdulsattar   _MTA,Shobra,MTA,+201095838446,2026-09-29,No
 2026-10-06,12:17 PM,4852612,Ebrahim Eissa Ebrahim Eissa _JASSON,Shobra,Top delivery,+201206006911,2026-09-29,No
-2026-10-06,12:17 PM,4894490,Pavli Bassm Eros Younan _AL ALAMIA,Shobra,Al Alamia,+201271389240,2026-09-29,No
+2026-10-06,12:17 PM,4894490,Pavli Bassm Eros Younan _AL ALAMIA,Shobra,Al Alamia,+201271389240,2026-09-29,Yes
 2026-10-06,12:17 PM,4914075,Omar Khaled Saeed Fathy _EBAD EL RAHMAN,Shobra,Ebad El rahman,+201272725431,2026-09-29,No
 2026-10-06,12:17 PM,4917578,#N/A,Shobra,Team mh for Delivery,#N/A,2026-09-29,No
 2026-10-06,12:17 PM,4929689,#N/A,Shobra,Apache,#N/A,2026-09-29,No
