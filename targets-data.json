@@ -1,6 +1,6 @@
 {
   "date": "2026-10-05",
-  "timestamp": "06:03 PM",
+  "timestamp": "06:06 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,7 +12,7 @@
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 225,
-      "scheduled": 175
+      "scheduled": 176
     },
     {
       "zone": "Mohandiseen",
@@ -132,7 +132,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 176,
-      "scheduled": 146
+      "scheduled": 147
     },
     {
       "zone": "Hadayek el qobba",
@@ -240,13 +240,13 @@
       "zone": "Shobra",
       "office": "MTA",
       "target": 67,
-      "scheduled": 56
+      "scheduled": 57
     },
     {
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 67,
-      "scheduled": 27
+      "scheduled": 29
     },
     {
       "zone": "Shobra",
