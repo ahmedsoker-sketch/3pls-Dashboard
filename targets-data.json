@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "timestamp": "03:06 AM",
+  "timestamp": "03:36 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -30,7 +30,7 @@
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 161,
-      "scheduled": 139
+      "scheduled": 137
     },
     {
       "zone": "Mohandiseen",
@@ -54,7 +54,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 109,
-      "scheduled": 59
+      "scheduled": 61
     },
     {
       "zone": "Mohandiseen",
@@ -66,13 +66,13 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 67,
-      "scheduled": 33
+      "scheduled": 34
     },
     {
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 53,
-      "scheduled": 17
+      "scheduled": 18
     },
     {
       "zone": "Mohandiseen",
@@ -228,7 +228,7 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 92
+      "scheduled": 91
     },
     {
       "zone": "Shobra",
@@ -252,7 +252,7 @@
       "zone": "Shobra",
       "office": "Speedo",
       "target": 43,
-      "scheduled": 11
+      "scheduled": 12
     },
     {
       "zone": "Shobra",
