@@ -1,18 +1,18 @@
 {
   "date": "2026-10-07",
-  "timestamp": "08:27 PM",
+  "timestamp": "08:57 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 225,
-      "scheduled": 178
+      "scheduled": 179
     },
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 225,
-      "scheduled": 208
+      "scheduled": 211
     },
     {
       "zone": "Mohandiseen",
@@ -24,7 +24,7 @@
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 194,
-      "scheduled": 175
+      "scheduled": 176
     },
     {
       "zone": "Mohandiseen",
@@ -36,31 +36,31 @@
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 142,
-      "scheduled": 136
+      "scheduled": 139
     },
     {
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 136,
-      "scheduled": 98
+      "scheduled": 101
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 119,
-      "scheduled": 93
+      "scheduled": 94
     },
     {
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 109,
-      "scheduled": 99
+      "scheduled": 102
     },
     {
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 93,
-      "scheduled": 61
+      "scheduled": 62
     },
     {
       "zone": "Mohandiseen",
@@ -72,25 +72,25 @@
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 53,
-      "scheduled": 41
+      "scheduled": 43
     },
     {
       "zone": "Mohandiseen",
       "office": "Apache",
       "target": 44,
-      "scheduled": 32
+      "scheduled": 33
     },
     {
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 38,
-      "scheduled": 24
+      "scheduled": 23
     },
     {
       "zone": "Mohandiseen",
       "office": "BeCool",
       "target": 37,
-      "scheduled": 16
+      "scheduled": 17
     },
     {
       "zone": "Mohandiseen",
@@ -126,25 +126,25 @@
       "zone": "Mohandiseen",
       "office": "Jasson",
       "target": 0,
-      "scheduled": 1
+      "scheduled": 2
     },
     {
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 89
+      "scheduled": 91
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 105,
-      "scheduled": 90
+      "scheduled": 91
     },
     {
       "zone": "Shobra",
       "office": "MTA",
       "target": 67,
-      "scheduled": 50
+      "scheduled": 51
     },
     {
       "zone": "Shobra",
@@ -162,19 +162,19 @@
       "zone": "Shobra",
       "office": "Top delivery",
       "target": 37,
-      "scheduled": 13
+      "scheduled": 14
     },
     {
       "zone": "Shobra",
       "office": "Ebad El rahman",
       "target": 32,
-      "scheduled": 18
+      "scheduled": 19
     },
     {
       "zone": "Shobra",
       "office": "el Dawlya",
       "target": 32,
-      "scheduled": 22
+      "scheduled": 23
     },
     {
       "zone": "Shobra",
@@ -228,7 +228,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 176,
-      "scheduled": 155
+      "scheduled": 158
     },
     {
       "zone": "Hadayek el qobba",
@@ -246,7 +246,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 49,
-      "scheduled": 30
+      "scheduled": 31
     },
     {
       "zone": "Hadayek el qobba",
@@ -258,7 +258,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Abtal",
       "target": 41,
-      "scheduled": 27
+      "scheduled": 29
     },
     {
       "zone": "Hadayek el qobba",
@@ -270,7 +270,7 @@
       "zone": "Hadayek el qobba",
       "office": "Speedo",
       "target": 38,
-      "scheduled": 26
+      "scheduled": 27
     },
     {
       "zone": "Hadayek el qobba",
@@ -288,7 +288,7 @@
       "zone": "Hadayek el qobba",
       "office": "el Dawlya",
       "target": 24,
-      "scheduled": 13
+      "scheduled": 14
     },
     {
       "zone": "Hadayek el qobba",
