@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "timestamp": "03:26 PM",
+  "timestamp": "03:31 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -18,7 +18,7 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 198,
-      "scheduled": 145
+      "scheduled": 146
     },
     {
       "zone": "Mohandiseen",
@@ -138,7 +138,7 @@
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 105,
-      "scheduled": 80
+      "scheduled": 81
     },
     {
       "zone": "Shobra",
