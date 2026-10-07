@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "timestamp": "09:27 PM",
+  "timestamp": "09:57 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -18,13 +18,13 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 198,
-      "scheduled": 166
+      "scheduled": 168
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 194,
-      "scheduled": 177
+      "scheduled": 179
     },
     {
       "zone": "Mohandiseen",
@@ -36,19 +36,19 @@
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 142,
-      "scheduled": 141
+      "scheduled": 143
     },
     {
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 136,
-      "scheduled": 103
+      "scheduled": 104
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 119,
-      "scheduled": 95
+      "scheduled": 98
     },
     {
       "zone": "Mohandiseen",
@@ -144,7 +144,7 @@
       "zone": "Shobra",
       "office": "MTA",
       "target": 67,
-      "scheduled": 52
+      "scheduled": 53
     },
     {
       "zone": "Shobra",
@@ -168,7 +168,7 @@
       "zone": "Shobra",
       "office": "Ebad El rahman",
       "target": 32,
-      "scheduled": 19
+      "scheduled": 22
     },
     {
       "zone": "Shobra",
@@ -228,13 +228,13 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 176,
-      "scheduled": 158
+      "scheduled": 159
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 79,
-      "scheduled": 53
+      "scheduled": 54
     },
     {
       "zone": "Hadayek el qobba",
@@ -282,7 +282,7 @@
       "zone": "Hadayek el qobba",
       "office": "BeCool",
       "target": 33,
-      "scheduled": 14
+      "scheduled": 15
     },
     {
       "zone": "Hadayek el qobba",
@@ -294,7 +294,7 @@
       "zone": "Hadayek el qobba",
       "office": "Ebad El rahman",
       "target": 23,
-      "scheduled": 13
+      "scheduled": 14
     },
     {
       "zone": "Hadayek el qobba",
