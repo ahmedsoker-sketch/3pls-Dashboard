@@ -1,13 +1,7 @@
 {
   "date": "2026-10-09",
-  "timestamp": "01:27 AM",
+  "timestamp": "01:57 AM",
   "targets": [
-    {
-      "zone": "Mohandiseen",
-      "office": "Team mh for Delivery",
-      "target": 225,
-      "scheduled": 168
-    },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
@@ -16,21 +10,27 @@
     },
     {
       "zone": "Mohandiseen",
+      "office": "Team mh for Delivery",
+      "target": 225,
+      "scheduled": 168
+    },
+    {
+      "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 198,
-      "scheduled": 63
+      "scheduled": 64
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 194,
-      "scheduled": 122
+      "scheduled": 125
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 161,
-      "scheduled": 99
+      "scheduled": 102
     },
     {
       "zone": "Mohandiseen",
@@ -54,7 +54,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 109,
-      "scheduled": 36
+      "scheduled": 37
     },
     {
       "zone": "Mohandiseen",
@@ -66,7 +66,7 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 67,
-      "scheduled": 26
+      "scheduled": 28
     },
     {
       "zone": "Mohandiseen",
@@ -90,7 +90,7 @@
       "zone": "Mohandiseen",
       "office": "BeCool",
       "target": 37,
-      "scheduled": 11
+      "scheduled": 12
     },
     {
       "zone": "Mohandiseen",
@@ -120,7 +120,7 @@
       "zone": "Mohandiseen",
       "office": "Noot",
       "target": 14,
-      "scheduled": 2
+      "scheduled": 3
     },
     {
       "zone": "Mohandiseen",
@@ -210,7 +210,7 @@
       "zone": "Hadayek el qobba",
       "office": "Jasson",
       "target": 0,
-      "scheduled": 2
+      "scheduled": 3
     },
     {
       "zone": "Hadayek el qobba",
@@ -240,7 +240,7 @@
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 67,
-      "scheduled": 27
+      "scheduled": 28
     },
     {
       "zone": "Shobra",
