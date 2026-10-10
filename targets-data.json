@@ -1,6 +1,6 @@
 {
   "date": "2026-10-10",
-  "timestamp": "10:48 PM",
+  "timestamp": "11:18 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -168,7 +168,7 @@
       "zone": "Hadayek el qobba",
       "office": "Stop Car",
       "target": 38,
-      "scheduled": 27
+      "scheduled": 28
     },
     {
       "zone": "Hadayek el qobba",
@@ -252,7 +252,7 @@
       "zone": "Shobra",
       "office": "Top delivery",
       "target": 37,
-      "scheduled": 21
+      "scheduled": 22
     },
     {
       "zone": "Shobra",
