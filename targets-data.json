@@ -1,12 +1,12 @@
 {
   "date": "2026-10-12",
-  "timestamp": "12:03 AM",
+  "timestamp": "12:06 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 250,
-      "scheduled": 179
+      "scheduled": 178
     },
     {
       "zone": "Mohandiseen",
@@ -36,7 +36,7 @@
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 152,
-      "scheduled": 106
+      "scheduled": 105
     },
     {
       "zone": "Mohandiseen",
