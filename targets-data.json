@@ -1,42 +1,42 @@
 {
   "date": "2026-10-12",
-  "timestamp": "12:06 AM",
+  "timestamp": "12:36 AM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 250,
-      "scheduled": 178
+      "scheduled": 179
     },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 236,
-      "scheduled": 87
+      "scheduled": 88
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 210,
-      "scheduled": 53
+      "scheduled": 57
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 197,
-      "scheduled": 122
+      "scheduled": 123
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 161,
-      "scheduled": 100
+      "scheduled": 103
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 152,
-      "scheduled": 105
+      "scheduled": 103
     },
     {
       "zone": "Mohandiseen",
@@ -48,13 +48,13 @@
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 121,
-      "scheduled": 50
+      "scheduled": 49
     },
     {
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 112,
-      "scheduled": 52
+      "scheduled": 51
     },
     {
       "zone": "Mohandiseen",
@@ -72,7 +72,7 @@
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 52,
-      "scheduled": 13
+      "scheduled": 14
     },
     {
       "zone": "Mohandiseen",
@@ -84,7 +84,7 @@
       "zone": "Mohandiseen",
       "office": "BeCool",
       "target": 40,
-      "scheduled": 11
+      "scheduled": 10
     },
     {
       "zone": "Mohandiseen",
@@ -96,7 +96,7 @@
       "zone": "Mohandiseen",
       "office": "Stop Car",
       "target": 29,
-      "scheduled": 18
+      "scheduled": 17
     },
     {
       "zone": "Mohandiseen",
@@ -132,7 +132,7 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 118,
-      "scheduled": 79
+      "scheduled": 81
     },
     {
       "zone": "Shobra",
@@ -276,7 +276,7 @@
       "zone": "Hadayek el qobba",
       "office": "Stop Car",
       "target": 37,
-      "scheduled": 13
+      "scheduled": 14
     },
     {
       "zone": "Hadayek el qobba",
