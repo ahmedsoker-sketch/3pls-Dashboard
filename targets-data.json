@@ -1,6 +1,6 @@
 {
   "date": "2026-10-17",
-  "timestamp": "10:36 PM",
+  "timestamp": "11:06 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,13 +12,13 @@
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 227,
-      "scheduled": 216
+      "scheduled": 217
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 204,
-      "scheduled": 142
+      "scheduled": 143
     },
     {
       "zone": "Mohandiseen",
@@ -42,7 +42,7 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 133,
-      "scheduled": 120
+      "scheduled": 119
     },
     {
       "zone": "Mohandiseen",
@@ -180,7 +180,7 @@
       "zone": "Hadayek el qobba",
       "office": "Speedo",
       "target": 36,
-      "scheduled": 26
+      "scheduled": 28
     },
     {
       "zone": "Hadayek el qobba",
@@ -222,13 +222,13 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 129
+      "scheduled": 130
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 106,
-      "scheduled": 109
+      "scheduled": 110
     },
     {
       "zone": "Shobra",
