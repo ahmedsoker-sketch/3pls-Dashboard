@@ -1,6 +1,6 @@
 {
   "date": "2026-10-17",
-  "timestamp": "09:06 PM",
+  "timestamp": "09:11 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -36,7 +36,7 @@
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 141,
-      "scheduled": 129
+      "scheduled": 128
     },
     {
       "zone": "Mohandiseen",
@@ -48,7 +48,7 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 115,
-      "scheduled": 100
+      "scheduled": 102
     },
     {
       "zone": "Mohandiseen",
@@ -252,7 +252,7 @@
       "zone": "Shobra",
       "office": "Speedo",
       "target": 41,
-      "scheduled": 29
+      "scheduled": 30
     },
     {
       "zone": "Shobra",
