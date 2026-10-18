@@ -2703,7 +2703,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-18,07:25 PM,4343259,Hisham Elsayed Abdelrazek Eissa _EL TOHAMI,Mohandiseen,El Tohami,+201144454849,2026-10-16,Yes
 2026-10-18,07:25 PM,4345613,Yehia Mohamed Yehia Nasreldin _AL ALAMIA_BC,Mohandiseen,Al Alamia,+201152101989,2026-10-16,Yes
 2026-10-18,07:25 PM,4359573,Ziad Ahmed Jaber Atallah _EL TOHAMI_BC,Mohandiseen,El Tohami,+201143460236,2026-10-16,Yes
-2026-10-18,07:25 PM,4360694,Mahmoud Faraj Obeid Khader _EBAD EL RAHMAN_BC,Mohandiseen,Ebad El rahman,+201150759701,2026-10-16,No
+2026-10-18,07:25 PM,4360694,Mahmoud Faraj Obeid Khader _EBAD EL RAHMAN_BC,Mohandiseen,Ebad El rahman,+201150759701,2026-10-16,Yes
 2026-10-18,07:25 PM,4368095,Ahmed Kamel Alsayed Othman _EL DAWLYA,Mohandiseen,el Dawlya,+201155822261,2026-10-16,Yes
 2026-10-18,07:25 PM,4369080,Mahmoud Abdelrahman Khalifa Farghly _TEAM MH_BC,Mohandiseen,Team mh for Delivery,+201153430465,2026-10-16,No
 2026-10-18,07:25 PM,4370399,Abdulrahman Abuzeid Zaaboub Abuzeid _AL ALAMIA_BC,Mohandiseen,Al Alamia,+201007313167,2026-10-16,Yes
@@ -4180,7 +4180,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-18,07:25 PM,3868682,Khalil Adel Khalil Ibrahim _AL ALAMIA_BC,Shobra,Al Alamia,+201019487048,2026-10-16,No
 2026-10-18,07:25 PM,3884446,Mina Ashraf Maurice Fahmy _EL ABTAL,Shobra,El Abtal,+201555033079,2026-10-16,No
 2026-10-18,07:25 PM,3925295,Hassan Ali Hassan Ali _JASSON,Shobra,Top delivery,+201201957526,2026-10-16,No
-2026-10-18,07:25 PM,3930704,Mohammed Atef Saleh Abdeljalil _El Dawlya,Shobra,el Dawlya,+201065048215,2026-10-16,No
+2026-10-18,07:25 PM,3930704,Mohammed Atef Saleh Abdeljalil _El Dawlya,Shobra,el Dawlya,+201065048215,2026-10-16,Yes
 2026-10-18,07:25 PM,4002541,Abdelrahman Saeed Elsayed Nasreldeen _EL EZZ,Shobra,El Ezz,+201114665594,2026-10-16,Yes
 2026-10-18,07:25 PM,4038032,Mustafa Abdelnabi Hamama Mohamed _MTA_BC,Shobra,MTA,+201157049519,2026-10-16,No
 2026-10-18,07:25 PM,4169909,Mario Wasim Ezzat Bashay _MTA_BC,Shobra,MTA,+201102906185,2026-10-16,Yes
