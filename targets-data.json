@@ -1,12 +1,12 @@
 {
   "date": "2026-10-21",
-  "timestamp": "07:18 PM",
+  "timestamp": "07:48 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 234,
-      "scheduled": 180
+      "scheduled": 183
     },
     {
       "zone": "Mohandiseen",
@@ -18,19 +18,19 @@
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 204,
-      "scheduled": 141
+      "scheduled": 144
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 193,
-      "scheduled": 181
+      "scheduled": 182
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 155,
-      "scheduled": 144
+      "scheduled": 145
     },
     {
       "zone": "Mohandiseen",
@@ -42,19 +42,19 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 133,
-      "scheduled": 110
+      "scheduled": 109
     },
     {
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 115,
-      "scheduled": 101
+      "scheduled": 103
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 111,
-      "scheduled": 94
+      "scheduled": 95
     },
     {
       "zone": "Mohandiseen",
@@ -66,7 +66,7 @@
       "zone": "Mohandiseen",
       "office": "El Ezz",
       "target": 70,
-      "scheduled": 47
+      "scheduled": 50
     },
     {
       "zone": "Mohandiseen",
@@ -78,7 +78,7 @@
       "zone": "Mohandiseen",
       "office": "Apache",
       "target": 44,
-      "scheduled": 32
+      "scheduled": 33
     },
     {
       "zone": "Mohandiseen",
@@ -132,13 +132,13 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 184,
-      "scheduled": 157
+      "scheduled": 162
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 76,
-      "scheduled": 54
+      "scheduled": 55
     },
     {
       "zone": "Hadayek el qobba",
@@ -234,13 +234,13 @@
       "zone": "Shobra",
       "office": "El Abtal",
       "target": 68,
-      "scheduled": 37
+      "scheduled": 38
     },
     {
       "zone": "Shobra",
       "office": "MTA",
       "target": 59,
-      "scheduled": 52
+      "scheduled": 54
     },
     {
       "zone": "Shobra",
@@ -252,7 +252,7 @@
       "zone": "Shobra",
       "office": "Speedo",
       "target": 41,
-      "scheduled": 24
+      "scheduled": 26
     },
     {
       "zone": "Shobra",
@@ -276,7 +276,7 @@
       "zone": "Shobra",
       "office": "Full Speed",
       "target": 23,
-      "scheduled": 16
+      "scheduled": 17
     },
     {
       "zone": "Shobra",
