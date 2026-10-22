@@ -1,42 +1,42 @@
 {
   "date": "2026-10-22",
-  "timestamp": "09:48 PM",
+  "timestamp": "10:18 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 236,
-      "scheduled": 206
+      "scheduled": 208
     },
     {
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 230,
-      "scheduled": 233
+      "scheduled": 234
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 202,
-      "scheduled": 156
+      "scheduled": 158
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 194,
-      "scheduled": 206
+      "scheduled": 207
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 158,
-      "scheduled": 164
+      "scheduled": 165
     },
     {
       "zone": "Mohandiseen",
       "office": "Al Alamia",
       "target": 144,
-      "scheduled": 145
+      "scheduled": 146
     },
     {
       "zone": "Mohandiseen",
@@ -72,7 +72,7 @@
       "zone": "Mohandiseen",
       "office": "Tanta Car",
       "target": 52,
-      "scheduled": 39
+      "scheduled": 40
     },
     {
       "zone": "Mohandiseen",
@@ -84,13 +84,13 @@
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 40,
-      "scheduled": 24
+      "scheduled": 25
     },
     {
       "zone": "Mohandiseen",
       "office": "BeCool",
       "target": 38,
-      "scheduled": 24
+      "scheduled": 25
     },
     {
       "zone": "Mohandiseen",
@@ -132,7 +132,7 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 114,
-      "scheduled": 130
+      "scheduled": 133
     },
     {
       "zone": "Shobra",
@@ -180,7 +180,7 @@
       "zone": "Shobra",
       "office": "Ebad El rahman",
       "target": 30,
-      "scheduled": 25
+      "scheduled": 24
     },
     {
       "zone": "Shobra",
@@ -234,7 +234,7 @@
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 184,
-      "scheduled": 182
+      "scheduled": 183
     },
     {
       "zone": "Hadayek el qobba",
@@ -252,7 +252,7 @@
       "zone": "Hadayek el qobba",
       "office": "El Tohami",
       "target": 50,
-      "scheduled": 40
+      "scheduled": 41
     },
     {
       "zone": "Hadayek el qobba",
