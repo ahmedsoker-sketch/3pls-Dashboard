@@ -147,7 +147,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,2437831,Karim Fathy Mohamed Morsi _TOP DELIVERY_BC,Hadayek el qobba,Top delivery,+201028841903,2026-10-21,Yes
 2026-10-23,12:01 PM,2438688,Ahmed Taha Shoukry Taha _MTA,Hadayek el qobba,MTA,+201147593303,2026-10-21,No
 2026-10-23,12:01 PM,2445350,Mazen Amr Sayed _TEAM MH,Hadayek el qobba,Team mh for Delivery,+201281586776,2026-10-21,Yes
-2026-10-23,12:01 PM,2445559,#N/A,Hadayek el qobba,Top delivery,#N/A,2026-10-21,No
+2026-10-23,12:01 PM,2445559,#N/A,Hadayek el qobba,Top delivery,#N/A,2026-10-21,Yes
 2026-10-23,12:01 PM,2459549,Hassan Ibrahim Mohamed Omar _MTA,Hadayek el qobba,MTA,+201143852204,2026-10-21,Yes
 2026-10-23,12:01 PM,2460472,Sherif Farhan Azmy Shaker _TOP DELIVERY,Hadayek el qobba,Top delivery,+201203185265,2026-10-21,No
 2026-10-23,12:01 PM,2460490,Omar Shahat Ali Amin _ELTOHAMI,Hadayek el qobba,El Tohami,+201202410264,2026-10-21,No
@@ -572,7 +572,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,1678240,Michael Nadi Shehata Rezik _TOP DELIVERY,Hadayek el qobba,Top delivery,+201276416102,2026-10-20,No
 2026-10-23,12:01 PM,1817730,Abdullah Qadri Mohammed _BECOOL,Hadayek el qobba,BeCool,+201272330807,2026-10-20,No
 2026-10-23,12:01 PM,1832183,#N/A,Hadayek el qobba,el Dawlya,#N/A,2026-10-20,No
-2026-10-23,12:01 PM,1851315,Mohamed Ibrahiem Antar _TEAM MH,Hadayek el qobba,Team mh for Delivery,+201208383524,2026-10-20,No
+2026-10-23,12:01 PM,1851315,Mohamed Ibrahiem Antar _TEAM MH,Hadayek el qobba,Team mh for Delivery,+201208383524,2026-10-20,Yes
 2026-10-23,12:01 PM,1851872,Ahmed Fatouh Ahmed Mohammed _MTA,Hadayek el qobba,MTA,+201092393019,2026-10-20,Yes
 2026-10-23,12:01 PM,1928823,Amr Abdelraof Abdelkader_EL DAWLYA_BC,Hadayek el qobba,el Dawlya,+201019871119,2026-10-20,No
 2026-10-23,12:01 PM,1947522,mohamed  emadeldien abdelsamad moustafa _ALALAMIA,Hadayek el qobba,Al Alamia,+201124965451,2026-10-20,No
@@ -1459,7 +1459,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,2009536,Karim Saleh Amin Mahmoud _EL DAWLYA,Mohandiseen,el Dawlya,+201142292550,2026-10-21,Yes
 2026-10-23,12:01 PM,2016645,Hussien Salem Abdelwahab Salem _EL TOHAMI,Mohandiseen,El Tohami,+201063229866,2026-10-21,No
 2026-10-23,12:01 PM,2017623,Mohamed Saber AlSayed awad _EL EZZ_BC,Mohandiseen,El Ezz,+201220448169,2026-10-21,Yes
-2026-10-23,12:01 PM,2021699,Adnan Mohamad Abdelhamid Abdelrahim _EL TOHAMI,Mohandiseen,El Tohami,+201040610826,2026-10-21,No
+2026-10-23,12:01 PM,2021699,Adnan Mohamad Abdelhamid Abdelrahim _EL TOHAMI,Mohandiseen,El Tohami,+201040610826,2026-10-21,Yes
 2026-10-23,12:01 PM,2021763,Adel Ahmed Anwar Fathy _ELTOHAMI,Mohandiseen,El Tohami,+201019028228,2026-10-21,Yes
 2026-10-23,12:01 PM,2022331,Abdulrahman Muhammad Shaaban Abdultawab _EL TOHAMI,Mohandiseen,El Tohami,+201029043151,2026-10-21,No
 2026-10-23,12:01 PM,2024660,Ebrahim Ali Mohamed Elsayed  _TEAM MH,Mohandiseen,Team mh for Delivery,+201158896808,2026-10-21,No
@@ -1802,7 +1802,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,3509282,Omar Mohamed Saadeldin Tammam _TEAM MH,Mohandiseen,Team mh for Delivery,+201100699058,2026-10-21,No
 2026-10-23,12:01 PM,3516153,Mohamed Ismaiel Mohamed Ahmed _EL ABTAL,Mohandiseen,El Abtal,+201143870629,2026-10-21,Yes
 2026-10-23,12:01 PM,3518558,Mustafa Hamid Ali Hassan _STOPCAR_BC,Mohandiseen,Stop Car,+201148860509,2026-10-21,No
-2026-10-23,12:01 PM,3518999,Mohamed Gamal Ibrahim Ahmed _EL ABTAL_BC,Mohandiseen,El Abtal,+201203342545,2026-10-21,No
+2026-10-23,12:01 PM,3518999,Mohamed Gamal Ibrahim Ahmed _EL ABTAL_BC,Mohandiseen,El Abtal,+201203342545,2026-10-21,Yes
 2026-10-23,12:01 PM,3524935,Abdullah Alaaeldin Taha Ahmed _EL DAWLYA,Mohandiseen,el Dawlya,+201121707509,2026-10-21,No
 2026-10-23,12:01 PM,3658888,Shadi Hamada Gomaa Jaballah _MTA,Mohandiseen,MTA,+201040832455,2026-10-21,Yes
 2026-10-23,12:01 PM,3658912,Mustafa AbdelFattah Hassanein Mahmoud _TEAM MH,Mohandiseen,Team mh for Delivery,+201210683254,2026-10-21,No
@@ -4172,7 +4172,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,4254723,Mohamed SalahElDin Mohamed Sayed  _TEAM MH_BC,Shobra,Team mh for Delivery,+201120925168,2026-10-20,Yes
 2026-10-23,12:01 PM,4271327,Nabil Shehata Zaki Hassan   _MTA,Shobra,MTA,+201270294777,2026-10-20,Yes
 2026-10-23,12:01 PM,4278218,Omar Mokhtar Abdelazaz Abdelrahman _EL ABTAL_BC,Shobra,El Abtal,+201061072127,2026-10-20,No
-2026-10-23,12:01 PM,4282865,Gamal Ambishy Abdelhamid Saleh _MTA,Shobra,MTA,+201111447791,2026-10-20,Yes
+2026-10-23,12:01 PM,4282865,Gamal Ambishy Abdelhamid Saleh _MTA,Shobra,MTA,+201111447791,2026-10-20,No
 2026-10-23,12:01 PM,4361368,#N/A,Shobra,Al Alamia,#N/A,2026-10-20,Yes
 2026-10-23,12:01 PM,4361781,Ali Hassan Ali Soliman _MTA_BC,Shobra,MTA,+201204010913,2026-10-20,Yes
 2026-10-23,12:01 PM,4365642,Musa Mahmoud Musa Salem _SPEEDO_BC,Shobra,Speedo,+201115628962,2026-10-20,No
@@ -4449,7 +4449,7 @@ Date,Timestamp,Rider ID,Name,Zone,Office,Phone,Last Shift,Scheduled
 2026-10-23,12:01 PM,4967547,#N/A,Shobra,Tanta Car,#N/A,2026-10-12,No
 2026-10-23,12:01 PM,1158249,Mostafa Ashraf Abdelaziz Abdelazeem _AL ALAMIA,Shobra,Al Alamia,+201149763217,,No
 2026-10-23,12:01 PM,1439053,Ahmed ramadan sayed _TEAM MH,Shobra,Team mh for Delivery,+201208724969,,Yes
-2026-10-23,12:01 PM,1459257,Ibrahim Sayed Ibrahim_MTA,Shobra,MTA,+201558717966,,Yes
+2026-10-23,12:01 PM,1459257,Ibrahim Sayed Ibrahim_MTA,Shobra,MTA,+201558717966,,No
 2026-10-23,12:01 PM,1651741,Eslam Hosny Abdelaleem Ibrahim _TEAM MH,Shobra,Team mh for Delivery,+201151545213,,No
 2026-10-23,12:01 PM,2121192,Sameh Sayed Abdelsabour Ahmed _EL ABTAL,Shobra,El Abtal,+201125244518,,Yes
 2026-10-23,12:01 PM,2378778,Hassan Mohamed Abdelfattah Twfiek _SPEEDO,Shobra,Speedo,+201155871146,,No
