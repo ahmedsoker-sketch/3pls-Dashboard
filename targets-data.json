@@ -1,6 +1,6 @@
 {
   "date": "2026-10-26",
-  "timestamp": "03:17 PM",
+  "timestamp": "03:24 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -42,19 +42,19 @@
       "zone": "Mohandiseen",
       "office": "Ebad El rahman",
       "target": 128,
-      "scheduled": 109
+      "scheduled": 110
     },
     {
       "zone": "Mohandiseen",
       "office": "El Tohami",
       "target": 115,
-      "scheduled": 87
+      "scheduled": 89
     },
     {
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 102,
-      "scheduled": 79
+      "scheduled": 81
     },
     {
       "zone": "Mohandiseen",
@@ -84,7 +84,7 @@
       "zone": "Mohandiseen",
       "office": "Ready",
       "target": 37,
-      "scheduled": 12
+      "scheduled": 13
     },
     {
       "zone": "Mohandiseen",
@@ -174,7 +174,7 @@
       "zone": "Hadayek el qobba",
       "office": "Team mh for Delivery",
       "target": 35,
-      "scheduled": 35
+      "scheduled": 36
     },
     {
       "zone": "Hadayek el qobba",
@@ -228,13 +228,13 @@
       "zone": "Shobra",
       "office": "Al Alamia",
       "target": 112,
-      "scheduled": 86
+      "scheduled": 88
     },
     {
       "zone": "Shobra",
       "office": "Team mh for Delivery",
       "target": 101,
-      "scheduled": 98
+      "scheduled": 97
     },
     {
       "zone": "Shobra",
@@ -270,13 +270,13 @@
       "zone": "Shobra",
       "office": "Ebad El rahman",
       "target": 30,
-      "scheduled": 22
+      "scheduled": 23
     },
     {
       "zone": "Shobra",
       "office": "El Tohami",
       "target": 30,
-      "scheduled": 15
+      "scheduled": 16
     },
     {
       "zone": "Shobra",
