@@ -1,6 +1,6 @@
 {
   "date": "2026-10-28",
-  "timestamp": "06:18 PM",
+  "timestamp": "06:24 PM",
   "targets": [
     {
       "zone": "Mohandiseen",
@@ -12,7 +12,7 @@
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 222,
-      "scheduled": 195
+      "scheduled": 196
     },
     {
       "zone": "Mohandiseen",
@@ -30,7 +30,7 @@
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 158,
-      "scheduled": 153
+      "scheduled": 154
     },
     {
       "zone": "Mohandiseen",
@@ -96,7 +96,7 @@
       "zone": "Mohandiseen",
       "office": "Stop Car",
       "target": 26,
-      "scheduled": 25
+      "scheduled": 26
     },
     {
       "zone": "Mohandiseen",
