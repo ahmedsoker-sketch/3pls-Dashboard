@@ -1,18 +1,18 @@
 {
   "date": "2026-10-31",
-  "timestamp": "10:27 AM",
+  "timestamp": "10:48 AM",
   "targets": [
     {
       "zone": "Hadayek el qobba",
       "office": "Top delivery",
       "target": 165,
-      "scheduled": 99
+      "scheduled": 101
     },
     {
       "zone": "Hadayek el qobba",
       "office": "MTA",
       "target": 78,
-      "scheduled": 41
+      "scheduled": 42
     },
     {
       "zone": "Hadayek el qobba",
@@ -24,7 +24,7 @@
       "zone": "Hadayek el qobba",
       "office": "Full Speed",
       "target": 51,
-      "scheduled": 33
+      "scheduled": 34
     },
     {
       "zone": "Hadayek el qobba",
@@ -60,7 +60,7 @@
       "zone": "Hadayek el qobba",
       "office": "BeCool",
       "target": 29,
-      "scheduled": 5
+      "scheduled": 7
     },
     {
       "zone": "Hadayek el qobba",
@@ -96,31 +96,31 @@
       "zone": "Mohandiseen",
       "office": "Team mh for Delivery",
       "target": 226,
-      "scheduled": 195
+      "scheduled": 193
     },
     {
       "zone": "Mohandiseen",
       "office": "Speedo",
       "target": 222,
-      "scheduled": 114
+      "scheduled": 117
     },
     {
       "zone": "Mohandiseen",
       "office": "el Dawlya",
       "target": 197,
-      "scheduled": 114
+      "scheduled": 116
     },
     {
       "zone": "Mohandiseen",
       "office": "El Abtal",
       "target": 185,
-      "scheduled": 145
+      "scheduled": 146
     },
     {
       "zone": "Mohandiseen",
       "office": "MTA",
       "target": 158,
-      "scheduled": 134
+      "scheduled": 132
     },
     {
       "zone": "Mohandiseen",
@@ -144,13 +144,13 @@
       "zone": "Mohandiseen",
       "office": "Top delivery",
       "target": 102,
-      "scheduled": 55
+      "scheduled": 57
     },
     {
       "zone": "Mohandiseen",
       "office": "Full Speed",
       "target": 84,
-      "scheduled": 61
+      "scheduled": 62
     },
     {
       "zone": "Mohandiseen",
@@ -180,13 +180,13 @@
       "zone": "Mohandiseen",
       "office": "BeCool",
       "target": 35,
-      "scheduled": 12
+      "scheduled": 13
     },
     {
       "zone": "Mohandiseen",
       "office": "Stop Car",
       "target": 26,
-      "scheduled": 22
+      "scheduled": 23
     },
     {
       "zone": "Mohandiseen",
